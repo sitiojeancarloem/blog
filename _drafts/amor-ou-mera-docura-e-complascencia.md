@@ -55,18 +55,33 @@ E é inegável: todos estes atributos devem ser vivenciados pelo critão! Sem ex
 
 Porém, o artigo acaba aqui? Não!
 
-# Amor, e amar o próximo é o que?
+# O contraditório
 
 As orientações de bíblicas devem ser seguidas, e são normativas. Porém, é de fato a compreensão atual compatível com o que a bíblia ensina? Esta questão de docilidade, tolerância, conformismo e complascência e até passividade representa a ideia que os escritores desejam transmitir? Ou há um enviesamento [leitura de uma vidência por perpectiva (cultural e social) que pode ser bem diferente daquela das evidências]?
 
-A bíblia é muito grande! E é real, que ela ensina praticamente tudo que é necessário ao homem e, que ela não se limita apenas aos texto anteriores e até, parece entrar em contradição. Mas contradição é algo que NÃO existe na bíblia, quanto a **conceitos** ensinamentos - tudo não passa de aparência decorrente de uma mentalidade enviezada que é quase surreal abandonar.
+Talvez uma das maiores dificuldades humanos esteja em compreender racionamente, e absorver de fato isso para além de uma convicão, filosofia, ideologia ou crença que há "coisas" que sáo 0 "8 (oito) ou 80 (oitenta)", que significa, _"ou é ou não é"_, inclusive este é um ensinamento claro de Jesus[^11]. E que há outras "coisas"  que são conciliáveis entre si - até parecem opostas entre si, por cauda da finitude e limitação fisica e mental humana, aliado a cultura, tradição entre outros fatoes que fazem a percepção se de que são distintos, "coisas" aprarentemente contraditórias. E reforço o "aparentemente". Jesus sabe que o homem teria dificuldade de compreender conceitos muito acima dele. Por isso ele também afirma que para as situações em há aprente contradição, e portanto são excessão, ele afirma: _"Vocês devem praticar estas coisas, **sem omitir** aquelas"_[^12]. Percebe, quando duas coisas parecem opostos entre si, que era o caso da situaçao com os fariseu, faça as duas, e não apenas uma - pois as duas estão corretas. Os líderes da época tinham dificuldade em ensinar e praticar normas detalhadas ao mesmo tempo que deviam ter compaixão e empatia pelo próprio - assim, quando elas aparentemente entravam em choque (por causa de más percepções da realidade, reforço), ele deixavam o amor de lado. Neste cotexto Jesus afirma que são estas sem esquecer aquelas!
 
-Jesus se compartava de forma dócil? Veja o que ELE disse em determinado momento:
+Diante disto, compreende-se que a bíblia é muito grande e tenta transmitir conceitos que estão muito acima da capacidade humana! E ela ensina praticamente tudo que é necessário ao homem!
+
+
+# Jesus é amor, mas era dócil?
+
+Compreenda que docilidade tem a idéia de doce, açucar, gosto, saboroso. Quando se fala de uma pessoa dócil, diplmatica, ou política, se refere a uma pessoa socialmente agradável e desejável, palavreas que podem extender essa compreensão são: palatável e carismático.
+
+Jesus se compartava de forma dócil? Confira um dos compartamentos DELE:
+
 > "Ai de vós, escribas e fariseus, hipócritas! Pois fechais o Reino dos céus diante dos homens; vós mesmos não entrais, nem os que estão entrando deixais entrar... **Serpentes, raça de víboras**, como escapareis da condenação do inferno?" [^10]
 
 
-Comparativamente, este problema é similar, a pegar a toxina buolinica em cantidade do tamanho de apenas 01 (um) gãozinho de sal de zoinha, e colocar em (um) litro de água pura; esta pequeníssima dosagem, dificilmente visível, tornaria toda aquela água fatal para um homem adulto[^1]. Veja como o que é considerado "desprezível" ou insignificante pode ser letal, mesmo em doses extremamente pequenas. Para se ter uma idea, um gão de sal de cozinha tem cerca de 70 à 100 nanogramas, que é 0,00007mg, ou 0,000000070g. É isso  mesmo! É 0 vírgula, seguido de 7 zeros!!!
+# A falsa verdade
 
+No início deste, compreendeu-se como claro e evidente as atitudes e ordem que indicavam docilidade, entretanto, a percepção inicial era muito superficial e desconsiderava diversos ensinamentos e contextos. Ou seja, o texto é verdadeiro no que diz, mas a lição que se extrai dele, pode ser uma cilada: uma verdade parcial. E parcialidade é um perígo!
+
+Comparativamente, este problema é similar, a pegar a toxina buolinica em quantidade equivalente ao tamanho de apenas 01 (um) gãozinho de sal de zoinha, e colocar em (um) litro de água pura; esta pequeníssima dosagem, dificilmente visível, tornaria toda aquela água fatal para um homem adulto[^1]. Veja como o que é considerado desprezível ou insignificante (toxinina do graozinha do sal) pode ser completamente letal, estragando todo o resto que era bom (ããgua). Para se ter uma idea, um gão de sal de cozinha tem cerca de 70 à 100 nanogramas, que é equivalente a 0,000000070g - sãs sete zeros após a vírcula!
+
+Uma verdade contaminada com um aerrinho minúsculo,provavelmente imperceptível, deixa de ser verdada. O "quase" pode facilmente ser uma das palavras mais extremistas existentes. Quase empregado, é 100% desempregado. Quase novo, é velho. Quase ganhar na mega da virada, é perder! Quase verdade indica que faltou muito pouco, para ser verdade, as vezes faltou apenas 0.001%, mas ainda é mentira. Pense, por exempo, numa pessoa 99,99% viva: náo existe isso, e seria no máximo um eufemismo. Uma pessoa quase viva, está 100% morta. 
+
+Havia um rei chamado Herodes Agria II (o título mais próximo nos dias atuais, seria governador) que teve que fazer um julgamento do apóstolo Paulo. E o relato está em Atos capítulo 26. Neste julgamento Paulo teve direito a defesa e, pode explicar seu caso que foi praticamente um testemunho de sua conversão ao cristianismo - até então denominado de ceita do nazareno. Paulo ao contar sua história rica em milagres e evidência bíblias e argumentação racional, foi interpelado pelo rei, que disse _"Por **pouco** me persuades a me fazer cristão"_[^13]. Percebe o "peso" disso? ... Faltou um pouquinho apenas, para que o terrível rei Agripa se tornasse o primeiro governador romano cristão. Por um pouquinho, ele teria aceitado Jesus, e seria salvo. Mas 99% salvo, ainda é 100% perdido! Na vida espiritual, quase ao lado de Jesus, é 100% ao lado do diabo.[^11] 
 
 
 # Bibliografia
@@ -96,3 +111,8 @@ Comparativamente, este problema é similar, a pegar a toxina buolinica em cantid
 [^9]: NVI, I Pedro 3:8-11.
 
 [^10]: NVI, Mateus 23:13-33.
+[^11]: Várias evidências: **(1ª) NVI, Mateus 5:37**:_"Seja o seu ‘sim’, ‘sim’, e o seu ‘não’, ‘não’"_  ; **(2ª) NVI, Lucas 11:23**: _"Aquele que não está comigo é contra mim, e aquele que comigo não ajunta, espalha"_ <small>[denota que não precisa ser contra, simplemente não ser a favor, é o mesmo que ser contra]</small>; **(3ª) NVI, Mateus 6:24**: "Ninguém pode servir a dois senhores;..."; **(4ª) NVI, Mateus 7:13-14** - há apenas dois caminhos, sem meio termos, sem uma terceira opção;
+
+[^12]: NVI, Mateus 23:23.
+
+[^13]: ARA, Atos 26:28.
