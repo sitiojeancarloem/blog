@@ -111,7 +111,7 @@ Havia um rei chamado Herodes Agria II (o título mais próximo nos dias atuais, 
 [^9]: NVI, I Pedro 3:8-11.
 
 [^10]: NVI, Mateus 23:13-33.
-[^11]: Várias evidências: **(1ª) NVI, Mateus 5:37**:_"Seja o seu ‘sim’, ‘sim’, e o seu ‘não’, ‘não’"_  ; **(2ª) NVI, Lucas 11:23**: _"Aquele que não está comigo é contra mim, e aquele que comigo não ajunta, espalha"_ <small>[denota que não precisa ser contra, simplemente não ser a favor, é o mesmo que ser contra]</small>; **(3ª) NVI, Mateus 6:24**: "Ninguém pode servir a dois senhores;..."; **(4ª) NVI, Mateus 7:13-14** - há apenas dois caminhos, sem meio termos, sem uma terceira opção;
+[^11]: Várias evidências: **(1ª) NVI, Mateus 5:37**:_"Seja o seu ‘sim’, ‘sim’, e o seu ‘não’, ‘não’"_  ; **(2ª) NVI, Lucas 11:23**: _"Aquele que não está comigo é contra mim, e aquele que comigo não ajunta, espalha"_ <small>[denota que não precisa ser contra, simplemente não ser a favor, é o mesmo que ser contra]</small>; **(3ª) NVI, Mateus 6:24**: "Ninguém pode servir a dois senhores;..."; **(4ª) NVI, Mateus 7:13-14** - há apenas dois caminhos, sem meio termos, sem uma terceira opção; **(4ª)** Josué 24:15; **(5ª)** 1 Reis 18:21; **(6ª)** Lucas 14:26.
 
 [^12]: NVI, Mateus 23:23.
 
