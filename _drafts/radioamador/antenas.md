@@ -25,8 +25,6 @@ Equiapmetnos não obrigatóriso mas importantes: **NanoVNA** (permite analisar d
 
 ## 📡 Melhores Antenas DIY por Tipo, Cenário e Direcionalidade
 
-### Tabela principal
-
 | Tipo / Cenário | Fixa | Melhor antena DIY                | Abertura angular (°) | Vantagem principal                              | Casamento / Ajuste                   | Dificuldade | Faixas atendidas                       | Compartilhar mastro? | Tutorial                                                                 |
 | -------------- | ---- | -------------------------------- | -------------------- | ----------------------------------------------- | ------------------------------------ | ----------- | -------------------------------------- | -------------------- | ------------------------------------------------------------------------ |
 | **DX**         |      | **End-Fed Half-Wave (EFHW)**     | ~360° (HF)           | Leve, multibanda, fácil de armar em campo       | Unun 49:1 + choke                    | ★★☆☆        | HF 80 – 10 m + 6 m (com ajuste)        | ✅                   | [▶︎](https://www.youtube.com/watch?v=DxhT9uObigs)                        |
@@ -39,7 +37,7 @@ Equiapmetnos não obrigatóriso mas importantes: **NanoVNA** (permite analisar d
 
 ---
 
-- J_Pole parece ser a maelhor escolha para produzir antes Projeto U/VHF, modelo OSJ: [artigo original](https://officinahf.jimdofree.com/antenne-vhf-uhf/v-u-j-pole/) e também o tudorial em [vídeo](https://www.youtube.com/watch?v=srnYf0nnDYk); também [disponível para compra ](https://www.mercadolivre.com.br/up/MLBU1989597383?pdp_filters=item_id:MLB829809025#origin=share&sid=share&wid=MLB829809025&action=whatsapp).
+- J_Pole parece ser a malhor escolha para produzir Projetos U/VHF, modelo OSJ: [artigo original](https://officinahf.jimdofree.com/antenne-vhf-uhf/v-u-j-pole/) e também o tutorial em [vídeo](https://www.youtube.com/watch?v=srnYf0nnDYk); também [disponível para compra ](https://www.mercadolivre.com.br/up/MLBU1989597383?pdp_filters=item_id:MLB829809025#origin=share&sid=share&wid=MLB829809025&action=whatsapp).
 
 
 #### ℹ️ O que significa a coluna **“Casamento / Ajuste”**
