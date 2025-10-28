@@ -1,4 +1,4 @@
-| Faixa (MHz)         | Banda | Classe | Uso                             | Mágica           | Tipo  | Anl<br/>Dig | λ (m) | DX/PX | Alcance típico | Melhor ambiente |
+| Faixa (MHz / GHz)   | Banda | Classe | Uso                             | Mágica           | Tipo  | Anl<br/>Dig | λ (m) | DX/PX | Alcance típico | Melhor ambiente |
 | ------------------- | ----- | ------ | ------------------------------- | ---------------- | ----- | ----------- | ----- | ----- | -------------- | --------------- |
 | 1.8 – 2.0           | MF    | A/B    | DX internacional                |                  | DX    | A / D       | 160   | DX    | 200–300 km     | Natureza        |
 | 3.5 – 4.0           | MF    | A/B    | Contato regional noturno        |                  | DX    | A / D       | 80    | DX    | 300–600 km     | Natureza        |
@@ -15,10 +15,16 @@
 | 222 – 225           | VHF   | A/B    | Repetidoras (raras)             |                  |       | A / D       | 1.35  |       | 5–60 km        | Urbano          |
 | 420 – 450           | UHF   |        | Repetidoras, satélite           |                  |       | A / D       | 0.70  |       | 3–50 km        | Urbano          |
 | 902 – 928           | UHF   | A/B    | Experimentos                    |                  |       | D           | 0.33  |       | 1–20 km        | Urbano          |
-| 1240 – 1300         | SHF   | A/B    | Satélite, ATV D                 |                  |       | D           | 0.23  |       | 1–10 km        | Urbano          |
-| 2300 – 2450         | SHF   | A/B    | Enlace e experimentos           |                  |       | D           | 0.13  |       | 0.5–5 km       | Urbano          |
-| 3300 – 3500         | SHF   | A/B    | Micro-ondas experimental        |                  |       | D           | 0.09  |       | 0.5–3 km       | Urbano          |
-| 5650 – 5925         | SHF   | A/B    | Satélite experimental           |                  |       | D           | 0.05  |       | 0.2–1 km       | Urbano          |
-| 10000 – 10500       | SHF   | A/B    | Micro-ondas                     |                  |       | D           | 0.03  |       | 0.1–0.5 km     | Urbano          |
-| 24000 – 24250       | SHF   | A/B    | Experimentos                    |                  |       | D           | 0.012 |       | <0.3 km        | Urbano          |
+| 1.24 – 1.30 GHz     | SHF   | A/B    | Satélite, ATV D                 |                  |       | D           | 0.23  |       | 1–10 km        | Urbano          |
+| 2.30 – 2.45 GHz     | SHF   | A/B    | Enlace e experimentos           |                  |       | D           | 0.13  |       | 0.5–5 km       | Urbano          |
+| 3.30 – 3.50 GHz     | SHF   | A/B    | Micro-ondas experimental        |                  |       | D           | 0.09  |       | 0.5–3 km       | Urbano          |
+| 5.65 – 5.93 GHz     | SHF   | A/B    | Satélite experimental           |                  |       | D           | 0.05  |       | 0.2–1 km       | Urbano          |
+| 10.00 – 10.50 GHz   | SHF   | A/B    | Micro-ondas                     |                  |       | D           | 0.03  |       | 0.1–0.5 km     | Urbano          |
+| 24.00 – 24.25 GHz   | SHF   | A/B    | Experimentos                    |                  |       | D           | 0.012 |       | <0.3 km        | Urbano          |
 | **26.965 – 27.405** | HF    |        | PX / Rádio Cidadão – Emergência | **Sim (27.555)** | PX    | A           | 11    | PX    | 10–2000 km     | Ambos           |
+
+### Notas rápidas
+
+- HF (High Frequency): 3–30 MHz
+- VHF (Very High Frequency): 30–300 MHz
+- UHF (Ultra High Frequency): 300–3000 MHz
