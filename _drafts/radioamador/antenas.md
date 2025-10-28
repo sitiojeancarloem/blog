@@ -39,6 +39,8 @@ Equiapmetnos não obrigatóriso mas importantes: **NanoVNA** (permite analisar d
 
 ---
 
+- J_Pole parece ser a maelhor escolha para produzir antes Projeto U/VHF, modelo OSJ: [artigo original](https://officinahf.jimdofree.com/antenne-vhf-uhf/v-u-j-pole/) e também o tudorial em [vídeo](https://www.youtube.com/watch?v=srnYf0nnDYk); também [disponível para compra ](https://www.mercadolivre.com.br/up/MLBU1989597383?pdp_filters=item_id:MLB829809025#origin=share&sid=share&wid=MLB829809025&action=whatsapp).
+
 ### ⚙️ Tipos de Antena — Descrição e Casos de Uso
 
 | Tipo                         | Forma / Montagem                                          | Caso de uso ideal                                      |
