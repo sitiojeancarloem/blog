@@ -2,6 +2,27 @@
 
 Equiapmetnos não obrigatóriso mas importantes: **NanoVNA** (permite analisar desepenho, eficiência e sintonia correta da antena).
 
+## Tipos de Antenas
+
+| **Família**                          | **Variações**                                                                        | **Faixa típica**                    | **Ganho médio (dBi)** | **Polarização**         | **Complexidade** | **Características / Observações**                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------- | --------------------- | ----------------------- | ---------------- | ---------------------------------------------------------------------------------------------------- |
+| **Verticais**                        | Plano Terra (¼λ, ½λ), 5/8λ, Colinear, J-Pole, Slim Jim, Flowerpot                    | VHF / UHF                           | 2–6                   | Vertical                | ★★               | Omnidirecionais, fáceis de ajustar, boas para repetidoras e comunicação local.                       |
+| **Dipolo**                           | Dipolo clássico (½λ), Dipolo dobrado, Inverted-V, Dipolo multibanda, Dipolo rotativo | HF / VHF                            | 2–3                   | Horizontal              | ★★               | Antena básica e eficiente; excelente custo-benefício; polarização horizontal favorece alcance em HF. |
+| **Antenas de Fio**                   | End-Fed Half Wave (EFHW), Long Wire, Random Wire + Unun, Zeppelin (Zepp)             | HF                                  | 1–2                   | Horizontal ou inclinada | ★                | Extremamente simples; podem ser multibanda com acoplador; boas para QRP e portáteis.                 |
+| **Loop**                             | Magnetic Loop, Delta Loop, Quad Loop                                                 | HF / VHF                            | 1–3                   | Horizontal ou Vertical  | ★★★              | Boa eficiência e baixo ruído; ideal para espaço reduzido; Magnetic Loop exige capacitor variável.    |
+| **Direcionais (Arrays)**             | Yagi-Uda, Log-periódica, Moxon Rectangle, Quad (Cubical Quad)                        | HF / VHF / UHF                      | 6–12                  | Horizontal              | ★★★★             | Alto ganho e diretividade; usadas em estações fixas; requerem torre e rotor.                         |
+| **Especiais / Experimentais**        | Discone, Helicoidal, Patch (Microstrip), Curtain Array, Rhombic                      | VHF / UHF / HF (dependendo do tipo) | 0–15                  | Variável                | ★★★★–★★★★★       | Aplicações específicas: larga banda, satélite, micro-ondas, comunicações de longa distância.         |
+| **Verticais de Fio / Portáteis**     | T2LT, Verticais telescópicas, Verticais com radiais inclinados                       | HF / VHF                            | 1–4                   | Vertical                | ★                | Leves e rápidas de instalar; boas para operação em campo e QRP.                                      |
+| **Multielemento HF (Arrays de Fio)** | Beverage, Vee Beam, Rhombic, Curtain (dipolos em matriz)                             | HF                                  | 8–15                  | Horizontal              | ★★★★★            | Estruturas grandes, alto ganho e diretividade; muito usadas para DX e recepção.                      |
+
+### Notas rápidas
+
+- HF (High Frequency): 3–30 MHz
+- VHF (Very High Frequency): 30–300 MHz
+- UHF (Ultra High Frequency): 300–3000 MHz
+- Ganho (dBi): valores médios; dependem do projeto e altura de instalação.
+- Complexidade: considera construção, ajuste e necessidade de suporte mecânico.
+
 ## 📡 Melhores Antenas DIY por Tipo, Cenário e Direcionalidade
 
 ### Tabela principal
