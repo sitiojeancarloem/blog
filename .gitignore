@@ -7,3 +7,34 @@ src/__generated__
 *.ai
 *.zip
 *.7z
+_data
+# Arquivos de saída do Jekyll
+# O GitHub Pages gera a pasta _site automaticamente
+_site/
+
+# Cache e arquivos temporários do Jekyll
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Dependências gerenciadas pelo Bundler
+# O GitHub Pages gerencia as versões de gems, então
+# o arquivo de lock não é necessário e pode causar problemas
+Gemfile.lock
+vendor/
+
+# Diretórios específicos do Minimal Mistakes (se você os tiver)
+# Se você tiver uma pasta com exemplos de arquivos de dados, ignore-a
+/docs/
+/examples/
+
+# Arquivos de IDEs e do sistema operacional
+# Ignora arquivos criados por diferentes editores e sistemas
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Arquivos de backup e logs
+*.log
+*.bak
