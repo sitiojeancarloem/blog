@@ -95,8 +95,17 @@ footer {
 }
 
 .masthead,
-.page__footer-copyright {
+.page__footer-copyright,
+aside {
 	a::after {
 		display: none !important;
+	}
+}
+
+.page__content {
+	p,
+	blockquote,
+	li {
+		text-align: justify;
 	}
 }
