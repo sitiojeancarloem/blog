@@ -38,3 +38,5 @@ Thumbs.db
 # Arquivos de backup e logs
 *.log
 *.bak
+
+!.github
