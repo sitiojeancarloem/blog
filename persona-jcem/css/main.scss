@@ -17,8 +17,10 @@
 
 .jcem-foot > p:last-of-type {
 	margin-top: 2em;
-	padding: 0.5em;
-	background: rgba(150, 0, 0, 0.1) !important;
+	padding: 0.7em;
+	background: rgba(150, 0, 0, 0.2) !important;
+	border: 1px solid rgba(150, 0, 0, 0.9) !important;
+	line-height: 1.35em;
 }
 
 a::after {
@@ -52,8 +54,8 @@ a::after {
 }
 
 footer {
-	padding-left: 1em;
-	padding-right: 1em;
+	padding-right: 2em;
+	padding-left: 2em;
 
 	.page__footer-follow {
 		margin: 4rem 0;
@@ -82,8 +84,11 @@ footer {
 				opacity: 0.5;
 			}
 
-			&:hover i {
-				color: blue;
+			&:hover {
+				&,
+				i {
+					filter: invert(100%);
+				}
 			}
 		}
 	}

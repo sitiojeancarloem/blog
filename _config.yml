@@ -28,7 +28,7 @@ baseurl: '/' # the subpath of your site, e.g. "/blog"
 repository: 'sitiojeancarloem/blog' # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo: 'https://www.jeancarloem.com/assets/img/logo/logo-animado2.gif' # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title: 'JeanCarloEM-TT' # overrides the website title displayed in the masthead, use " " for no title
+masthead_title: '' # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs: # true, false (default)
 words_per_minute: 200
 enable_copy_code_button: # true, false (default)
@@ -127,16 +127,16 @@ author:
       # url: "https://your-website.com"
     - label: 'Twitter'
       icon: 'fab fa-fw fa-twitter-square'
-      # url: "https://twitter.com/"
+      url: 'https://x.com/jeancarloem'
     - label: 'Facebook'
       icon: 'fab fa-fw fa-facebook-square'
       # url: "https://facebook.com/"
     - label: 'GitHub'
       icon: 'fab fa-fw fa-github'
-      # url: "https://github.com/"
+      url: 'https://github.com/https://github.com/jeanCarloEM'
     - label: 'Instagram'
       icon: 'fab fa-fw fa-instagram'
-      # url: "https://instagram.com/"
+      url: 'https://www.instagram.com/jeancarlo.em/'
 
 # Site Footer
 footer:
