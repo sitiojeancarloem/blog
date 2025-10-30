@@ -15,6 +15,11 @@ theme: minimal-mistakes-jekyll
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: 'dark' # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+collections:
+  rootfiles:
+    output: true
+    permalink: /:name:output_ext
+
 # Site Settings
 locale: 'pt-BR'
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages

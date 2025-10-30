@@ -1,0 +1,18 @@
+---
+---
+User-agent: *
+Allow: /
+
+# Bloqueia pastas internas do Jekyll
+Disallow: /_drafts/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_rootfiles/
+Disallow: /_sass/
+Disallow: /assets/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /tests/
+
+Sitemap: {{ site.url }}/sitemap.xml
