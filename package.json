@@ -1,22 +1,24 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "extract.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@mozilla/readability": "^0.6.0",
-    "child_process": "^1.0.2",
-    "jsdom": "^27.0.0",
-    "node-fetch": "^3.3.2",
-    "sanitize-filename": "^1.6.3",
-    "turndown": "^7.2.1",
-    "turndown-plugin-gfm": "^1.0.2"
-  }
+	"name": "blog",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "extract.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "bundle exec jekyll serve --livereload --drafts",
+		"dev-live": "bundle exec jekyll serve --livereload"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@mozilla/readability": "^0.6.0",
+		"child_process": "^1.0.2",
+		"jsdom": "^27.0.0",
+		"node-fetch": "^3.3.2",
+		"sanitize-filename": "^1.6.3",
+		"turndown": "^7.2.1",
+		"turndown-plugin-gfm": "^1.0.2"
+	}
 }
