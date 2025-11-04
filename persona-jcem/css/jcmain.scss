@@ -92,34 +92,35 @@ footer {
 	.page__footer-follow {
 		margin: 4rem 0;
 		text-align: center;
-
-		li {
-			&:first-of-type {
-				display: none;
-			}
-
-			&::before {
-				display: none;
-			}
-
-			display: inline-block;
-
-			a {
-				font-size: 0;
-				&::after {
+		> ul {
+			li {
+				&:first-of-type {
 					display: none;
 				}
-			}
 
-			i {
-				font-size: 2rem;
-				opacity: 0.5;
-			}
+				&::before {
+					display: none;
+				}
 
-			&:hover {
-				&,
+				display: inline-block;
+
+				a {
+					font-size: 0;
+					&::after {
+						display: none;
+					}
+				}
+
 				i {
-					filter: invert(100%);
+					font-size: 2rem;
+					opacity: 0.5;
+				}
+
+				&:hover {
+					&,
+					i {
+						color: $primary-color;
+					}
 				}
 			}
 		}
