@@ -28,10 +28,15 @@ article {
 
 .jcem-foot {
 	font-size: 0.8rem;
-	margin: 3rem 0;
+	margin: 3em 0;
 	opacity: 0.7;
+}
+.jcem-foot,
+.jcem-foot *,
+.jcem-foot > p {
 	line-height: 1.25em;
 }
+
 .jcem-foot,
 .jcem-foot * {
 	text-align: justify;
@@ -160,6 +165,10 @@ footer {
 
 		> span {
 			font-size: 0.8em;
+
+			> a {
+				font-weight: bold;
+			}
 		}
 	}
 
