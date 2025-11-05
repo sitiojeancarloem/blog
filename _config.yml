@@ -23,7 +23,7 @@ collections:
 # Site Settings
 locale: 'pt-BR'
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
-title: ''
+title: 'JeanCarloEM'
 title_separator: '-'
 subtitle: # site tagline that appears below site title in masthead
 name: 'Jean Carlo EM'
