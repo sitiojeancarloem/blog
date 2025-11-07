@@ -241,4 +241,9 @@ body > .sobpostbar {
 	}
 }
 
+footer ul.social-icons li i {
+	width: fit-content;
+	margin: 0 0.1em;
+}
+
 @import '../cookie-banner/_silktide-consent-manager.scss';
