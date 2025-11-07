@@ -304,6 +304,7 @@ tag_archive:
 # - https://jch.penibelst.de/
 compress_html:
   clippings: all
+  end_of_line: strip
   ignore:
     envs: development
 
@@ -324,3 +325,6 @@ defaults:
       comments: # true
       share: true
       related: true
+
+head_scripts:
+  - /assets-jcem/cookie-banner/silktide-consent-manager.js
