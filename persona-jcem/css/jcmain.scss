@@ -214,7 +214,7 @@ footer .page__footer-copyright {
 
 body > .sobpostbar {
 	background: rgba(0, 0, 0, 0.2);
-	font-size: 0.85rem;
+	font-size: 1rem;
 	padding-top: 0;
 
 	> p {
@@ -223,12 +223,19 @@ body > .sobpostbar {
 
 	> ul {
 		padding: 0.1em;
-		padding-top: 0.3em !important;
+		padding-top: 0.2em !important;
 
 		li {
 			border-color: rgba(255, 255, 255, 0.3);
 			a {
 				color: #eee;
+			}
+
+			&:first-of-type {
+				border-left: none;
+			}
+			&:last-of-type {
+				border-right: none;
 			}
 		}
 	}
