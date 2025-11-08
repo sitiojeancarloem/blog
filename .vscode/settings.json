@@ -3,6 +3,7 @@
 		"strings": true
 	},
 	"editor.tabSize": 2,
+	"trimTrailingWhitespace": true,
 	"editor.insertSpaces": true,
 	"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*($TAGS)",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
