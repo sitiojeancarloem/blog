@@ -13,6 +13,28 @@
 	background: transparent;
 }
 
+*::after,
+*::before {
+	--_fa-family: var(
+		--fa-family,
+		var(--fa-style-family, 'Font Awesome 7 Free')
+	);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: var(--_fa-family);
+	font-feature-settings: normal;
+	font-style: normal;
+	font-synthesis: none;
+	font-variant: normal;
+	font-weight: var(--fa-style, 600);
+	line-height: 1;
+	text-align: center;
+	text-rendering: auto;
+	color: inherit;
+	display: none;
+	text-decoration: none;
+}
+
 .masthead {
 	border-color: transparent;
 	background: rgba(0, 0, 0, 0.1) !important;
@@ -28,7 +50,7 @@ article {
 
 .jcem-foot {
 	font-size: 0.8rem;
-	margin: 3em 0;
+	margin: 3em 1em;
 	opacity: 0.7;
 }
 .jcem-foot,
@@ -55,34 +77,20 @@ a {
 }
 
 a::after {
-	--_fa-family: var(
-		--fa-family,
-		var(--fa-style-family, 'Font Awesome 7 Free')
-	);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	display: var(--fa-display, inline-block);
-	font-family: var(--_fa-family);
-	font-feature-settings: normal;
-	font-style: normal;
-	font-synthesis: none;
-	font-variant: normal;
-	font-weight: var(--fa-style, 600);
-	line-height: 1;
-	text-align: center;
-	text-rendering: auto;
 	width: var(--fa-width, 1.25em);
-	text-decoration: none !important;
-
-	content: '\f08e';
-	display: inline-block;
 	font-size: 0.65em;
 	margin: 0 0.1em;
-	margin-left: 0.1em;
-	padding-top: 0.7em;
+	margin-left: 0.15em;
+	padding-top: 0.55em;
 	vertical-align: top;
+	content: '\f08e';
+	display: inline-block;
+	opacity: 0.7;
+	cursor: pointer;
+}
 
-	color: inherit;
+a:hover::after {
+	text-decoration: underline;
 }
 
 footer {

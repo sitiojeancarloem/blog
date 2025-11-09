@@ -53,11 +53,15 @@
 	all: unset;
 	display: inline-block;
 	color: var(--primaryColor);
-	text-decoration: none;
+	text-decoration: none !important;
+	cursor: pointer;
 
-	a.silktide-logo:hover a.silktide-logo:hover {
-		cursor: pointer;
+	&.silktide-logo:hover &.silktide-logo:hover {
 		color: var(--textColor);
+	}
+
+	&.silktide-logo::after {
+		display: none;
 	}
 }
 
@@ -127,7 +131,7 @@
 	pointer-events: auto;
 	border: 0px;
 	position: fixed;
-	bottom: 3em;
+	bottom: 4m;
 	right: 1em;
 	width: 37.5em;
 	overflow: auto;
@@ -161,7 +165,7 @@
 }
 
 #silktide-banner.bottomCenter {
-	bottom: 3em;
+	bottom: 4em;
 	left: 50%;
 	position: fixed;
 	transform: translate(-50%, -1.25em);
@@ -169,30 +173,32 @@
 }
 
 #silktide-banner .preferences {
-	display: flex;
-	gap: 0.3125em;
+	padding: 0;
 	border: none;
-	padding: 0.9375em 0;
-	background-color: transparent;
-	color: var(--primaryColor);
-	cursor: pointer;
-	font-size: 1em;
+	background: transparent;
+	&::after {
+		display: inline-block;
+		gap: 0.3125em;
+		border: none;
+		margin: 0 0.5em;
+		padding: 0.9375em 0;
+		background-color: transparent;
+		color: var(--primaryColor);
+		font-size: 2em;
+		width: 2.5rem;
+		content: '\f013';
+		text-decoration: none;
+	}
 }
 
 #silktide-banner .preferences span {
-	display: block;
+	display: none;
 	white-space: nowrap;
 	text-decoration: underline;
 }
 
-#silktide-banner .preferences span:hover {
+#silktide-banner .preferences::after:hover {
 	color: var(--textColor);
-}
-
-#silktide-banner .preferences:after {
-	display: block;
-	content: '>';
-	text-decoration: none;
 }
 
 #silktide-banner p {
