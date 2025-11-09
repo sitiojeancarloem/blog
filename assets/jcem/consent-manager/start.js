@@ -1,4 +1,31 @@
 (() => {
+	const seAceite = (essencial, analitics, publicitários) => {
+		const args = { essencial, analitics, publicitários };
+		const check = (x) => x !== null && x !== undefined;
+
+		if (
+			!check(essencial) &&
+			!check(analitics) &&
+			!check(publicitários)
+		) {
+			return;
+		}
+
+		for (const k of Object.keys(args)) {
+			((name) => {
+				const fullName = `jcem_aceite_${name}`;
+				const value = args[name];
+				const r = check(value)
+					? value
+						? Math.floor(Date.now() / 1000)
+						: 0
+					: window.localStorage.getItem(fullName) ?? 0;
+
+				window.localStorage.setItem(fullName, r);
+			})(k);
+		}
+	};
+
 	silktideCookieBannerManager.updateCookieBannerConfig({
 		background: {
 			showBackground: true,
@@ -14,7 +41,10 @@
 					'<p>Esses cookies são necessários para o funcionamento correto da plataforma e não podem ser desativados. Eles ajudam em funções como fazer login e definir suas preferências de privacidade.</p>',
 				required: true,
 				onAccept: function () {
-					console.log('Add logic for the required Obrigatórios here');
+					seAceite(1, null, null);
+				},
+				onReject: function () {
+					seAceite(0, null, null);
 				},
 			},
 			{
@@ -24,17 +54,24 @@
 					'<p>Utilizamos cookies estatísticos para coletar informações sobre a forma como as interações ocorem, a fim de medir e aprimorar o desempenho da experiência. Esses dados, que podem ser agregados e anonimizados, nos ajudam a entender o uso da plataforma e são, em sua maioria, implementados por serviços de terceiros.</p>',
 				required: false,
 				onAccept: function () {
-					gtag('consent', 'update', {
-						analytics_storage: 'granted',
-					});
-					dataLayer.push({
-						event: 'consent_accepted_estat_sticos',
-					});
+					try {
+						gtag('consent', 'update', {
+							analytics_storage: 'granted',
+						});
+						dataLayer.push({
+							event: 'consent_accepted_estat_sticos',
+						});
+					} catch (error) {}
+
+					seAceite(null, 1, null);
 				},
 				onReject: function () {
-					gtag('consent', 'update', {
-						analytics_storage: 'denied',
-					});
+					try {
+						gtag('consent', 'update', {
+							analytics_storage: 'denied',
+						});
+					} catch (error) {}
+					seAceite(null, 0, null);
 				},
 			},
 			{
@@ -44,21 +81,29 @@
 					'<p>Cookies de publicidade são usados para criar perfis baseados em suas interações e interesses, permitindo a exibição de anúncios personalizados relevantes, dentro e fora da nossa plataforma. Esses dados nos ajudam a medir a eficácia das campanhas publicitárias e são, em sua maioria, fornecidos por parceiros de publicidade terceirizados.</p>',
 				required: false,
 				onAccept: function () {
-					gtag('consent', 'update', {
-						ad_storage: 'granted',
-						ad_user_data: 'granted',
-						ad_personalization: 'granted',
-					});
-					dataLayer.push({
-						event: 'consent_accepted_publicit_rios',
-					});
+					try {
+						gtag('consent', 'update', {
+							ad_storage: 'granted',
+							ad_user_data: 'granted',
+							ad_personalization: 'granted',
+						});
+						dataLayer.push({
+							event: 'consent_accepted_publicit_rios',
+						});
+					} catch (error) {}
+
+					seAceite(null, null, 1);
 				},
 				onReject: function () {
-					gtag('consent', 'update', {
-						ad_storage: 'denied',
-						ad_user_data: 'denied',
-						ad_personalization: 'denied',
-					});
+					try {
+						gtag('consent', 'update', {
+							ad_storage: 'denied',
+							ad_user_data: 'denied',
+							ad_personalization: 'denied',
+						});
+					} catch (error) {}
+
+					seAceite(null, null, 0);
 				},
 			},
 		],
