@@ -6,8 +6,9 @@
 	"main": "extract.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "bundle exec jekyll serve --livereload --drafts",
-		"dev-live": "bundle exec jekyll serve --livereload"
+		"dev": "cross-env JEKYLL_ENV='' bundle exec jekyll serve --livereload --drafts",
+		"dev-mini": "cross-env JEKYLL_ENV=production bundle exec jekyll serve --livereload --drafts",
+		"dev-live": "cross-env JEKYLL_ENV=production bundle exec jekyll serve --livereload"
 	},
 	"keywords": [],
 	"author": "",
@@ -20,5 +21,8 @@
 		"sanitize-filename": "^1.6.3",
 		"turndown": "^7.2.1",
 		"turndown-plugin-gfm": "^1.0.2"
+	},
+	"devDependencies": {
+		"cross-env": "^10.1.0"
 	}
 }
