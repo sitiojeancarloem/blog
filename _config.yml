@@ -327,4 +327,5 @@ defaults:
       related: true
 
 head_scripts:
-  - /assets/jcem/cookie-banner/silktide-consent-manager.js
+  - /assets/jcem/consent-manager/silktide.js
+  - /assets/jcem/consent-manager/start.js

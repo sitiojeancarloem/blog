@@ -1,123 +1,199 @@
-<!-- FAVICONL -->
+<meta name="apple-mobile-web-app-title" content="JeanCarloEM" />
+
 <link
 	rel="icon"
 	type="image/png"
 	href="https://jcem.pro/logo/favicon-96x96.png"
 	sizes="96x96"
 />
+
 <link
-	rel="icon"
 	type="image/svg+xml"
 	href="https://jcem.pro/logo/favicon.svg"
+	rel="icon"
 />
+
 <link rel="shortcut icon" href="https://jcem.pro/logo/favicon.ico" />
+
 <link
 	rel="apple-touch-icon"
 	sizes="180x180"
 	href="https://jcem.pro/logo/apple-touch-icon.png"
 />
-<meta name="apple-mobile-web-app-title" content="JeanCarloEM" />
 <link rel="manifest" href="https://jcem.pro/logo/site.webmanifest" />
+
+<style>
+	noscript,
+	* {
+		font-family: 'Noto Sans', 'Segoe UI', 'Tahoma', sans-serif;
+	}
+
+	noscript,
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+	}
+
+	:root {
+		--blue: #c08282;
+		--blue2: orange;
+		--amber: #cc4c1e;
+		--bg: #ebebeb;
+		--text: #222;
+		--radius: 0.5em;
+	}
+
+	body > div.main_jcem_wrapper {
+		display: none;
+	}
+
+	/* Loader top bar */
+	body > .loader-bar {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 0.5em;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			var(--blue2) 30%,
+			var(--blue2) 70%,
+			transparent 100%
+		);
+		background-size: 200% 100%;
+		animation: loading 1.5s linear infinite;
+		z-index: 9998;
+		box-shadow: 0 0 1em rgba(0, 0, 0, 0.7);
+	}
+
+	@keyframes loading {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
+	}
+
+	noscript {
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 9999;
+		background: #ddd;
+		font-size: 0.95rem;
+	}
+
+	noscript,
+	noscript > *,
+	noscript * {
+		color: #333;
+	}
+
+	/* noscript > main  box */
+	noscript > main {
+		display: inline-block;
+		background: #fff;
+		border-radius: var(--radius);
+		box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+		max-width: 28em;
+		margin: 1em;
+		height: fit-content !important;
+		padding: 1.5em;
+		border: 0.1em solid var(--blue);
+	}
+
+	noscript > main > h1 {
+		font-size: 1.5em;
+		font-weight: 700;
+		color: #fff;
+		margin-bottom: 0.3em;
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		border-top-left-radius: var(--radius);
+		border-top-right-radius: var(--radius);
+		background: #845050;
+		padding: 0.5em 1em;
+		margin: 0 -1.1em;
+		margin-top: -1.1em;
+		max-height: 2.7em;
+	}
+
+	noscript > main h1 span {
+		margin: 0.2em;
+		font-size: 1.8em;
+	}
+
+	noscript > main p {
+		margin: 0.2em 0;
+		line-height: 1.4;
+		text-align: left;
+	}
+
+	noscript > main .lang {
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		margin-top: 1em;
+		padding-top: 0.5em;
+		font-size: 0.9em;
+	}
+
+	noscript > main .lang:first-of-type {
+		border-top: none;
+	}
+
+	noscript > main > .lang h2 {
+		color: var(--blue);
+		display: block;
+		margin-bottom: 0.2em;
+		font-size: 0.9em;
+		margin: 0 !important;
+	}
+
+	noscript > main strong,
+	noscript > main > .lang strong {
+		color: var(--amber);
+		font-size: 1.05em;
+		font-style: italic;
+		margin-left: 0.4em;
+	}
+
+	noscript > main > p span {
+		font-size: 1.3em;
+		vertical-align: text-bottom;
+	}
+
+	noscript > main {
+		text-align: left;
+	}
+
+	@media (max-width: 600px) {
+		noscript > main {
+			width: 85vw;
+			padding: 1em;
+		}
+		noscript > main > h1 {
+			font-size: 1.3em;
+		}
+	}
+</style>
 
 <script>
 	Element.prototype.on = (e, f) => this.addEventListener(e, f);
 
-	const onDOM = (f) =>
-		document.addEventListener('DOMContentLoaded', f);
-</script>
+	const _ = (x) => document.querySelector(x);
 
-<!-- BANNER LEAL -->
-<script>
-	onDOM(() => {
-		silktideCookieBannerManager.updateCookieBannerConfig({
-			background: {
-				showBackground: true,
-			},
-			cookieIcon: {
-				position: 'bottomLeft',
-			},
-			cookieTypes: [
-				{
-					id: 'obrigat_rios',
-					name: 'Obrigatórios',
-					description:
-						'<p>Esses cookies são necessários para o funcionamento correto da plataforma e não podem ser desativados. Eles ajudam em funções como fazer login e definir suas preferências de privacidade.</p>',
-					required: true,
-					onAccept: function () {
-						console.log(
-							'Add logic for the required Obrigatórios here',
-						);
-					},
-				},
-				{
-					id: 'estat_sticos',
-					name: 'Estatísticos',
-					description:
-						'<p>Utilizamos cookies estatísticos para coletar informações sobre a forma como as interações ocorrem, a fim de medir e aprimorar o desempenho da experiência. Esses dados, que podem ser agregados e anonimizados, nos ajudam a entender o uso da plataforma e são, em sua maioria, implementados por serviços de terceiros.</p>',
-					required: false,
-					onAccept: function () {
-						gtag('consent', 'update', {
-							analytics_storage: 'granted',
-						});
-						dataLayer.push({
-							event: 'consent_accepted_estat_sticos',
-						});
-					},
-					onReject: function () {
-						gtag('consent', 'update', {
-							analytics_storage: 'denied',
-						});
-					},
-				},
-				{
-					id: 'publicit_rios',
-					name: 'Publicitários',
-					description:
-						'<p>Cookies de publicidade são usados para criar perfis baseados em suas interações e interesses, permitindo a exibição de anúncios personalizados relevantes, dentro e fora da nossa plataforma. Esses dados nos ajudam a medir a eficácia das campanhas publicitárias e são, em sua maioria, fornecidos por parceiros de publicidade terceirizados.</p>',
-					required: false,
-					onAccept: function () {
-						gtag('consent', 'update', {
-							ad_storage: 'granted',
-							ad_user_data: 'granted',
-							ad_personalization: 'granted',
-						});
-						dataLayer.push({
-							event: 'consent_accepted_publicit_rios',
-						});
-					},
-					onReject: function () {
-						gtag('consent', 'update', {
-							ad_storage: 'denied',
-							ad_user_data: 'denied',
-							ad_personalization: 'denied',
-						});
-					},
-				},
-			],
-			text: {
-				banner: {
-					description:
-						'<p>O uso deste,&nbsp;<b>requer </b>a aceitação <b>integral </b>de nossos <a href="https://jeancarloem.com/termos-de-uso" target="_blank">Termos de Uso</a>,&nbsp;<a href="https://jeancarloem.com/avisos-gerais/" target="_blank">Advertências </a>e <a href="https://jeancarloem.com/privacidade/" target="_blank">Política de Privacidade</a>. Utilizamos <b>cookies</b> para a navegação básica, estatísticas e personalização. Gerencie suas preferências para cookies não essenciais.</p>',
-					acceptAllButtonText: 'Aceitar Tudo',
-					acceptAllButtonAccessibleLabel:
-						'Aceitar tudo, e todos os cookies',
-					rejectNonEssentialButtonText: 'Apenas essencial',
-					rejectNonEssentialButtonAccessibleLabel:
-						'Aceita tudo, mas rejeita os cookies não essenciais',
-					preferencesButtonText: 'Preferências',
-					preferencesButtonAccessibleLabel: 'Mude as preferências',
-				},
-				preferences: {
-					title: 'Personalize suas preferências de cookies',
-					description:
-						'<p>Respeitamos o seu direito à privacidade. Você pode optar por não permitir alguns tipos de cookies. Suas preferências de cookies serão aplicadas em todo o nossa plataforma (se site: especificamente o domínio e subdomínios atuais).</p><p><b>Exemplos de Cookies Essenciais: </b></p><ul><li><b>Autenticação</b>: Cookies que mantêm o usuário logado enquanto navega entre páginas. Sem eles, o usuário precisaria fazer login em cada nova página.</li><li><b>Carrinho de Compras</b>: Cookies que lembram os itens que o usuário adicionou ao carrinho em um e-commerce. </li><li><b>Segurança</b>: Cookies que ajudam a detectar tentativas de fraude ou ataques de segurança. </li><li><b>Preferências do Usuário</b> (Básicas): Cookies que lembram se o usuário aceitou a política de cookies, ou qual idioma ele selecionou, garantindo que essas escolhas persistam durante a sessão. </li><li><b>Balanceamento de Carga</b>: Cookies que distribuem o tráfego de conexões entre vários servidores;</li><li><b>Configurações de interface do usuário</b>:&nbsp;Cookies que lembram a preferência de visualização do usuário, como o tamanho da fonte ou o tema da página (claro/escuro), para aquela sessão específica.</li></ul>',
-					creditLinkText: 'Silktide',
-					creditLinkAccessibleLabel: 'Silktide',
-				},
-			},
-			position: {
-				banner: 'bottomCenter',
-			},
-		});
+	document.addEventListener('DOMContentLoaded', () => {
+		try {
+			_('body > noscript').style.display = 'none';
+		} catch (error) {}
+		_('body > .main_jcem_wrapper').style.display = 'block';
 	});
 </script>

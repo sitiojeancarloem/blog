@@ -17,9 +17,10 @@
 	--backgroundColor: #ffffff;
 	--textColor: #4b494b;
 	--backdropBackgroundColor: #0000004d;
-	--backdropBackgroundBlur: 0.5px;
+	--backdropBackgroundBlur: 0.2em;
 	--cookieIconColor: #4b494b;
 	--cookieIconBackgroundColor: #ffffff;
+	--ref_size: 0.85rem;
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -52,12 +53,12 @@
 	all: unset;
 	display: inline-block;
 	color: var(--primaryColor);
-	text-decoration: underline;
-}
+	text-decoration: none;
 
-#silktide-wrapper a:hover {
-	cursor: pointer;
-	color: var(--textColor);
+	a.silktide-logo:hover a.silktide-logo:hover {
+		cursor: pointer;
+		color: var(--textColor);
+	}
 }
 
 /* --------------------------------
@@ -69,7 +70,7 @@
 #silktide-wrapper #silktide-cookie-icon:focus {
 	outline: none;
 	box-shadow: var(--focus);
-	border-radius: 5px;
+	border-radius: 0.3125em;
 }
 
 #silktide-wrapper #silktide-cookie-icon:focus {
@@ -84,14 +85,14 @@
 	color: var(--backgroundColor);
 	background-color: var(--primaryColor);
 	border: 2px solid var(--primaryColor);
-	padding: 10px 20px;
+	padding: 0.625em 1.25em;
 	text-decoration: none;
 	text-align: center;
 	display: inline-block;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 1em;
+	line-height: 1.5em;
 	cursor: pointer;
-	border-radius: 5px;
+	border-radius: 0.3125em;
 }
 
 #silktide-wrapper .st-button--primary {
@@ -116,22 +117,23 @@
   Banner
 -------------------------------- */
 #silktide-banner {
+	font-size: 0.8rem;
 	font-family: var(--fontFamily);
 	color: var(--textColor);
 	background-color: var(--backgroundColor);
 	box-sizing: border-box;
-	padding: 32px;
-	border-radius: 5px;
+	padding: 2em;
+	border-radius: 0.3125em;
 	pointer-events: auto;
 	border: 0px;
 	position: fixed;
-	bottom: 16px;
-	right: 16px;
-	width: 600px;
+	bottom: 3em;
+	right: 1em;
+	width: 37.5em;
 	overflow: auto;
-	max-width: calc(100% - 32px);
-	max-height: calc(100vh - 32px);
-	transform: translate(0, -20px);
+	max-width: calc(100% - 2em);
+	max-height: calc(100vh - 2em);
+	transform: translate(0, -1.25em);
 	opacity: 0;
 	animation: silktide-slideInDown 350ms ease-out forwards;
 	animation-delay: 0.3s;
@@ -148,33 +150,33 @@
 	bottom: auto;
 	right: auto;
 	position: fixed;
-	transform: translate(-50%, calc(-50% - 20px));
+	transform: translate(-50%, calc(-50% - 1.25em));
 	animation: silktide-slideInDown-center 350ms ease-out forwards;
 }
 
 #silktide-banner.bottomLeft {
-	bottom: 16px;
-	left: 16px;
+	bottom: 1em;
+	left: 1em;
 	position: fixed;
 }
 
 #silktide-banner.bottomCenter {
-	bottom: 16px;
+	bottom: 3em;
 	left: 50%;
 	position: fixed;
-	transform: translate(-50%, -20px);
+	transform: translate(-50%, -1.25em);
 	animation: silktide-slideInDown-bottomCenter 350ms ease-out forwards;
 }
 
 #silktide-banner .preferences {
 	display: flex;
-	gap: 5px;
+	gap: 0.3125em;
 	border: none;
-	padding: 15px 0px;
+	padding: 0.9375em 0;
 	background-color: transparent;
 	color: var(--primaryColor);
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 #silktide-banner .preferences span {
@@ -194,9 +196,9 @@
 }
 
 #silktide-banner p {
-	font-size: 16px;
-	line-height: 24px;
-	margin: 0px 0px 15px;
+	font-size: 1em;
+	line-height: 1.5em;
+	margin: 0 0 0.9375em;
 	text-align: justify;
 }
 
@@ -217,15 +219,15 @@
 	justify-content: center;
 	fill: var(--primaryColor); /* passed down to svg > path */
 	margin-left: auto;
-	width: 48px;
-	height: 48px;
+	width: 3em;
+	height: 3em;
 }
 
 #silktide-banner .actions {
 	display: flex;
-	gap: 16px;
+	gap: 1em;
 	flex-direction: column;
-	margin-top: 24px;
+	margin-top: 1.5em;
 }
 
 @media (min-width: 600px) {
@@ -237,7 +239,7 @@
 
 #silktide-banner .actions-row {
 	display: flex;
-	gap: 16px;
+	gap: 1em;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
@@ -248,23 +250,24 @@
   Modal
 -------------------------------- */
 #silktide-modal {
+	font-size: var(--ref_size);
 	display: none;
 	pointer-events: auto;
 	overflow: auto;
-	width: 800px;
+	width: 50em;
 	max-width: 100%;
 	max-height: 100%;
 	border: 0px;
-	transform: translate(0px, -20px);
+	transform: translate(0px, -1.25em);
 	opacity: 0;
 	animation: silktide-slideInUp-center 350ms ease-out forwards;
 	box-shadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
 	font-family: var(--fontFamily);
 	color: var(--textColor);
 	flex-direction: column;
-	padding: 30px;
+	padding: 1.875em;
 	background-color: var(--backgroundColor);
-	border-radius: 5px;
+	border-radius: 0.3125em;
 	box-sizing: border-box;
 }
 
@@ -275,22 +278,22 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 20px;
-	gap: 16px;
+	margin-bottom: 1.25em;
+	gap: 1em;
 }
 
 #silktide-modal h1 {
 	font-family: var(--fontFamily);
 	color: var(--textColor);
-	font-size: 24px;
+	font-size: 1.5em;
 	font-weight: 500;
-	margin: 0px;
+	margin: 0;
 }
 
 #silktide-modal .modal-close {
 	display: inline-flex;
 	border: none;
-	padding: 13px;
+	padding: 0.8125em;
 	border: 0px;
 	cursor: pointer;
 	background: var(--backgroundColor);
@@ -307,55 +310,55 @@
 
 #silktide-modal section {
 	flex: 1;
-	margin-top: 32px;
+	margin-top: 2em;
 }
 
 #silktide-modal section::-webkit-scrollbar {
 	display: block; /* Force scrollbars to show */
-	width: 5px; /* Width of the scrollbar */
+	width: 0.3125em; /* Width of the scrollbar */
 }
 
 #silktide-modal section::-webkit-scrollbar-thumb {
 	background-color: var(
 		--textColor
 	); /* Color of the scrollbar thumb */
-	border-radius: 10px; /* Rounded corners for the thumb */
+	border-radius: 0.625em; /* Rounded corners for the thumb */
 }
 
 #silktide-modal p {
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 1em;
+	line-height: 1.5em;
 	color: var(--textColor);
-	margin: 0px 0px 15px;
+	margin: 0 0 0.9375em;
 }
 
 #silktide-modal p:last-of-type {
-	margin: 0px;
+	margin: 0;
 }
 
 #silktide-modal fieldset {
-	padding: 0px;
+	padding: 0;
 	border: none;
-	margin: 0px 0px 32px;
+	margin: 0 0 2em;
 }
 
 #silktide-modal fieldset:last-of-type {
-	margin: 0px;
+	margin: 0;
 }
 
 #silktide-modal legend {
-	padding: 0px;
-	margin: 0px 0px 10px;
+	padding: 0;
+	margin: 0 0 0.625em;
 	font-weight: 700;
 	color: var(--textColor);
-	font-size: 16px;
+	font-size: 1em;
 }
 
 #silktide-modal .cookie-type-content {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-	gap: 24px;
+	gap: 1.5em;
 }
 
 /* --------------------------------
@@ -365,15 +368,15 @@
 	flex-shrink: 0;
 	position: relative;
 	display: inline-block;
-	height: 34px;
-	width: 74px;
+	height: 2.125em;
+	width: 4.625em;
 	cursor: pointer;
 }
 
 #silktide-modal .switch:focus-within {
 	outline: none;
 	box-shadow: var(--focus);
-	border-radius: 25px;
+	border-radius: 1.5625em;
 }
 
 #silktide-modal .switch input {
@@ -385,19 +388,19 @@
 #silktide-modal .switch__pill {
 	position: relative;
 	display: block;
-	height: 34px;
-	width: 74px;
+	height: 2.125em;
+	width: 4.625em;
 	background: var(--textColor);
-	border-radius: 25px;
+	border-radius: 1.5625em;
 }
 
 #silktide-modal .switch__dot {
 	position: absolute;
-	top: 2px;
-	left: 2px;
+	top: 0.125em;
+	left: 0.125em;
 	display: block;
-	height: 30px;
-	width: 30px;
+	height: 1.875em;
+	width: 1.875em;
 	background: var(--backgroundColor);
 	border-radius: 50%;
 	transition: left 150ms ease-out;
@@ -406,12 +409,12 @@
 #silktide-modal .switch__off,
 #silktide-modal .switch__on {
 	text-transform: uppercase;
-	font-size: 15px;
+	font-size: 0.9375em;
 	font-weight: 500;
 	color: var(--backgroundColor);
 	position: absolute;
-	top: 7px;
-	right: 8px;
+	top: 0.4375em;
+	right: 0.5em;
 	transition: right 150ms ease-out, opacity 150ms ease-out;
 }
 
@@ -429,16 +432,16 @@
 }
 
 #silktide-modal .switch input:checked ~ .switch__dot {
-	left: calc(100% - 32px);
+	left: calc(100% - 2em);
 }
 
 #silktide-modal .switch input:checked ~ .switch__off {
-	right: calc(100% - 32px);
+	right: calc(100% - 2em);
 	opacity: 0;
 }
 
 #silktide-modal .switch input:checked ~ .switch__on {
-	right: calc(100% - 34px);
+	right: calc(100% - 2.125em);
 	opacity: 1;
 }
 
@@ -454,8 +457,8 @@
 #silktide-modal footer {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
-	margin-top: 24px;
+	gap: 1em;
+	margin-top: 1.5em;
 }
 
 @media (min-width: 600px) {
@@ -467,32 +470,32 @@
 
 #silktide-modal footer a {
 	margin-left: auto;
-	padding: 14px 0px;
+	padding: 0.875em 0;
 }
 
 /* Cookie Icon */
 #silktide-cookie-icon {
 	display: none;
 	position: fixed;
-	bottom: 10px;
-	left: 10px;
+	bottom: 0.625em;
+	left: 0.625em;
 	justify-content: center;
 	align-items: center;
-	width: 60px;
-	height: 60px;
+	width: 3.75em;
+	height: 3.75em;
 	border-radius: 50%;
-	padding: 0px;
+	padding: 0;
 	border: none;
 	background-color: var(--cookieIconColor);
 	cursor: pointer;
-	box-shadow: 0px 0px 6px 0px #0000001a;
+	box-shadow: 0px 0px 0.375em 0px #0000001a;
 	pointer-events: auto;
 	animation: silktide-fadeIn 0.3s ease-in-out forwards;
 }
 
 #silktide-cookie-icon.bottomRight {
 	left: auto;
-	right: 10px;
+	right: 0.625em;
 }
 
 #silktide-cookie-icon svg {
@@ -529,7 +532,7 @@
 @keyframes silktide-slideInDown {
 	from {
 		opacity: 0;
-		transform: translateY(-20px);
+		transform: translateY(-1.25em);
 	}
 	to {
 		opacity: 1;
@@ -540,7 +543,7 @@
 @keyframes silktide-slideInDown-center {
 	from {
 		opacity: 0;
-		transform: translate(-50%, calc(-50% - 20px));
+		transform: translate(-50%, calc(-50% - 1.25em));
 	}
 	to {
 		opacity: 1;
@@ -551,7 +554,7 @@
 @keyframes silktide-slideInDown-bottomCenter {
 	from {
 		opacity: 0;
-		transform: translate(-50%, -20px);
+		transform: translate(-50%, -1.25em);
 	}
 	to {
 		opacity: 1;
@@ -562,7 +565,7 @@
 @keyframes silktide-slideInUp-center {
 	from {
 		opacity: 0;
-		transform: translate(0px, 20px);
+		transform: translate(0px, 1.25em);
 	}
 	to {
 		opacity: 1;

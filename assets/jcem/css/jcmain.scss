@@ -72,14 +72,14 @@ a::after {
 	text-align: center;
 	text-rendering: auto;
 	width: var(--fa-width, 1.25em);
-	text-decoration: none;
+	text-decoration: none !important;
 
 	content: '\f08e';
 	display: inline-block;
-	font-size: 0.7em;
+	font-size: 0.65em;
 	margin: 0 0.1em;
-	margin-left: 0.2em;
-	padding-top: 0.3em;
+	margin-left: 0.1em;
+	padding-top: 0.7em;
 	vertical-align: top;
 
 	color: inherit;
@@ -212,7 +212,7 @@ footer .page__footer-copyright {
 	text-align: center;
 }
 
-body > .sobpostbar {
+.main_jcem_wrapper > .sobpostbar {
 	background: rgba(0, 0, 0, 0.2);
 	font-size: 1rem;
 	padding-top: 0;
@@ -246,4 +246,4 @@ footer ul.social-icons li i {
 	margin: 0 0.1em;
 }
 
-@import '../cookie-banner/silktide-consent-manager';
+@import '../consent-manager/silktide';
