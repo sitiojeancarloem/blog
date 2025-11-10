@@ -2,6 +2,7 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
+	"editor.maxTokenizationLineLength": 92510241024,
 	"editor.tabSize": 2,
 	"trimTrailingWhitespace": true,
 	"editor.insertSpaces": true,

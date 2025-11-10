@@ -1,26 +1,210 @@
-/* ==========================================================================
-   Dark skin
-   ========================================================================== */
+@use './theme_var/dark' as DARK;
+@use './variables.index' as DEFAULT;
+//@use './variables-custom' as *;
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
 
+/* ========================================================================== */
+/* Typography */
+/* ========================================================================== */
+
+$doc-font-size: string.unquote('var(--dfs)');
+$doc-font-size-medium: string.unquote('var(--dfm)');
+$doc-font-size-large: string.unquote('var(--dfl)');
+$doc-font-size-x-large: string.unquote('var(--dfxl)');
+
+/* paragraph indention */
+$paragraph-indent: string.unquote('var(--pi)');
+$indent-var: string.unquote('var(--iv)');
+
+/* Modern font stack */
+$system-ui: string.unquote('var(--su)');
+$humanist: string.unquote('var(--hum)');
+$geometric-humanist: string.unquote('var(--gh)');
+$classical-humanist: string.unquote('var(--ch)');
+$neo-grotesque: string.unquote('var(--ng)');
+$industrial: string.unquote('var(--ind)');
+$rounded-sans: string.unquote('var(--rs)');
+
+/* Minimal Mistakes typefaces */
+$helvetica: string.unquote('var(--hel)');
+$transitional: string.unquote('var(--tra)');
+$old-style: string.unquote('var(--os)');
+$monospace-slab-serif: string.unquote('var(--mss)');
+$slab-serif: string.unquote('var(--ss)');
+$antique: string.unquote('var(--ant)');
+$didone: string.unquote('var(--did)');
+$georgia: string.unquote('var(--geo)');
+$times: string.unquote('var(--tim)');
+$bodoni: string.unquote('var(--bod)');
+$calisto: string.unquote('var(--cal)');
+$garamond: string.unquote('var(--gar)');
+
+/* Monospace */
+$monospace-code: string.unquote('var(--mc)');
+
+/* Handwritten */
+$handwritten: string.unquote('var(--hw)');
+
+/* Defaults */
+$default-sans-serif: string.unquote('var(--ds)');
+$default-serif: string.unquote('var(--dfs)');
+$default-monospace: string.unquote('var(--dm)');
+
+/* Emoji */
+$emoji-native: string.unquote('var(--em)');
+
+/* system typefaces */
+$serif: string.unquote('var(--s)');
+$sans-serif: string.unquote('var(--ss)');
+$sans-serif-narrow: string.unquote('var(--ssn)');
+$monospace: string.unquote('var(--m)');
+
+$global-font-family: string.unquote('var(--gff)');
+$header-font-family: string.unquote('var(--hff)');
+$caption-font-family: string.unquote('var(--cff)');
+
+/* type scale */
+$type-size-1: string.unquote('var(--ts1)');
+$type-size-2: string.unquote('var(--ts2)');
+$type-size-3: string.unquote('var(--ts3)');
+$type-size-4: string.unquote('var(--ts4)');
+$type-size-5: string.unquote('var(--ts5)');
+$type-size-6: string.unquote('var(--ts6)');
+$type-size-7: string.unquote('var(--ts7)');
+$type-size-8: string.unquote('var(--ts8)');
+
+/* headline scale */
+$h-size-1: string.unquote('var(--hs1)');
+$h-size-2: string.unquote('var(--hs2)');
+$h-size-3: string.unquote('var(--hs3)');
+$h-size-4: string.unquote('var(--hs4)');
+$h-size-5: string.unquote('var(--hs5)');
+$h-size-6: string.unquote('var(--hs6)');
+
+/* ========================================================================== */
 /* Colors */
-$background-color: #252a34 !default;
-$text-color: #eaeaea !default;
-$primary-color: #00adb5 !default;
-$border-color: mix(#fff, $background-color, 20%) !default;
-$code-background-color: mix(#000, $background-color, 15%) !default;
-$code-background-color-dark: mix(
-	#000,
-	$background-color,
-	20%
-) !default;
-$form-background-color: mix(#000, $background-color, 15%) !default;
-$footer-background-color: mix(#000, $background-color, 30%) !default;
-$link-color: mix($primary-color, $text-color, 40%) !default;
-$link-color-hover: mix(#fff, $link-color, 25%) !default;
-$link-color-visited: mix(#000, $link-color, 25%) !default;
-$masthead-link-color: $text-color !default;
-$masthead-link-color-hover: mix(#000, $text-color, 20%) !default;
-$navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
+/* ========================================================================== */
+
+$gray: string.unquote('var(--g)');
+$dark-gray: string.unquote('var(--dg)');
+$darker-gray: string.unquote('var(--ddg)');
+$light-gray: string.unquote('var(--lg)');
+$lighter-gray: string.unquote('var(--llg)');
+
+$background-color: string.unquote('var(--bg)');
+$code-background-color: string.unquote('var(--cbg)');
+$code-background-color-dark: string.unquote('var(--cbgd)');
+$text-color: string.unquote('var(--tc)');
+$muted-text-color: string.unquote('var(--mtc)');
+$border-color: string.unquote('var(--bc)');
+$form-background-color: string.unquote('var(--fbg)');
+$footer-background-color: string.unquote('var(--ftbg)');
+
+$primary-color: string.unquote('var(--pri)');
+$success-color: string.unquote('var(--suc)');
+$warning-color: string.unquote('var(--warn)');
+$danger-color: string.unquote('var(--dang)');
+$info-color: string.unquote('var(--info)');
+$focus-color: string.unquote('var(--foc)');
+$active-color: string.unquote('var(--act)');
+
+/* YIQ color contrast */
+$yiq-contrasted-dark-default: string.unquote('var(--ycd)');
+$yiq-contrasted-light-default: string.unquote('var(--ycl)');
+$yiq-contrasted-threshold: string.unquote('var(--yct)');
+$yiq-debug: string.unquote('var(--yd)');
+
+/* brands */
+$behance-color: string.unquote('var(--beh)');
+$bitbucket-color: string.unquote('var(--bit)');
+$bluesky-color: string.unquote('var(--bls)');
+$dribbble-color: string.unquote('var(--drb)');
+$facebook-color: string.unquote('var(--fb)');
+$flickr-color: string.unquote('var(--fli)');
+$foursquare-color: string.unquote('var(--fsq)');
+$github-color: string.unquote('var(--gh)');
+$gitlab-color: string.unquote('var(--gl)');
+$instagram-color: string.unquote('var(--ins)');
+$keybase-color: string.unquote('var(--kb)');
+$lastfm-color: string.unquote('var(--lf)');
+$linkedin-color: string.unquote('var(--li)');
+$mastodon-color: string.unquote('var(--mas)');
+$pinterest-color: string.unquote('var(--pin)');
+$reddit-color: string.unquote('var(--red)');
+$rss-color: string.unquote('var(--rss)');
+$soundcloud-color: string.unquote('var(--sc)');
+$stackoverflow-color: string.unquote('var(--sf)');
+$tumblr-color: string.unquote('var(--tum)');
+$twitter-color: string.unquote('var(--tw)');
+$x-color: string.unquote('var(--xc)');
+$vimeo-color: string.unquote('var(--vim)');
+$vine-color: string.unquote('var(--vine)');
+$youtube-color: string.unquote('var(--yt)');
+$xing-color: string.unquote('var(--xing)');
+
+/* links */
+$link-color: string.unquote('var(--link)');
+$link-color-hover: string.unquote('var(--link-h)');
+$link-color-visited: string.unquote('var(--link-v)');
+$masthead-link-color: string.unquote('var(--mlink)');
+$masthead-link-color-hover: string.unquote('var(--mlink-h)');
+$navicon-link-color-hover: string.unquote('var(--nav-h)');
+
+/* notices */
+$notice-background-mix: string.unquote('var(--nbm)');
+$code-notice-background-mix: string.unquote('var(--cnbm)');
+
+/* syntax highlighting */
+$base00: string.unquote('var(--b00)');
+$base01: string.unquote('var(--b01)');
+$base02: string.unquote('var(--b02)');
+$base03: string.unquote('var(--b03)');
+$base04: string.unquote('var(--b04)');
+$base05: string.unquote('var(--b05)');
+$base06: string.unquote('var(--b06)');
+$base07: string.unquote('var(--b07)');
+$base08: string.unquote('var(--b08)');
+$base09: string.unquote('var(--b09)');
+$base0a: string.unquote('var(--b0a)');
+$base0b: string.unquote('var(--b0b)');
+$base0c: string.unquote('var(--b0c)');
+$base0d: string.unquote('var(--b0d)');
+$base0e: string.unquote('var(--b0e)');
+$base0f: string.unquote('var(--b0f)');
+
+/* ========================================================================== */
+/* Breakpoints */
+/* ========================================================================== */
+
+$small: string.unquote('var(--sm)');
+$medium: string.unquote('var(--md)');
+$medium-wide: string.unquote('var(--mdw)');
+$large: string.unquote('var(--lg)');
+$x-large: string.unquote('var(--xl)');
+$max-width: string.unquote('var(--mw)');
+
+/* ========================================================================== */
+/* Grid */
+/* ========================================================================== */
+
+$right-sidebar-width-narrow: string.unquote('var(--rsn)');
+$right-sidebar-width: string.unquote('var(--rs)');
+$right-sidebar-width-wide: string.unquote('var(--rsw)');
+
+/* ========================================================================== */
+/* Other */
+/* ========================================================================== */
+
+$border-radius: string.unquote('var(--br)');
+$box-shadow: string.unquote('var(--bs)');
+$nav-height: string.unquote('var(--nh)');
+$nav-toggle-height: string.unquote('var(--nth)');
+$navicon-width: string.unquote('var(--nw)');
+$navicon-height: string.unquote('var(--nhh)');
+$global-transition: string.unquote('var(--gt)');
+$intro-transition: string.unquote('var(--it)');
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,
@@ -32,3 +216,48 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 .ais-search-box .ais-search-box--input {
 	background-color: $form-background-color;
 }
+
+/// Mixin que exporta múltiplos mapas como variáveis CSS
+@mixin export-root-vars($maps...) {
+	:root {
+		@each $map in $maps {
+			@include _export-map($map);
+		}
+	}
+}
+
+/// Função recursiva que transforma mapas Sass em variáveis CSS
+@mixin _export-map($map, $prefix: null) {
+	@each $key, $val in $map {
+		$var-name: if($prefix == null, $key, '#{$prefix}-#{$key}');
+
+		@if type-of($val) == 'map' {
+			// Recursão: processa submapas
+			@include _export-map($val, $var-name);
+		} @else if
+			meta.type-of($val) ==
+			'color' or
+			meta.type-of($val) ==
+			'number' or
+			meta.type-of($val) ==
+			'string' or
+			meta.type-of($val) ==
+			'bool' or
+			meta.type-of($val) ==
+			'list'
+		{
+			// Somente exporta valores CSS válidos
+			--#{$var-name}: #{$val};
+		} @else {
+			// Ignora qualquer valor não compatível
+			@warn "Ignorado #{$var-name} (tipo inválido: #{meta.type-of($val)})";
+		}
+	}
+}
+
+$____x: map.merge(
+	map.merge(DEFAULT.$all_root, DARK.$theme-colors),
+	DARK.get-theme-mix()
+);
+
+@include export-root-vars($____x);

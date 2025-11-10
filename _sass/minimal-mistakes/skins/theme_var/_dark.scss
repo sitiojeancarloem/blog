@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use 'sass:map';
+
+$theme-colors: (
+	'bg': yellow,
+	'tc': #eaeaea,
+	'pri': #00adb5,
+);
+
+$theme_c2: (
+	'link':
+		color.mix(
+			map.get($theme-colors, 'pri'),
+			map.get($theme-colors, 'tc'),
+			40%
+		),
+);
+
+@function get-theme-mix() {
+	@return (
+		'bc': color.mix(#fff, map.get($theme-colors, 'bg'), 20%),
+		'cbg': color.mix(#000, map.get($theme-colors, 'bg'), 15%),
+		'cbgd': color.mix(#000, map.get($theme-colors, 'bg'), 20%),
+		'fbg': color.mix(#000, map.get($theme-colors, 'bg'), 15%),
+		'ftbg': color.mix(#000, map.get($theme-colors, 'bg'), 30%),
+		'link-h': color.mix(#fff, map.get($theme_c2, 'link'), 25%),
+		'link-v': color.mix(#000, map.get($theme_c2, 'link'), 25%),
+		'mlink': map.get($theme-colors, 'tc'),
+		'mlink-h': color.mix(#000, map.get($theme_c2, 'link'), 20%),
+		'nav-h': color.mix(#000, map.get($theme-colors, 'bg'), 30%)
+	);
+}

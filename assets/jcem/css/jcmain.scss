@@ -127,7 +127,7 @@ footer {
 				&:hover {
 					&,
 					i {
-						color: $primary-color;
+						color: var(--primary-color);
 					}
 				}
 			}

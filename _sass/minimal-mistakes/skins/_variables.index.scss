@@ -1,0 +1,208 @@
+@use 'sass:map';
+
+/* ========================================================================== */
+/* Typography */
+/* ========================================================================== */
+
+$theme-typography: (
+	'dfs': 16px,
+	// doc-font-size
+	'dfm': calc(16px * 1.125),
+	// doc-font-size-medium
+	'dfl': calc(16px * 1.25),
+	// doc-font-size-large
+	'dfxl': calc(16px * 1.375),
+	// doc-font-size-x-large
+	'pi': false,
+	// paragraph-indent
+	'iv': 1.3em,
+
+	// indent-var
+	's': 'Georgia, Times, serif',
+	// serif
+	'ss':
+		"-apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif",
+	// sans-serif
+	'm': "'Noto San', Monaco, Consolas, 'Lucida Console', monospace",
+
+	// monospace
+	'ts1': 2.441em,
+	// type-size-1
+	'ts2': 1.953em,
+	// type-size-2
+	'ts3': 1.563em,
+	// type-size-3
+	'ts4': 1.25em,
+	// type-size-4
+	'ts5': 1em,
+	// type-size-5
+	'ts6': 0.75em,
+	// type-size-6
+	'ts7': 0.6875em,
+	// type-size-7
+	'ts8': 0.625em,
+	// type-size-8
+);
+
+/* ========================================================================== */
+/* Colors */
+/* ========================================================================== */
+
+$gray: #7a8288;
+$primary-color: #6f777d;
+$text-dark: mix(#000, $gray, 50%);
+$text-light: mix(#fff, $gray, 50%);
+
+$theme-colors: (
+	'tblb': mix(#000, mix(#fff, $gray, 90%), 25%),
+	'g': $gray,
+	// gray
+	'dg': $text-dark,
+	// dark-gray
+	'ddg': mix(#000, $gray, 60%),
+	// darker-gray
+	'lg': $text-light,
+	// light-gray
+	'llg': mix(#fff, $gray, 90%),
+	// lighter-gray
+	'bg': #fff,
+	// background-color
+	'cbg': #fafafa,
+	// code-background-color
+	'cbgd': $text-light,
+	// code-background-color-dark
+	'tc': $text-dark,
+	// text-color
+	'mtc': mix(#fff, $text-dark, 20%),
+	// muted-text-color
+	'bc': mix(#fff, $gray, 90%),
+	// border-color
+	'ftbg': mix(#fff, $gray, 90%),
+	// footer-background-color
+	'pri': $primary-color,
+	// primary-color
+	'suc': #3fa63f,
+	// success-color
+	'warn': #d67f05,
+	// warning-color
+	'dang': #ee5f5b,
+	// danger-color
+	'info': #3b9cba,
+	// info-color
+	'foc': $primary-color,
+	// focus-color
+	'act': mix(#fff, $primary-color, 80%),
+	// active-color
+	'link': mix(#000, #3b9cba, 20%),
+	// link-color
+	'link-h': mix(#000, mix(#000, #3b9cba, 20%), 25%),
+	// link-color-hover
+	'link-v': mix(#fff, mix(#000, #3b9cba, 20%), 15%),
+	// link-color-visited
+	'mlink': $primary-color,
+	// masthead-link-color
+	'mlink-h': mix(#000, $primary-color, 25%),
+	// masthead-link-color-hover
+	'nav-h': mix(#fff, $primary-color, 75%),
+	// navicon-link-color-hover
+);
+
+/* ========================================================================== */
+/* Breakpoints */
+/* ========================================================================== */
+
+$theme-breakpoints: (
+	'sm': 600px,
+	// small
+	'md': 768px,
+	// medium
+	'mdw': 900px,
+	// medium-wide
+	'lg': 1024px,
+	// large
+	'xl': 1280px,
+	// x-large
+	'mw': 1280px,
+	// max-width
+);
+
+/* ========================================================================== */
+/* Brands */
+/* ========================================================================== */
+
+$theme-brands: (
+	'beh': #1769ff,
+	// behance-color
+	'bit': #205081,
+	// bitbucket-color
+	'bls': #1083fe,
+	// bluesky-color
+	'drb': #ea4c89,
+	// dribbble-color
+	'fb': #3b5998,
+	// facebook-color
+	'gh': #171516,
+	// github-color
+	'gl': #e24329,
+	// gitlab-color
+	'ins': #517fa4,
+	// instagram-color
+	'li': #007bb6,
+	// linkedin-color
+	'mas': #2b90d9,
+	// mastodon-color
+	'pin': #cb2027,
+	// pinterest-color
+	'red': #ff4500,
+	// reddit-color
+	'rss': #fa9b39,
+	// rss-color
+	'tw': #55acee,
+	// twitter-color
+	'yt': #bb0000,
+	// youtube-color
+);
+
+/* ========================================================================== */
+/* Layout / Other */
+/* ========================================================================== */
+
+$theme-layout: (
+	'rsn': 200px,
+	// right-sidebar-width-narrow
+	'rs': 300px,
+	// right-sidebar-width
+	'rsw': 400px,
+	// right-sidebar-width-wide
+	'br': 4px,
+	// border-radius
+	'bs': 0 1px 1px rgba(0, 0, 0, 0.125),
+	// box-shadow
+	'nh': 2em,
+	// nav-height
+	'nth': 2rem,
+	// nav-toggle-height
+	'nw': 1.5rem,
+	// navicon-width
+	'nhh': 0.25rem,
+	// navicon-height
+	'gt': all 0.2s ease-in-out,
+	// global-transition
+	'it': intro 0.3s both,
+	// intro-transition
+);
+
+/* ========================================================================== */
+/* Merge all roots */
+/* ========================================================================== */
+
+$all_root: map.merge(
+	map.merge(
+		map.merge(
+			map.merge($theme-colors, $theme-typography),
+			$theme-breakpoints
+		),
+		$theme-brands
+	),
+	$theme-layout
+);
