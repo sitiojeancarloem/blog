@@ -23,6 +23,7 @@ $theme_c2: (
 		'cbgd': color.mix(#000, map.get($theme-colors, 'bg'), 20%),
 		'fbg': color.mix(#000, map.get($theme-colors, 'bg'), 15%),
 		'ftbg': color.mix(#000, map.get($theme-colors, 'bg'), 30%),
+		'link': map.get($theme_c2, 'link'),
 		'link-h': color.mix(#fff, map.get($theme_c2, 'link'), 25%),
 		'link-v': color.mix(#000, map.get($theme_c2, 'link'), 25%),
 		'mlink': map.get($theme-colors, 'tc'),
