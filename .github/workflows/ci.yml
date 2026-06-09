@@ -6,6 +6,15 @@ on:
       - live # Executa apenas quando há push no branch 'live'
   workflow_dispatch: # Permite execução manual (Actions > Run workflow)
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   jekyll:
     if: github.ref == 'refs/heads/live' # Segurança extra
@@ -15,6 +24,9 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -22,7 +34,9 @@ jobs:
           bundler-cache: true # Instala dependências do Gemfile automaticamente
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3

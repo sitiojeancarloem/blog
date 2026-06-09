@@ -12,7 +12,8 @@
 {%- capture html -%}
 {% include main_page.html %}
 {%- endcapture -%}
-{{- html | strip_newlines | replace: '        ', '' | replace: '       ', '' | replace: '      ', '' | replace: '     ', '' | replace: '    ', '' | replace: '   ', '' -}}
+{% comment %}FIX-BUG: preserva espacos entre tags e atributos no HTML final.{% endcomment %}
+{{- html -}}
 
 {% else %}
 {% include main_page.html %}

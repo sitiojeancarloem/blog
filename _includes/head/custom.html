@@ -186,14 +186,81 @@
 </style>
 
 <script>
-	Element.prototype.on = (e, f) => this.addEventListener(e, f);
+	Element.prototype.on = function (e, f) {
+		return this.addEventListener(e, f);
+	};
 
 	const _ = (x) => document.querySelector(x);
+	const jcemThemeKey = 'jcem-theme';
+	const jcemThemeMaxAge = 60 * 60 * 24 * 365;
+	const jcemThemeValues = ['light', 'dark'];
+
+	const getJcemThemeCookie = () => {
+		const cookie = document.cookie
+			.split('; ')
+			.find((row) => row.startsWith(`${jcemThemeKey}=`));
+
+		return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : '';
+	};
+
+	const getJcemTheme = () => {
+		try {
+			// PROTECAO: localStorage indisponivel nao impede o cookie.
+			return localStorage.getItem(jcemThemeKey) || getJcemThemeCookie();
+		} catch (error) {
+			return getJcemThemeCookie();
+		}
+	};
+
+	const saveJcemTheme = (theme) => {
+		try {
+			// PROTECAO: cookie preserva a escolha quando localStorage falha.
+			localStorage.setItem(jcemThemeKey, theme);
+		} catch (error) {
+			document.documentElement.setAttribute('data-jcem-storage', 'blocked');
+		}
+
+		document.cookie = `${jcemThemeKey}=${encodeURIComponent(
+			theme,
+		)}; Path=/; Max-Age=${jcemThemeMaxAge}; SameSite=Lax`;
+	};
+
+	const applyJcemTheme = (theme) => {
+		const radio = _(`#jcem-theme-${theme}`);
+
+		if (radio) {
+			radio.checked = true;
+		}
+	};
 
 	document.addEventListener('DOMContentLoaded', () => {
-		try {
-			_('body > noscript').style.display = 'none';
-		} catch (error) {}
-		_('body > .main_jcem_wrapper').style.display = 'block';
+		let theme = getJcemTheme();
+
+		if (!jcemThemeValues.includes(theme)) {
+			theme = 'light';
+		}
+
+		applyJcemTheme(theme);
+
+		document
+			.querySelectorAll('input[name="jcem-theme"]')
+			.forEach((radio) => {
+				radio.addEventListener('change', () => {
+					if (radio.checked && jcemThemeValues.includes(radio.value)) {
+						saveJcemTheme(radio.value);
+					}
+				});
+			});
+
+		const noScript = _('body > noscript');
+		const wrapper = _('body > .main_jcem_wrapper');
+
+		if (noScript) {
+			noScript.style.display = 'none';
+		}
+
+		if (wrapper) {
+			wrapper.style.display = 'block';
+		}
 	});
 </script>

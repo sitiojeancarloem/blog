@@ -5,8 +5,10 @@
 	"type": "module",
 	"main": "extract.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "cross-env JEKYLL_ENV='' bundle exec jekyll serve --livereload --drafts",
+		"test": "bundle exec jekyll build",
+		"build": "bundle exec jekyll build",
+		"build:prod": "cross-env JEKYLL_ENV=production bundle exec jekyll build",
+		"dev": "cross-env JEKYLL_ENV=development bundle exec jekyll serve --host 127.0.0.1 --livereload --drafts",
 		"dev-mini": "cross-env JEKYLL_ENV=production bundle exec jekyll serve --livereload --drafts",
 		"dev-live": "cross-env JEKYLL_ENV=production bundle exec jekyll serve --livereload"
 	},

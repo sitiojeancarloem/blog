@@ -1,3 +1,9 @@
 source "https://rubygems.org"
 gem "minimal-mistakes-jekyll"
-gem 'jekyll-sitemap'
+gem "jekyll-feed"
+gem "jekyll-gist"
+gem "jekyll-include-cache"
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+gem "webrick", "~> 1.8"
+gem "fiddle"
