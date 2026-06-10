@@ -10,9 +10,9 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-theme: minimal-mistakes-jekyll
-
-# remote_theme           : "mmistakes/minimal-mistakes"
+# GitHub Pages does not allow Minimal Mistakes as a `theme:` gem. Load it as a
+# remote theme so both the Pages builder and the custom Actions build can find it.
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
 minimal_mistakes_skin: 'dark' # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 collections:
@@ -262,6 +262,7 @@ pagination:
 
 # Plugins (previously gems:)
 plugins:
+  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -270,6 +271,7 @@ plugins:
 
 # mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
