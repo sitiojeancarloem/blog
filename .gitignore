@@ -11,6 +11,7 @@ _data
 # Arquivos de saída do Jekyll
 # O GitHub Pages gera a pasta _site automaticamente
 _site/
+old-root/
 
 # Cache e arquivos temporários do Jekyll
 .jekyll-cache/
