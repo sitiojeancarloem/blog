@@ -6,7 +6,7 @@ env:
 on:
   push:
     branches:
-      - main # Executa apenas quando há push no branch 'live'
+      - main # O branch main contem o codigo-fonte do site.
 
   workflow_dispatch: # Permite execução manual (Actions > Run workflow)
 
@@ -43,9 +43,18 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build --trace
+        run: bundle exec jekyll build --trace --baseurl=
         env:
           JEKYLL_ENV: production
+
+      - name: Verify root deployment paths
+        run: |
+          test -f _site/CNAME
+          test "$(cat _site/CNAME)" = "www.jeancarloem.com"
+          if grep -RInE '((href|src)=["'\'']\/blog\/|url\(["'\'']?\/blog\/)' _site; then
+            echo "::error::O site foi gerado com caminhos sob /blog. O deploy deve ficar na raiz do dominio."
+            exit 1
+          fi
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
