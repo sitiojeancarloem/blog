@@ -1,5 +1,8 @@
 name: Customizado Jekyll
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -30,8 +33,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
-          bundler-cache: true # Instala dependências do Gemfile automaticamente
+          ruby-version: '3.4'
+
+      - name: Install Ruby dependencies
+        run: |
+          gem install bundler -v 4.0.10
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3
 
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
