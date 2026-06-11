@@ -79,7 +79,7 @@ article {
 }
 
 .jcem-foot {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	margin: 3em 1em;
 	opacity: 0.7;
 }
@@ -106,12 +106,22 @@ article {
 	color: var(--link);
 }
 
-.jcem-foot > p:last-of-type {
+.jcem-foot > p.atencao {
 	margin-top: 2em;
 	padding: 0.7em;
-	background: var(--jcem-alert-bg) !important;
-	border: 1px solid var(--jcem-alert-border) !important;
+	background: var(--jcem-alert-border) !important;
+	border: none;
 	line-height: 1.35em;
+	color: var(--dark--tc);
+
+	a {
+		color: var(--dark--jcem-panel-accent-hot);
+	}
+
+	a:hover,
+	a:focus {
+		color: var(--dark--jcem-alert-bg);
+	}
 }
 
 a {
@@ -201,56 +211,22 @@ footer {
 	display: none;
 }
 
-.sobpostbar {
-	margin: 0;
-	padding: 0 !important;
+p.copy {
+	&:first-of-type {
+		display: none !important;
+	}
+	display: block;
+	font-size: 0.7rem;
+	line-height: 1rem;
+	padding: 1em;
+	margin-bottom: 0;
 	text-align: center;
 
-	> p {
-		display: block;
-		background: rgba(0, 0, 0, 0.1);
-		font-size: 0.7rem;
-		line-height: 1rem;
-		padding: 1em;
-		margin-bottom: 0;
+	> span {
+		font-size: 0.8em;
 
-		> span {
-			font-size: 0.8em;
-
-			> a {
-				font-weight: bold;
-			}
-		}
-	}
-
-	a::after {
-		display: none;
-	}
-
-	> ul {
-		margin: 0;
-		padding: 1.5em 0;
-		background: rgba(0, 0, 0, 0.3);
-
-		display: block;
-		text-align: center;
-
-		li {
-			display: inline-block;
-			list-style-type: none;
-			font-size: 0.7em;
-			line-height: 1.5em;
-			padding: 0 0.2em;
-
-			border-left: 1px solid rgba(255, 255, 255, 0.3);
-
-			&:last-child {
-				border-right: 1px solid rgba(255, 255, 255, 0.3);
-			}
-
-			a {
-				padding: 0 0.5em;
-			}
+		> a {
+			font-weight: bold;
 		}
 	}
 }
@@ -262,8 +238,46 @@ footer .page__footer-copyright {
 	text-align: center;
 }
 
+div.sobpostbar {
+	margin: 0;
+	padding: 0 !important;
+	text-align: center;
+
+	a::after {
+		display: none;
+	}
+
+	> ul.menu {
+		margin: 0;
+		padding: 0.5em 0;
+		background-color: rgba(0, 0, 0, 0.15) !important;
+
+		display: block;
+		text-align: center;
+
+		li {
+			display: inline-block;
+			list-style-type: none;
+			font-size: 0.8em;
+			line-height: 1.5em;
+			padding: 0 0.2em;
+
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+
+			&:last-child {
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+			}
+
+			a {
+				padding: 0 0.5em;
+				font-weight: 400;
+				color: var(--mlink);
+			}
+		}
+	}
+}
+
 .main_jcem_wrapper > .sobpostbar {
-	background: rgba(0, 0, 0, 0.2);
 	font-size: 1rem;
 	padding-top: 0;
 
@@ -271,15 +285,12 @@ footer .page__footer-copyright {
 		display: none !important;
 	}
 
-	> ul {
+	> ul.menu {
 		padding: 0.1em;
 		padding-top: 0.2em !important;
 
-			li {
-				border-color: rgba(255, 255, 255, 0.3);
-				a {
-					color: var(--mlink);
-				}
+		li {
+			border-color: rgba(255, 255, 255, 0.3);
 
 			&:first-of-type {
 				border-left: none;
@@ -472,7 +483,10 @@ footer ul.social-icons li i {
 .jcem-sobre__skills,
 .jcem-sobre__works {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(min(100%, 16rem), 1fr)
+	);
 	gap: 1rem;
 }
 
@@ -481,7 +495,11 @@ footer ul.social-icons li i {
 .jcem-sobre__works .post,
 .jcem-sobre__interests > div {
 	background:
-		linear-gradient(90deg, var(--jcem-panel-line) 1px, transparent 1px),
+		linear-gradient(
+			90deg,
+			var(--jcem-panel-line) 1px,
+			transparent 1px
+		),
 		var(--jcem-panel-bg);
 	background-size: 2rem 2rem;
 	border: 1px solid var(--jcem-panel-border);
@@ -508,7 +526,11 @@ footer ul.social-icons li i {
 	height: 0.5rem;
 	margin-top: 0.55rem;
 	background:
-		linear-gradient(90deg, var(--jcem-panel-accent) var(--value), transparent 0),
+		linear-gradient(
+			90deg,
+			var(--jcem-panel-accent) var(--value),
+			transparent 0
+		),
 		var(--cbgd);
 }
 
@@ -530,13 +552,14 @@ footer ul.social-icons li i {
 }
 
 .linhatempo .itemtempo::before {
-	content: "";
+	content: '';
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	width: 3rem;
-	background: url("/assets/jcem/sobre/linha-itens.svg") no-repeat left center;
+	background: url('/assets/jcem/sobre/linha-itens.svg') no-repeat left
+		center;
 	background-size: 3rem auto;
 }
 

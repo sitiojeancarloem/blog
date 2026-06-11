@@ -1,3 +1,75 @@
+:root {
+	// Cores: modo escuro sempre disponivel.
+	--dark--tblb: #51555d;
+	--dark--bg: radial-gradient(ellipse at center, #333 1%, #111 100%);
+	--dark--tc: #efefef;
+	--dark--mtc: #bbbbbb;
+	--dark--pri: #00adb5;
+	--dark--bc: #51555d;
+	--dark--cbg: #20242c;
+	--dark--cbgd: #1e222a;
+	--dark--fbg: #20242c;
+	--dark--ftbg: #1a1d24;
+	--dark--foc: #00adb5;
+	--dark--act: #26313a;
+	--dark--link: #77c7e4;
+	--dark--link-h: #aad0d2;
+	--dark--link-v: #6b8f92;
+	--dark--mlink: #eaeaea;
+	--dark--mlink-h: #bbbbbb;
+	--dark--nav-h: #1a1d24;
+	--dark--jcem-panel-bg: #404040;
+	--dark--jcem-panel-title-bg: #333333;
+	--dark--jcem-panel-border: #666666;
+	--dark--jcem-panel-shadow: rgba(0, 0, 0, 0.8);
+	--dark--jcem-panel-line: rgba(43, 146, 219, 0.32);
+	--dark--jcem-panel-accent: #2b92db;
+	--dark--jcem-panel-accent-hot: #f4d400;
+	--dark--jcem-quote-bg: #2b303b;
+	--dark--jcem-alert-bg: #3c222a;
+	--dark--jcem-alert-border: #ce5763;
+	--dark--jcem-glitch-a: #ff21d0;
+	--dark--jcem-glitch-b: #00abe7;
+	--dark--primary-color: var(--dark--pri);
+	--dark--background-color: var(--dark--bg);
+	--dark--text-color: var(--dark--tc);
+
+	// Cores: modo claro sempre disponivel.
+	--clean--tblb: #bdc1c4;
+	--clean--bg: #f0ede5;
+	--clean--cbg: #fafafa;
+	--clean--cbgd: #bcc1c4;
+	--clean--tc: #222;
+	--clean--mtc: #64676a;
+	--clean--bc: #f2f3f3;
+	--clean--fbg: #fff;
+	--clean--ftbg: #e3dfd3;
+	--clean--pri: #4f5960;
+	--clean--foc: #4f5960;
+	--clean--act: #e2e4e5;
+	--clean--link: #1f6378;
+	--clean--link-h: #174b5b;
+	--clean--link-v: #355f6d;
+	--clean--mlink: #4f5960;
+	--clean--mlink-h: #333b40;
+	--clean--nav-h: #dbdde0;
+	--clean--jcem-panel-bg: #ffffff;
+	--clean--jcem-panel-title-bg: #eef2f5;
+	--clean--jcem-panel-border: #c8d0d5;
+	--clean--jcem-panel-shadow: rgba(37, 42, 52, 0.18);
+	--clean--jcem-panel-line: rgba(47, 125, 149, 0.26);
+	--clean--jcem-panel-accent: #2f7d95;
+	--clean--jcem-panel-accent-hot: #b28700;
+	--clean--jcem-quote-bg: #f4f8fa;
+	--clean--jcem-alert-bg: #fff3f3;
+	--clean--jcem-alert-border: #9f3a3a;
+	--clean--jcem-glitch-a: #c0188e;
+	--clean--jcem-glitch-b: #0079a8;
+	--clean--primary-color: var(--clean--pri);
+	--clean--background-color: var(--clean--bg);
+	--clean--text-color: var(--clean--tc);
+}
+
 body > input.radio.jcem-theme-radio {
 	position: fixed;
 	width: 1px;
@@ -18,74 +90,85 @@ body > input.radio.jcem-theme-radio {
 	transition:
 		background-color 0.2s ease,
 		color 0.2s ease;
+	display: table;
 
-	/* Cores: modo claro. */
-	--tblb: #bdc1c4;
-	--bg: #fff;
-	--cbg: #fafafa;
-	--cbgd: #bcc1c4;
-	--tc: #3d4144;
-	--mtc: #64676a;
-	--bc: #f2f3f3;
-	--fbg: #fff;
-	--ftbg: #f2f3f3;
-	--pri: #4f5960;
-	--foc: #4f5960;
-	--act: #e2e4e5;
-	--link: #1f6378;
-	--link-h: #174b5b;
-	--link-v: #355f6d;
-	--mlink: #4f5960;
-	--mlink-h: #333b40;
-	--nav-h: #dbdde0;
-	--jcem-panel-bg: #ffffff;
-	--jcem-panel-title-bg: #eef2f5;
-	--jcem-panel-border: #c8d0d5;
-	--jcem-panel-shadow: rgba(37, 42, 52, 0.18);
-	--jcem-panel-line: rgba(47, 125, 149, 0.26);
-	--jcem-panel-accent: #2f7d95;
-	--jcem-panel-accent-hot: #b28700;
-	--jcem-quote-bg: #f4f8fa;
-	--jcem-alert-bg: #fff3f3;
-	--jcem-alert-border: #a34747;
-	--jcem-glitch-a: #c0188e;
-	--jcem-glitch-b: #0079a8;
-	--primary-color: var(--pri);
-	--background-color: var(--bg);
-	--text-color: var(--tc);
+	// Tema ativo: claro.
+	--tblb: var(--clean--tblb);
+	--bg: var(--clean--bg);
+	--cbg: var(--clean--cbg);
+	--cbgd: var(--clean--cbgd);
+	--tc: var(--clean--tc);
+	--mtc: var(--clean--mtc);
+	--bc: var(--clean--bc);
+	--fbg: var(--clean--fbg);
+	--ftbg: var(--clean--ftbg);
+	--pri: var(--clean--pri);
+	--foc: var(--clean--foc);
+	--act: var(--clean--act);
+	--link: var(--clean--link);
+	--link-h: var(--clean--link-h);
+	--link-v: var(--clean--link-v);
+	--mlink: var(--clean--mlink);
+	--mlink-h: var(--clean--mlink-h);
+	--nav-h: var(--clean--nav-h);
+	--jcem-panel-bg: var(--clean--jcem-panel-bg);
+	--jcem-panel-title-bg: var(--clean--jcem-panel-title-bg);
+	--jcem-panel-border: var(--clean--jcem-panel-border);
+	--jcem-panel-shadow: var(--clean--jcem-panel-shadow);
+	--jcem-panel-line: var(--clean--jcem-panel-line);
+	--jcem-panel-accent: var(--clean--jcem-panel-accent);
+	--jcem-panel-accent-hot: var(--clean--jcem-panel-accent-hot);
+	--jcem-quote-bg: var(--clean--jcem-quote-bg);
+	--jcem-alert-bg: var(--clean--jcem-alert-bg);
+	--jcem-alert-border: var(--clean--jcem-alert-border);
+	--jcem-glitch-a: var(--clean--jcem-glitch-a);
+	--jcem-glitch-b: var(--clean--jcem-glitch-b);
+	--primary-color: var(--clean--primary-color);
+	--background-color: var(--clean--background-color);
+	--text-color: var(--clean--text-color);
+
+	background: var(--bg) !important;
 }
 
 body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	color-scheme: dark;
 
-	/* Cores: modo escuro. */
-	--bg: #252a34;
-	--tc: #eaeaea;
-	--mtc: #bbbbbb;
-	--pri: #00adb5;
-	--bc: #51555d;
-	--cbg: #20242c;
-	--cbgd: #1e222a;
-	--fbg: #20242c;
-	--ftbg: #1a1d24;
-	--link: #8ebfc3;
-	--link-h: #aad0d2;
-	--link-v: #6b8f92;
-	--mlink: #eaeaea;
-	--mlink-h: #bbbbbb;
-	--nav-h: #1a1d24;
-	--jcem-panel-bg: #404040;
-	--jcem-panel-title-bg: #333333;
-	--jcem-panel-border: #666666;
-	--jcem-panel-shadow: rgba(0, 0, 0, 0.8);
-	--jcem-panel-line: rgba(43, 146, 219, 0.32);
-	--jcem-panel-accent: #2b92db;
-	--jcem-panel-accent-hot: #f4d400;
-	--jcem-quote-bg: #2b303b;
-	--jcem-alert-bg: #3c222a;
-	--jcem-alert-border: #9a4f57;
-	--jcem-glitch-a: #ff21d0;
-	--jcem-glitch-b: #00abe7;
+	// Tema ativo: escuro.
+	--tblb: var(--dark--tblb);
+	--bg: var(--dark--bg);
+	--cbg: var(--dark--cbg);
+	--cbgd: var(--dark--cbgd);
+	--tc: var(--dark--tc);
+	--mtc: var(--dark--mtc);
+	--bc: var(--dark--bc);
+	--fbg: var(--dark--fbg);
+	--ftbg: var(--dark--ftbg);
+	--pri: var(--dark--pri);
+	--foc: var(--dark--foc);
+	--act: var(--dark--act);
+	--link: var(--dark--link);
+	--link-h: var(--dark--link-h);
+	--link-v: var(--dark--link-v);
+	--mlink: var(--dark--mlink);
+	--mlink-h: var(--dark--mlink-h);
+	--nav-h: var(--dark--nav-h);
+	--jcem-panel-bg: var(--dark--jcem-panel-bg);
+	--jcem-panel-title-bg: var(--dark--jcem-panel-title-bg);
+	--jcem-panel-border: var(--dark--jcem-panel-border);
+	--jcem-panel-shadow: var(--dark--jcem-panel-shadow);
+	--jcem-panel-line: var(--dark--jcem-panel-line);
+	--jcem-panel-accent: var(--dark--jcem-panel-accent);
+	--jcem-panel-accent-hot: var(--dark--jcem-panel-accent-hot);
+	--jcem-quote-bg: var(--dark--jcem-quote-bg);
+	--jcem-alert-bg: var(--dark--jcem-alert-bg);
+	--jcem-alert-border: var(--dark--jcem-alert-border);
+	--jcem-glitch-a: var(--dark--jcem-glitch-a);
+	--jcem-glitch-b: var(--dark--jcem-glitch-b);
+	--primary-color: var(--dark--primary-color);
+	--background-color: var(--dark--background-color);
+	--text-color: var(--dark--text-color);
+
+	background: var(--bg) !important;
 }
 
 .main_jcem_wrapper h1,
@@ -200,8 +283,16 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	position: relative;
 	overflow: hidden;
 	background:
-		linear-gradient(90deg, var(--jcem-panel-line) 1px, transparent 1px),
-		linear-gradient(0deg, var(--jcem-panel-line) 1px, transparent 1px),
+		linear-gradient(
+			90deg,
+			var(--jcem-panel-line) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			0deg,
+			var(--jcem-panel-line) 1px,
+			transparent 1px
+		),
 		var(--jcem-panel-bg);
 	background-size: 2.25rem 2.25rem;
 	border: 1px solid var(--jcem-panel-border);
@@ -242,7 +333,7 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 }
 
 .main_jcem_wrapper .archive__item-title a::before {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	z-index: 1;
@@ -277,7 +368,10 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 .main_jcem_wrapper .archive,
 .main_jcem_wrapper .grid__wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(min(100%, 18rem), 1fr)
+	);
 	gap: 1.5rem;
 }
 
@@ -360,7 +454,11 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 
 .main_jcem_wrapper blockquote {
 	background:
-		linear-gradient(90deg, var(--jcem-panel-line) 1px, transparent 1px),
+		linear-gradient(
+			90deg,
+			var(--jcem-panel-line) 1px,
+			transparent 1px
+		),
 		var(--jcem-quote-bg);
 	background-size: 1.5rem 1.5rem;
 	border-color: var(--jcem-panel-accent);
