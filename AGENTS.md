@@ -251,6 +251,7 @@ Regras:
 - reutilização
 - centralização
 - ausência de duplicação
+- estrutura, estilo, visual, exceto footer e cabeçalhho, devem ser preservados da origem
 
 Painel:
 
