@@ -3,6 +3,7 @@
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
+      <input class="jcem-nav-state" type="checkbox" id="jcem-nav-state" />
       <nav id="site-nav" class="greedy-nav">
         {% unless logo_path == empty %}
           <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
@@ -12,7 +13,12 @@
           {% if site.subtitle %}<span class="site-subtitle">{{ site.subtitle | escape_once | strip }}</span>{% endif %}
         </a>
         <ul class="visible-links">
-          {%- for link in site.data.navigation.main -%}
+            <li class="masthead__menu-item">
+              <a href="{{ '/sobre/' | relative_url }}">Sobre</a>
+            </li>
+          {%- assign main_navigation = site.data.navigation.main | default: empty -%}
+          {%- if main_navigation != empty -%}
+          {%- for link in main_navigation -%}
             <li class="masthead__menu-item">
               <a
                 href="{{ link.url | relative_url }}"
@@ -21,6 +27,7 @@
               >{{ link.title }}</a>
             </li>
           {%- endfor -%}
+          {%- endif -%}
         </ul>
         <div class="jcem-theme-toggle" role="group" aria-label="Alternar tema">
           <label class="jcem-theme-toggle__option jcem-theme-toggle__option--light" for="jcem-theme-light" title="Tema claro">
@@ -38,12 +45,17 @@
           <i class="fas fa-search"></i>
         </button>
         {% endif %}
+        <label class="jcem-nav-toggle" for="jcem-nav-state" aria-label="Alternar menu">
+          <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
+          <span class="navicon"></span>
+        </label>
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
       </nav>
+      <label class="jcem-nav-backdrop" for="jcem-nav-state" aria-hidden="true"></label>
     </div>
   </div>
 </div>

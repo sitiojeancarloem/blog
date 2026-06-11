@@ -45,12 +45,9 @@
 		--radius: 0.5em;
 	}
 
-	body > div.main_jcem_wrapper {
-		display: none;
-	}
-
 	/* Loader top bar */
 	body > .loader-bar {
+		display: none;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -252,15 +249,22 @@
 				});
 			});
 
+		const navState = _('#jcem-nav-state');
+
+		document.querySelectorAll('#site-nav a').forEach((link) => {
+			link.addEventListener('click', () => {
+				if (navState) {
+					navState.checked = false;
+				}
+			});
+		});
+
 		const noScript = _('body > noscript');
-		const wrapper = _('body > .main_jcem_wrapper');
 
 		if (noScript) {
 			noScript.style.display = 'none';
 		}
 
-		if (wrapper) {
-			wrapper.style.display = 'block';
-		}
+		// PROTECAO: o conteudo permanece visivel mesmo sem JavaScript.
 	});
 </script>

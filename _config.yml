@@ -171,6 +171,7 @@ include:
 exclude:
   - '*.sublime-project'
   - '*.sublime-workspace'
+  - '*.log'
   - vendor
   - .asset-cache
   - .bundle
@@ -312,6 +313,13 @@ compress_html:
 
 # Defaults
 defaults:
+  # pages
+  - scope:
+      path: ''
+      type: pages
+    values:
+      author_profile: false
+      sidebar: false
   # _posts
   - scope:
       path: ''

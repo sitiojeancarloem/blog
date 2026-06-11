@@ -1,0 +1,8 @@
+<blockquote class="jcem-panel{% if include.class %} {{ include.class }}{% endif %}">
+  {% if include.title %}
+    <h2 class="jcem-panel__title{% if include.glitch %} jcem-glitch{% endif %}"{% if include.glitch %} data-text="{{ include.title | escape }}"{% endif %}>{{ include.title }}</h2>
+  {% endif %}
+  <div class="jcem-panel__body">
+    {{ include.content }}
+  </div>
+</blockquote>

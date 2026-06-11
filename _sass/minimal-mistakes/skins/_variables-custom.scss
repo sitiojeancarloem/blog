@@ -19,6 +19,7 @@ body > input.radio.jcem-theme-radio {
 		background-color 0.2s ease,
 		color 0.2s ease;
 
+	/* Cores: modo claro. */
 	--tblb: #bdc1c4;
 	--bg: #fff;
 	--cbg: #fafafa;
@@ -28,14 +29,14 @@ body > input.radio.jcem-theme-radio {
 	--bc: #f2f3f3;
 	--fbg: #fff;
 	--ftbg: #f2f3f3;
-	--pri: #6f777d;
-	--foc: #6f777d;
+	--pri: #4f5960;
+	--foc: #4f5960;
 	--act: #e2e4e5;
-	--link: #2f7d95;
-	--link-h: #235e70;
-	--link-v: #4e91a6;
-	--mlink: #6f777d;
-	--mlink-h: #53595e;
+	--link: #1f6378;
+	--link-h: #174b5b;
+	--link-v: #355f6d;
+	--mlink: #4f5960;
+	--mlink-h: #333b40;
 	--nav-h: #dbdde0;
 	--jcem-panel-bg: #ffffff;
 	--jcem-panel-title-bg: #eef2f5;
@@ -45,6 +46,8 @@ body > input.radio.jcem-theme-radio {
 	--jcem-panel-accent: #2f7d95;
 	--jcem-panel-accent-hot: #b28700;
 	--jcem-quote-bg: #f4f8fa;
+	--jcem-alert-bg: #fff3f3;
+	--jcem-alert-border: #a34747;
 	--jcem-glitch-a: #c0188e;
 	--jcem-glitch-b: #0079a8;
 	--primary-color: var(--pri);
@@ -55,6 +58,7 @@ body > input.radio.jcem-theme-radio {
 body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	color-scheme: dark;
 
+	/* Cores: modo escuro. */
 	--bg: #252a34;
 	--tc: #eaeaea;
 	--mtc: #bbbbbb;
@@ -78,6 +82,8 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	--jcem-panel-accent: #2b92db;
 	--jcem-panel-accent-hot: #f4d400;
 	--jcem-quote-bg: #2b303b;
+	--jcem-alert-bg: #3c222a;
+	--jcem-alert-border: #9a4f57;
 	--jcem-glitch-a: #ff21d0;
 	--jcem-glitch-b: #00abe7;
 }
