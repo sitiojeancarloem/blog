@@ -1,7 +1,7 @@
-```text
 # DIRETRIZ_MÁXIMA: PROJETO
 
 # PRIORIDADE
+
 Estas regras são mandatórias.
 Em caso de conflito, aplicar:
 
@@ -12,7 +12,6 @@ Em caso de conflito, aplicar:
 Conflito:
 
 "CONTRADIÇÃO DETECTADA: [origem] vs [regra] - Aplicando prioridade máxima."
-
 
 [AMBIENTE]
 
@@ -40,7 +39,9 @@ Permitido:
 
 - CSS/Sass
 - JavaScript customizado
-- layouts/includes/extensões
+- layouts
+- includes
+- extensões
 
 Proibido:
 
@@ -92,6 +93,7 @@ Proibido:
 Permitido:
 
 Refatoração cirúrgica:
+
 - Alteração localizada
 - Mesmo objetivo
 - Mesmo contrato
@@ -232,11 +234,27 @@ Requisitos:
 
 ---
 
+[HEADER]
+
+Site title:
+
+Ocultar visualmente `site-title` exibido ao lado do logotipo.
+
+Preservar:
+
+- logotipo
+- estrutura do header
+- funcionamento original do tema
+
+Não remover HTML se apenas CSS resolver.
+
+---
+
 [COMPONENTES]
 
 Fonte visual:
 
-`./old-root/` : é página stática.
+`./old-root/` : página estática.
 
 Migrar:
 
@@ -257,7 +275,7 @@ Painel:
 Usar:
 
 - blockquote estilizado
-e
+  e
 - componente HTML reutilizável
 
 Não aplicar em artigos completos.
@@ -268,35 +286,58 @@ Não aplicar em artigos completos.
 
 Prioridade:
 
-CSS puro.
+CSS/Sass puro.
 
 Estado:
 
-Nunca depender de JavaScript.
+Nunca depender exclusivamente de JavaScript.
 
-Usar:
+Implementação principal:
 
+- Sass
 - seletores estruturais
-- input[type="radio"] ~ div
-
-Requisitos:
-
-- somente um menu aberto
-- layer externo
-- fechamento por clique externo e pelo clique em um do itens
-- blur do conteúdo da págia via backdrop-filter
+- estados CSS nativos
 
 JavaScript:
 
-Opcional e somente:
+Permitido como camada redundante:
 
-- criação
-- montagem
-- posicionamento
+- leve
+- confiável
+- sem criar dependência funcional
 
-Nunca:
+Nunca usar JavaScript como requisito único para:
 
-- controlar estado
+- abrir
+- fechar
+- expandir
+- recolher
+
+Conteúdo colapsável:
+
+Quando necessário:
+
+- criar ícone clicável
+- expandir/recolher via CSS
+
+Se exibível integralmente:
+
+- não criar menu desnecessário
+
+Requisitos:
+
+- somente um menu aberto quando aplicável
+- layer externo
+- fechamento por clique externo e pelo clique em um dos itens
+- blur do conteúdo da página via backdrop-filter
+  JavaScript:
+  Em geral é recurso opcional para:
+  - criação
+  - montagem
+  - posicionamento
+  - monitorar estado
+
+  Nunca essencial/obrigatório.
 
 Itens:
 
@@ -304,7 +345,18 @@ Suportar:
 
 [ícone | label]
 
-Alinhamento uniforme obrigatório e,, independente da exitÊncia do ícone em um dos itens.
+Alinhamento uniforme obrigatório e independente da existência de ícone.
+
+---
+
+[LAYOUT]
+
+Sidebar:
+
+O blog não deve exibir sidebar/aside.
+
+Aplicar por configuração ou extensão do tema,
+sem alterar core.
 
 ---
 
@@ -324,11 +376,12 @@ Remover:
 - menu antigo
 - footer antigo
 
-O conteúdo migrado, disposição, estrutura, estilo, visual (exceto footer e cabeçalho), devem ser preservados da origem.
+O conteúdo migrado, disposição, estrutura e estilo visual
+(exceto footer e cabeçalho) devem ser preservados exatamente como na origem.
 
 Usar:
 
-componentes novos já inclusos no tema.
+componentes novos inclusos no tema.
 
 Proibido:
 
@@ -341,12 +394,14 @@ Duplicar CSS/JS.
 Verificar:
 
 Modo claro:
+
 - textos
 - bordas
 - ícones
 - componentes
 
 Modo escuro:
+
 - textos
 - bordas
 - ícones
@@ -393,4 +448,3 @@ COMMIT_SUGERIDO:
 Texto PT-BR.
 Curto.
 Descritivo.
-```
