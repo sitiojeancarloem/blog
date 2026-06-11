@@ -448,3 +448,192 @@ COMMIT_SUGERIDO:
 Texto PT-BR.
 Curto.
 Descritivo.
+
+---
+
+[PUBLICAÇÃO_E_AGENDAMENTO]
+
+[SCHEDULED]
+
+Criar:
+
+./\_scheduled/
+
+Finalidade:
+
+Armazenar posts finalizados que aguardam publicação futura.
+
+Diferença:
+
+- `_drafts`: conteúdo em desenvolvimento
+- `_scheduled`: conteúdo aprovado, pronto para publicação futura
+
+Regras:
+
+Posts em `_scheduled`:
+
+- Não devem aparecer no build público padrão
+- Não devem ser acessíveis por URL direta
+- Devem retornar 404 antes da data prevista
+- Devem permanecer isolados até a publicação efetiva
+
+Formato:
+
+O post deve ser precedido pela data futura de publicação.
+
+A data determina:
+
+- elegibilidade de publicação
+- momento de migração para conteúdo público
+
+---
+
+[WORKFLOW_SCHEDULED]
+
+Criar workflow específico `scheduled`.
+
+Execução:
+
+Diariamente:
+00:01
+
+Responsabilidade:
+
+Verificar:
+
+`./_scheduled/`
+
+Identificar:
+
+Arquivos ou diretórios cuja data de publicação seja igual à data atual.
+
+Quando encontrado:
+
+Executar:
+
+- roda diretamente a partir do github Actions
+- preparação do post
+- compilação específica
+- atualização do artefato
+- publicação no GitHub Pages
+
+Regra:
+
+Nenhum conteúdo agendado pode ser exposto antes da data configurada.
+
+---
+
+[WORKFLOW_PUBLICAÇÃO]
+
+Toda publicação efetiva de post deve acionar workflow de distribuição externa.
+
+Aplica-se:
+
+- publicação imediata
+- publicação proveniente de `_scheduled`
+
+Pré-condição obrigatória:
+
+Executar somente após:
+
+- compilação concluída
+- publicação concluída
+- validação de disponibilidade do post
+
+Falha anterior:
+
+Não iniciar distribuição externa.
+
+---
+
+---
+
+[REDES_SOCIAIS]
+
+Executado apenas se houver publicação de novasm publicações (posts).
+Plataformas obrigatórias:
+
+- Facebook
+- Instagram
+- X (antigo Twitter)
+
+Implementação:
+
+Antes de criar integração própria:
+
+Pesquisar e avaliar ferramentas, bibliotecas e automações open source existentes
+que implementem o fluxo necessário.
+
+Preferência:
+
+Utilizar soluções maduras já existentes quando:
+
+- cobrirem o requisito funcional
+- possuírem manutenção ativa
+- forem compatíveis com o ambiente
+- permitirem automação via workflow
+
+Evitar:
+
+- reinventar integração já existente
+- duplicar bibliotecas
+- criar wrappers desnecessários
+
+Cada rede social deve possuir workflow próprio.
+
+Objetivo:
+
+Publicar automaticamente informações relacionadas ao post:
+
+- título
+- resumo curto
+- imagem destacada quando existir
+- hashtags
+- link
+
+Cada workflow deve possuir tratamento específico para sua plataforma.
+
+Requisitos:
+
+- configuração própria
+- tratamento de erros específico
+- persistência de estado
+- recuperação automática
+- múltiplas tentativas
+- fallback quando aplicável
+
+Estratégia:
+
+Priorizar:
+
+1. solução open source existente validada
+2. método oficial da plataforma
+3. alternativas configuradas
+4. fallback disponível
+
+Falha:
+
+Somente ocorrer após esgotar possibilidades previstas.
+
+Não permitido:
+
+- encerramento abrupto
+- travamento indefinido
+- interrupção externa sem tratamento
+
+Cada workflow deve:
+
+- finalizar por sucesso
+- finalizar por esgotamento controlado
+- registrar estado final
+
+Encadeamento:
+
+Workflows dependentes devem executar somente após conclusão do anterior.
+
+O próximo workflow deve ser acionado apenas quando:
+
+- estado final conhecido
+- execução anterior concluída
+
+---
