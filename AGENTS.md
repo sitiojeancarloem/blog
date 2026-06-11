@@ -251,7 +251,6 @@ Regras:
 - reutilização
 - centralização
 - ausência de duplicação
-- estrutura, estilo, visual, exceto footer e cabeçalhho, devem ser preservados da origem
 
 Painel:
 
@@ -324,6 +323,8 @@ Remover:
 - header antigo
 - menu antigo
 - footer antigo
+
+O conteúdo migrado, disposição, estrutura, estilo, visual (exceto footer e cabeçalho), devem ser preservados da origem.
 
 Usar:
 
