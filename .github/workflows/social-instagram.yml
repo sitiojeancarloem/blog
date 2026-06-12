@@ -1,0 +1,113 @@
+name: social-instagram
+
+on:
+  repository_dispatch:
+    types:
+      - post_social_facebook_done
+  workflow_dispatch:
+    inputs:
+      posts_json:
+        description: 'Payload JSON de posts publicados'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      POSTS_JSON: ${{ github.event_name == 'workflow_dispatch' && inputs.posts_json || toJson(github.event.client_payload.posts) }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      INSTAGRAM_FALLBACK_IMAGE_URL: ${{ vars.INSTAGRAM_FALLBACK_IMAGE_URL }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION || 'v20.0' }}
+
+    steps:
+      - name: Prepare payload
+        run: |
+          mkdir -p social-state
+          if [ -z "$POSTS_JSON" ] || [ "$POSTS_JSON" = "null" ]; then
+            printf '[]' > posts.json
+          else
+            printf '%s' "$POSTS_JSON" > posts.json
+          fi
+          jq type posts.json > /dev/null
+
+      - name: Publish to Instagram
+        run: |
+          set -euo pipefail
+          if [ -z "$INSTAGRAM_USER_ID" ] || [ -z "$INSTAGRAM_ACCESS_TOKEN" ]; then
+            echo '{"platform":"instagram","status":"failed","reason":"missing_config"}' >> social-state/instagram.jsonl
+            echo "::error::Segredos INSTAGRAM_USER_ID e INSTAGRAM_ACCESS_TOKEN obrigatorios."
+            exit 1
+          fi
+
+          graph="https://graph.facebook.com/${META_GRAPH_VERSION}"
+          jq -c '.[]' posts.json | while IFS= read -r post; do
+            title="$(jq -r '.title // ""' <<< "$post")"
+            summary="$(jq -r '.summary // ""' <<< "$post")"
+            url="$(jq -r '.url // ""' <<< "$post")"
+            image="$(jq -r '.image // ""' <<< "$post")"
+            hashtags="$(jq -r '(.hashtags // []) | map("#" + .) | join(" ")' <<< "$post")"
+            caption="$(printf '%s\n\n%s\n\n%s\n%s' "$title" "$summary" "$url" "$hashtags")"
+
+            if [ -z "$image" ]; then
+              image="$INSTAGRAM_FALLBACK_IMAGE_URL"
+            fi
+
+            if [ -z "$image" ]; then
+              jq -cn --arg platform instagram --arg status failed --arg reason missing_image --arg url "$url" \
+                '{platform:$platform,status:$status,reason:$reason,url:$url,finished_at:now|todateiso8601}' >> social-state/instagram.jsonl
+              echo "::error::Instagram exige imagem. Configure imagem destacada no post ou INSTAGRAM_FALLBACK_IMAGE_URL."
+              exit 1
+            fi
+
+            creation_id="$(
+              curl --fail-with-body --silent --show-error --location --retry 3 --retry-delay 15 --retry-all-errors \
+                -X POST "${graph}/${INSTAGRAM_USER_ID}/media" \
+                --data-urlencode "image_url=${image}" \
+                --data-urlencode "caption=${caption}" \
+                --data-urlencode "access_token=${INSTAGRAM_ACCESS_TOKEN}" | jq -r '.id // empty'
+            )"
+
+            if [ -z "$creation_id" ]; then
+              jq -cn --arg platform instagram --arg status failed --arg reason missing_creation_id --arg url "$url" \
+                '{platform:$platform,status:$status,reason:$reason,url:$url,finished_at:now|todateiso8601}' >> social-state/instagram.jsonl
+              exit 1
+            fi
+
+            sleep 15
+            curl --fail-with-body --silent --show-error --location --retry 3 --retry-delay 15 --retry-all-errors \
+              -X POST "${graph}/${INSTAGRAM_USER_ID}/media_publish" \
+              --data-urlencode "creation_id=${creation_id}" \
+              --data-urlencode "access_token=${INSTAGRAM_ACCESS_TOKEN}" > /dev/null
+
+            jq -cn --arg platform instagram --arg status published --arg url "$url" \
+              '{platform:$platform,status:$status,url:$url,finished_at:now|todateiso8601}' >> social-state/instagram.jsonl
+          done
+
+      - name: Upload Instagram state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-instagram-state
+          path: social-state/instagram.jsonl
+          if-no-files-found: warn
+
+      - name: Dispatch X workflow
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const posts = JSON.parse(process.env.POSTS_JSON || '[]');
+            await github.rest.repos.createDispatchEvent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              event_type: 'post_social_instagram_done',
+              client_payload: {
+                source_workflow: context.workflow,
+                source_run_id: String(context.runId),
+                posts
+              }
+            });

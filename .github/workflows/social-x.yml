@@ -1,0 +1,75 @@
+name: social-x
+
+on:
+  repository_dispatch:
+    types:
+      - post_social_instagram_done
+  workflow_dispatch:
+    inputs:
+      posts_json:
+        description: 'Payload JSON de posts publicados'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      POSTS_JSON: ${{ github.event_name == 'workflow_dispatch' && inputs.posts_json || toJson(github.event.client_payload.posts) }}
+      X_ACCESS_TOKEN: ${{ secrets.X_OAUTH2_USER_TOKEN || secrets.X_BEARER_TOKEN }}
+
+    steps:
+      - name: Prepare payload
+        run: |
+          mkdir -p social-state
+          if [ -z "$POSTS_JSON" ] || [ "$POSTS_JSON" = "null" ]; then
+            printf '[]' > posts.json
+          else
+            printf '%s' "$POSTS_JSON" > posts.json
+          fi
+          jq type posts.json > /dev/null
+
+      - name: Publish to X
+        run: |
+          set -euo pipefail
+          if [ -z "$X_ACCESS_TOKEN" ]; then
+            echo '{"platform":"x","status":"failed","reason":"missing_config"}' >> social-state/x.jsonl
+            echo "::error::Segredo X_OAUTH2_USER_TOKEN obrigatorio."
+            exit 1
+          fi
+
+          jq -c '.[]' posts.json | while IFS= read -r post; do
+            title="$(jq -r '.title // ""' <<< "$post")"
+            summary="$(jq -r '.summary // ""' <<< "$post")"
+            url="$(jq -r '.url // ""' <<< "$post")"
+            hashtags="$(jq -r '(.hashtags // []) | map("#" + .) | join(" ")' <<< "$post")"
+            text="$(printf '%s\n\n%s\n%s' "$title" "$url" "$hashtags")"
+
+            if [ "${#text}" -gt 280 ]; then
+              text="$(printf '%s\n\n%s' "$title" "$url")"
+            fi
+
+            if [ "${#text}" -gt 280 ]; then
+              text="$url"
+            fi
+
+            curl --fail-with-body --silent --show-error --location --retry 3 --retry-delay 15 --retry-all-errors \
+              -X POST "https://api.x.com/2/tweets" \
+              -H "Authorization: Bearer ${X_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              --data "$(jq -cn --arg text "$text" '{text:$text}')" > /dev/null
+
+            jq -cn --arg platform x --arg status published --arg url "$url" \
+              '{platform:$platform,status:$status,url:$url,finished_at:now|todateiso8601}' >> social-state/x.jsonl
+          done
+
+      - name: Upload X state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-x-state
+          path: social-state/x.jsonl
+          if-no-files-found: warn

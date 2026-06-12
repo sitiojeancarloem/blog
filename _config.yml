@@ -193,6 +193,7 @@ exclude:
   - package.json
   - package-lock.json
   - /old-root
+  - /_scheduled
   - Rakefile
   - README
   - tmp

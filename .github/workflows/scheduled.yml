@@ -1,14 +1,17 @@
-name: Customizado Jekyll
+name: scheduled
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 on:
-  push:
-    branches:
-      - main # O branch main contem o codigo-fonte do site.
-
-  workflow_dispatch: # Permite execução manual (Actions > Run workflow)
+  schedule:
+    - cron: '1 3 * * *' # 00:01 America/Sao_Paulo.
+  workflow_dispatch:
+    inputs:
+      scheduled_date:
+        description: 'Data alvo no formato YYYY-MM-DD'
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -20,8 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  jekyll:
-    if: github.ref == 'refs/heads/main' # Segurança extra
+  scheduled:
     runs-on: ubuntu-latest
     outputs:
       has_posts: ${{ steps.posts.outputs.has_posts }}
@@ -31,39 +33,55 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
+      - name: Resolve scheduled date
+        run: |
+          if [ -n "${{ inputs.scheduled_date }}" ]; then
+            echo "SCHEDULED_DATE=${{ inputs.scheduled_date }}" >> "$GITHUB_ENV"
+          else
+            echo "SCHEDULED_DATE=$(TZ=America/Sao_Paulo date +%F)" >> "$GITHUB_ENV"
+          fi
+
+      - name: Prepare scheduled posts
+        run: ruby scripts/prepare_scheduled_posts.rb --date "$SCHEDULED_DATE" --out .scheduled-posts.txt
 
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Detect scheduled publications
+        id: posts
+        run: |
+          ruby scripts/collect_published_posts.rb \
+            --files-file .scheduled-posts.txt \
+            --site-url "${{ steps.pages.outputs.base_url }}" \
+            --out published-posts.json
+
+      - name: Stop when no posts are scheduled
+        if: steps.posts.outputs.has_posts != 'true'
+        run: echo "Nenhuma publicação agendada para $SCHEDULED_DATE."
+
       - name: Setup Ruby
+        if: steps.posts.outputs.has_posts == 'true'
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
 
       - name: Install Ruby dependencies
+        if: steps.posts.outputs.has_posts == 'true'
         run: |
           gem install bundler -v 4.0.10
           bundle config set path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      - name: Detect published posts
-        id: posts
-        run: |
-          ruby scripts/collect_published_posts.rb \
-            --diff-base "${{ github.event.before }}" \
-            --diff-head "${{ github.sha }}" \
-            --site-url "${{ steps.pages.outputs.base_url }}" \
-            --out published-posts.json
-
       - name: Build Jekyll site
+        if: steps.posts.outputs.has_posts == 'true'
         run: bundle exec jekyll build --trace --baseurl=
         env:
           JEKYLL_ENV: production
 
       - name: Verify root deployment paths
+        if: steps.posts.outputs.has_posts == 'true'
         run: |
           test -f _site/CNAME
           test "$(cat _site/CNAME)" = "www.jeancarloem.com"
@@ -73,14 +91,15 @@ jobs:
           fi
 
       - name: Upload build artifact
+        if: steps.posts.outputs.has_posts == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: needs.scheduled.outputs.has_posts == 'true'
     runs-on: ubuntu-latest
-    needs: jekyll
+    needs: scheduled
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -89,10 +108,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
 
-      - name: Validate published posts
-        if: needs.jekyll.outputs.has_posts == 'true'
+      - name: Validate scheduled posts
         env:
-          POSTS_JSON: ${{ needs.jekyll.outputs.posts_json }}
+          POSTS_JSON: ${{ needs.scheduled.outputs.posts_json }}
         run: |
           printf '%s' "$POSTS_JSON" > published-posts.json
           jq -r '.[].url' published-posts.json | while IFS= read -r url; do
@@ -100,10 +118,9 @@ jobs:
           done
 
       - name: Start external distribution
-        if: needs.jekyll.outputs.has_posts == 'true'
         uses: actions/github-script@v8
         env:
-          POSTS_JSON: ${{ needs.jekyll.outputs.posts_json }}
+          POSTS_JSON: ${{ needs.scheduled.outputs.posts_json }}
         with:
           script: |
             const posts = JSON.parse(process.env.POSTS_JSON || '[]');
