@@ -224,9 +224,29 @@ Caso insolúvel:
 
 Implementar:
 
-- Pure CSS
+- Pure CSS/Sass como implementação principal
 - Custom Properties
-- Switch visual
+- Switch visual compacto
+
+Switch:
+
+Requisitos:
+
+- dimensões discretas
+- menor destaque visual que a versão padrão do tema
+- compatível com desktop e mobile
+- ícone de sol para modo claro
+- ícone de lua para modo escuro
+- transição visual suave
+- contraste validado
+
+Ícones:
+
+Utilizar padrão Font Awesome do projeto.
+
+Definir Font Awesome como biblioteca padrão de ícones do tema.
+
+Não duplicar bibliotecas equivalentes.
 
 Requisitos:
 
@@ -427,6 +447,61 @@ Ajustar quando necessário:
 Respeitar:
 
 GitHub Pages.
+
+[DEPENDÊNCIAS_FRONTEND]
+
+JavaScript novo:
+
+Priorizar:
+
+- TypeScript
+
+Evitar:
+
+- JavaScript puro quando TypeScript for compatível com o contexto
+
+Requisitos:
+
+- ambiente preparado para TypeScript
+- toolchain compatível
+- package.json compatível
+- tipagem estrita quando aplicável
+
+Objetivo:
+
+- reduzir erros em tempo de execução
+- aumentar rastreabilidade
+- aumentar manutenibilidade
+
+[COMPONENTIZAÇÃO]
+
+Priorizar:
+
+- componentes .tsx
+- estilos .scss
+
+Antes de adotar Vite:
+
+Validar:
+
+- compatibilidade com Jekyll
+- compatibilidade com GitHub Pages
+- compatibilidade com Minimal Mistakes
+- custo operacional
+- impacto no build
+
+Se validado e vantajoso:
+
+- padronizar Vite como solução oficial
+
+Se não validado ou gerar complexidade desnecessária:
+
+- utilizar alternativa mais simples
+- manter compatibilidade integral
+
+Após validação definitiva:
+
+Atualizar esta diretriz para refletir a decisão adotada pelo projeto.
 
 ---
 
