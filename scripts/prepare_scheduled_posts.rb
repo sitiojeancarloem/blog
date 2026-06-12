@@ -6,13 +6,15 @@ require "optparse"
 require "pathname"
 
 options = {
-  date: ENV.fetch("SCHEDULED_DATE", Time.now.utc.strftime("%Y-%m-%d")),
-  out: ".scheduled-posts.txt"
+	date: ENV.fetch("SCHEDULED_DATE", Time.now.utc.strftime("%Y-%m-%d")),
+	mode: "copy",
+	out: ".scheduled-posts.txt"
 }
 
 OptionParser.new do |parser|
-  parser.on("--date DATE") { |value| options[:date] = value }
-  parser.on("--out PATH") { |value| options[:out] = value }
+	parser.on("--date DATE") { |value| options[:date] = value }
+	parser.on("--mode MODE") { |value| options[:mode] = value }
+	parser.on("--out PATH") { |value| options[:out] = value }
 end.parse!
 
 root = Pathname.new(Dir.pwd).realpath
@@ -22,6 +24,7 @@ out_path = root.join(options[:out])
 target_date = options[:date]
 
 abort "Data invalida: #{target_date}" unless target_date.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+abort "Modo invalido: #{options[:mode]}" unless %w[copy move].include?(options[:mode])
 
 FileUtils.mkdir_p(scheduled_dir)
 FileUtils.mkdir_p(posts_dir)
@@ -42,8 +45,16 @@ Dir.children(scheduled_dir).sort.each do |entry|
     abort "Destino fora de _posts: #{destination}"
   end
 
-  FileUtils.rm_rf(destination)
-  FileUtils.cp_r(source, destination)
+	if options[:mode] == "move" && destination.exist?
+		abort "Destino ja existe em _posts: #{destination.relative_path_from(root)}"
+	end
+
+	FileUtils.rm_rf(destination) if options[:mode] == "copy"
+	if options[:mode] == "copy"
+		FileUtils.cp_r(source, destination)
+	else
+		FileUtils.mv(source, destination)
+	end
 
   markdown_files =
     if destination.directory?

@@ -29,18 +29,22 @@ jobs:
       has_posts: ${{ steps.posts.outputs.has_posts }}
       post_count: ${{ steps.posts.outputs.post_count }}
       posts_json: ${{ steps.posts.outputs.posts_json }}
+      scheduled_date: ${{ steps.date.outputs.scheduled_date }}
 
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
 
       - name: Resolve scheduled date
+        id: date
         run: |
           if [ -n "${{ inputs.scheduled_date }}" ]; then
-            echo "SCHEDULED_DATE=${{ inputs.scheduled_date }}" >> "$GITHUB_ENV"
+            scheduled_date="${{ inputs.scheduled_date }}"
           else
-            echo "SCHEDULED_DATE=$(TZ=America/Sao_Paulo date +%F)" >> "$GITHUB_ENV"
+            scheduled_date="$(TZ=America/Sao_Paulo date +%F)"
           fi
+          echo "SCHEDULED_DATE=$scheduled_date" >> "$GITHUB_ENV"
+          echo "scheduled_date=$scheduled_date" >> "$GITHUB_OUTPUT"
 
       - name: Prepare scheduled posts
         run: ruby scripts/prepare_scheduled_posts.rb --date "$SCHEDULED_DATE" --out .scheduled-posts.txt
@@ -78,6 +82,10 @@ jobs:
         if: steps.posts.outputs.has_posts == 'true'
         run: npm ci
 
+      - name: Install Playwright browser
+        if: steps.posts.outputs.has_posts == 'true'
+        run: npx playwright install chromium --with-deps
+
       - name: Build Jekyll site
         if: steps.posts.outputs.has_posts == 'true'
         run: |
@@ -85,6 +93,10 @@ jobs:
           bundle exec jekyll build --trace --baseurl=
         env:
           JEKYLL_ENV: production
+
+      - name: Validate light and dark visuals
+        if: steps.posts.outputs.has_posts == 'true'
+        run: npm run validate:visual
 
       - name: Verify root deployment paths
         if: steps.posts.outputs.has_posts == 'true'
@@ -101,6 +113,14 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
+
+      - name: Upload visual validation artifacts
+        if: always() && steps.posts.outputs.has_posts == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: scheduled-visual-validation
+          path: visual-artifacts
+          if-no-files-found: ignore
 
   deploy:
     if: needs.scheduled.outputs.has_posts == 'true'
@@ -122,6 +142,30 @@ jobs:
           jq -r '.[].url' published-posts.json | while IFS= read -r url; do
             curl --fail --silent --show-error --location --retry 6 --retry-delay 10 "$url" > /dev/null
           done
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby for migration
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.7'
+
+      - name: Persist scheduled migration
+        run: |
+          ruby scripts/prepare_scheduled_posts.rb \
+            --date "${{ needs.scheduled.outputs.scheduled_date }}" \
+            --mode move \
+            --out .scheduled-posts.txt
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nenhuma migração pendente."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _posts _scheduled
+          git commit -m "Publica posts agendados de ${{ needs.scheduled.outputs.scheduled_date }} [skip ci]"
+          git push
 
       - name: Start external distribution
         uses: actions/github-script@v8

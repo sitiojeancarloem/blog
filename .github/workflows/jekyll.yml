@@ -52,6 +52,9 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Install Playwright browser
+        run: npx playwright install chromium --with-deps
+
       - name: Detect published posts
         id: posts
         run: |
@@ -68,6 +71,9 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Validate light and dark visuals
+        run: npm run validate:visual
+
       - name: Verify root deployment paths
         run: |
           test -f _site/CNAME
@@ -81,6 +87,14 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
+
+      - name: Upload visual validation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-validation
+          path: visual-artifacts
+          if-no-files-found: ignore
 
   deploy:
     if: github.ref == 'refs/heads/main'

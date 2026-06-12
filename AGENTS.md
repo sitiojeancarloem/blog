@@ -499,7 +499,14 @@ Se não validado ou gerar complexidade desnecessária:
 - utilizar alternativa mais simples
 - manter compatibilidade integral
 
-Após validação definitiva:
+Decisão adotada:
+
+- Vite não adotado nesta etapa
+- TypeScript via `tsc`
+- saída JavaScript estática compatível com Jekyll/GitHub Pages
+- componentes do tema permanecem em Liquid/HTML e SCSS
+
+Após nova validação definitiva:
 
 Atualizar esta diretriz para refletir a decisão adotada pelo projeto.
 
