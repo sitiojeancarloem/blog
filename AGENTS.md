@@ -637,3 +637,327 @@ O próximo workflow deve ser acionado apenas quando:
 - execução anterior concluída
 
 ---
+
+[CONTEÚDO_EDITORIAL]
+
+[CORREÇÕES_TEXTUAIS]
+
+Ao alterar arquivos textuais autorizados para edição:
+
+- corrigir erros ortográficos identificados
+- corrigir erros gramaticais identificados
+- corrigir erros de digitação identificados
+
+Restrições:
+
+- somente em arquivos efetivamente modificados
+- somente dentro do escopo autorizado
+
+Obrigatório:
+
+Informar explicitamente ao final da atividade:
+
+- quais arquivos receberam correções textuais
+- se ocorreram correções exclusivamente ortográficas/gramaticais
+
+---
+
+[PRESERVAÇÃO_AUTORAL]
+
+Quando solicitado:
+
+- revisão
+- reorganização
+- melhoria textual
+- ajuste semântico
+- reescrita
+
+Preservar obrigatoriamente:
+
+- estilo do autor
+- vocabulário do autor
+- ritmo do texto
+- forma de argumentação
+- estrutura de raciocínio
+- estilo de pontuação
+- pausas intencionais
+- características literárias
+- características retóricas
+
+Objetivo:
+
+Melhorar o texto sem descaracterizar a autoria.
+
+Proibido:
+
+- padronizar artificialmente o estilo
+- transformar todos os textos no mesmo padrão de escrita
+- substituir a voz autoral pela voz da IA
+
+Antes de sugerir alterações:
+
+Analisar:
+
+- parágrafo
+- seção
+- artigo completo
+- contexto geral
+
+Prioridade:
+
+1. preservar identidade autoral
+2. preservar intenção autoral
+3. corrigir problemas reais
+4. melhorar clareza
+
+---
+
+[RASTREABILIDADE_DE_IA]
+
+Objetivo:
+
+Evitar que conteúdo processado por IA seja utilizado como fonte primária para identificação do estilo original do autor.
+
+Todo trecho modificado semanticamente por IA deve receber marcação persistente.
+
+Requisitos:
+
+A marcação deve:
+
+- permanecer no arquivo fonte
+- sobreviver a rebuilds
+- não ser exibida visualmente ao leitor
+- não alterar o conteúdo renderizado
+- ser legível por ferramentas automatizadas
+- permitir identificação futura do trecho processado
+
+Aplicação:
+
+Obrigatória quando houver:
+
+- reescrita
+- reorganização textual
+- expansão textual
+- resumo
+- simplificação
+- ajuste semântico
+- adaptação de estilo
+- geração parcial
+- geração integral
+
+Não obrigatória para:
+
+- correção ortográfica
+- correção gramatical
+- correção tipográfica
+- correção de links
+- correção de metadados
+
+Quando apenas parte de um texto for modificada por IA:
+
+- marcar a menor região possível
+- evitar marcar o documento inteiro sem necessidade
+
+Objetivo da marcação:
+
+Permitir que futuras análises diferenciem:
+
+- conteúdo originalmente produzido pelo autor
+- conteúdo alterado por IA
+
+---
+
+[REFERÊNCIA_DE_ESTILO]
+
+Ao utilizar textos do repositório como amostra de estilo:
+
+- ignorar trechos marcados como processados por IA
+
+Prioridade:
+
+1. conteúdo original sem marcação de IA
+2. `_drafts` sem marcação de IA
+3. artigos publicados sem marcação de IA
+4. conteúdo revisado apenas ortográfica ou gramaticalmente
+5. conteúdo processado por IA
+
+Objetivo:
+
+Identificar:
+
+- vocabulário recorrente
+- estrutura recorrente
+- estilo argumentativo
+- estilo literário
+- estilo técnico
+- padrões de pontuação
+- padrões de transição
+
+Presumir:
+
+Conteúdo originalmente produzido pelo autor possui prioridade sobre conteúdo potencialmente assistido por IA.
+
+Trechos marcados por IA não devem ser considerados fonte primária de estilo autoral.
+
+Podem ser utilizados apenas como contexto complementar.
+
+---
+
+[FORMATO_DA_MARCAÇÃO]
+
+Preferência:
+
+Utilizar comentários invisíveis compatíveis com:
+
+- Markdown
+- Jekyll
+- GitHub Pages
+
+Exemplo conceitual:
+
+<!-- AI-PROCESSED -->
+
+Ou formato equivalente definido pelo projeto.
+
+A marcação deve ser:
+
+- estável
+- simples
+- pesquisável
+- facilmente identificável por automação
+
+Evitar:
+
+- formatos proprietários
+- formatos dependentes de serviços externos
+- formatos que alterem a renderização pública
+
+---
+
+[RIGOR_ACADÊMICO]
+
+Exceto quando explicitamente classificado como:
+
+- reflexão pessoal
+- testemunho
+- opinião
+- narrativa literária
+- poesia
+
+Todo artigo deve buscar rigor documental e verificabilidade.
+
+Objetivo:
+
+Associar argumentos a fontes:
+
+- válidas
+- verificáveis
+- confiáveis
+- rastreáveis
+
+Sempre que possível:
+
+Adicionar referências para:
+
+- afirmações factuais
+- dados históricos
+- estatísticas
+- estudos
+- argumentos técnicos
+- citações
+
+---
+
+[CITAÇÕES_E_REFERÊNCIAS]
+
+Artigos técnicos e artigos em formato de sermão devem seguir o princípio:
+
+Afirmação → Referência imediata.
+
+Preferência:
+
+Inserir a referência imediatamente após o trecho referenciado.
+
+Utilizar mecanismos compatíveis com:
+
+- Jekyll
+- Markdown
+- Footnotes
+
+Preferência visual:
+
+Comportamento semelhante ao utilizado pela Wikipédia.
+
+Evitar:
+
+- referências concentradas apenas ao final do artigo
+- afirmações relevantes sem fonte quando existir fonte verificável
+
+---
+
+[FOOTNOTES]
+
+O projeto deve possuir suporte para notas de rodapé.
+
+Preferência:
+
+Utilizar mecanismo compatível com:
+
+- Jekyll
+- GitHub Pages
+- Markdown
+
+Evitar:
+
+- implementação manual repetitiva
+- soluções incompatíveis com GitHub Pages
+
+Prioridade:
+
+Utilizar mecanismo nativo ou amplamente adotado antes de criar implementação própria.
+
+---
+
+[FOOTNOTES_BIBLIOGRAFIA_E_REFERÊNCIAS]
+
+Artigos com referências devem possuir suporte para:
+
+- Referências
+- Bibliografia
+
+Sempre que possível:
+
+Gerados automaticamente a partir dos footnotes e metadados utilizados no artigo.
+
+Bibliografia:
+
+- formato ABNT
+
+Referências:
+
+- devem apontar para os itens da bibliografia
+
+Footnotes:
+
+- identificadores discretos e de baixa interferência visual
+- posicionados imediatamente após a ocorrência referenciada
+- cada ocorrência deve apontar para sua referência correspondente
+- cada referência deve permitir retorno ao ponto exato da citação
+- ao passar o cursor, exibir resumo curto ou trecho da referência quando suportado pela tecnologia utilizada
+- comportamento preferencialmente semelhante ao adotado pela Wikipédia
+
+Prioridade:
+
+Utilizar bibliotecas, plugins ou ferramentas compatíveis com:
+
+- Jekyll
+- GitHub Pages
+- GitHub Actions
+
+Preferencialmente:
+
+- consolidadas
+- amplamente utilizadas
+- ativamente mantidas
+
+---
