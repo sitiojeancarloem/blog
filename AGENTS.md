@@ -535,6 +535,8 @@ Texto PT-BR.
 Curto.
 Descritivo.
 
+Indicar explicitamente se ainda há mais estapas ou pendencias a serem feitas, e quais.
+
 ---
 
 [PUBLICAÇÃO_E_AGENDAMENTO]
