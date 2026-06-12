@@ -35,7 +35,9 @@ const routePath = (urlPath) => {
 	const candidate = path.join(root, clean);
 	const target = decoded.endsWith('/') ? path.join(candidate, 'index.html') : candidate;
 
-	if (!target.startsWith(root)) {
+	const relative = path.relative(root, target);
+
+	if (relative.startsWith('..') || path.isAbsolute(relative)) {
 		return null;
 	}
 

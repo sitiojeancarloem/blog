@@ -46,6 +46,11 @@ jobs:
           echo "SCHEDULED_DATE=$scheduled_date" >> "$GITHUB_ENV"
           echo "scheduled_date=$scheduled_date" >> "$GITHUB_OUTPUT"
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.7'
+
       - name: Prepare scheduled posts
         run: ruby scripts/prepare_scheduled_posts.rb --date "$SCHEDULED_DATE" --out .scheduled-posts.txt
 
@@ -64,12 +69,6 @@ jobs:
       - name: Stop when no posts are scheduled
         if: steps.posts.outputs.has_posts != 'true'
         run: echo "Nenhuma publicação agendada para $SCHEDULED_DATE."
-
-      - name: Setup Ruby
-        if: steps.posts.outputs.has_posts == 'true'
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.7'
 
       - name: Install Ruby dependencies
         if: steps.posts.outputs.has_posts == 'true'
