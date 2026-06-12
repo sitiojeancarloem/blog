@@ -68,6 +68,10 @@ Antes de alterar:
 - Entregar solução final
 
 Não entregar hipótese sem validação.
+Ser rigoroso
+ser minucioso
+Codificar de forma blindada, tratando potenciais bugs e falhas
+Usar sempre melhores práticas
 
 ---
 
