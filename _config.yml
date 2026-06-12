@@ -180,6 +180,7 @@ exclude:
   - assets/js/plugins
   - assets/js/_main.js
   - assets/js/vendor
+  - /assets/jcem/ts
   - Capfile
   - CHANGELOG
   - config
@@ -192,6 +193,7 @@ exclude:
   - node_modules
   - package.json
   - package-lock.json
+  - tsconfig.json
   - /old-root
   - /_scheduled
   - Rakefile

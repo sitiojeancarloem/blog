@@ -41,13 +41,16 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: '3.4.7'
 
       - name: Install Ruby dependencies
         run: |
           gem install bundler -v 4.0.10
           bundle config set path vendor/bundle
           bundle install --jobs 4 --retry 3
+
+      - name: Install Node dependencies
+        run: npm ci
 
       - name: Detect published posts
         id: posts
@@ -59,7 +62,9 @@ jobs:
             --out published-posts.json
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build --trace --baseurl=
+        run: |
+          npm run build:ts
+          bundle exec jekyll build --trace --baseurl=
         env:
           JEKYLL_ENV: production
 

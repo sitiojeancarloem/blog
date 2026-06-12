@@ -1,0 +1,19 @@
+{% assign references = page.references | default: empty %}
+{% if references != empty %}
+  <section class="jcem-references" aria-labelledby="jcem-references-title">
+    <h2 id="jcem-references-title">Referências</h2>
+    <ol>
+      {% for reference in references %}
+        {% assign ref_id = reference.id | default: forloop.index | slugify %}
+        <li id="ref-{{ ref_id }}">
+          {% if reference.author %}<span class="jcem-references__author">{{ reference.author }}</span>. {% endif %}
+          {% if reference.title %}<cite>{{ reference.title }}</cite>{% else %}{{ reference }}{% endif %}
+          {% if reference.publisher %}. {{ reference.publisher }}{% endif %}
+          {% if reference.year %}, {{ reference.year }}{% endif %}
+          {% if reference.url %}. Disponível em: <a href="{{ reference.url }}" rel="nofollow noopener" target="_blank">{{ reference.url }}</a>{% endif %}
+          {% if reference.accessed %}. Acesso em: {{ reference.accessed }}{% endif %}.
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}

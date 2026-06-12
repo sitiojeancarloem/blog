@@ -65,7 +65,7 @@ jobs:
         if: steps.posts.outputs.has_posts == 'true'
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: '3.4.7'
 
       - name: Install Ruby dependencies
         if: steps.posts.outputs.has_posts == 'true'
@@ -74,9 +74,15 @@ jobs:
           bundle config set path vendor/bundle
           bundle install --jobs 4 --retry 3
 
+      - name: Install Node dependencies
+        if: steps.posts.outputs.has_posts == 'true'
+        run: npm ci
+
       - name: Build Jekyll site
         if: steps.posts.outputs.has_posts == 'true'
-        run: bundle exec jekyll build --trace --baseurl=
+        run: |
+          npm run build:ts
+          bundle exec jekyll build --trace --baseurl=
         env:
           JEKYLL_ENV: production
 

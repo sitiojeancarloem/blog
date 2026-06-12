@@ -5,9 +5,12 @@
 	"type": "module",
 	"main": "extract.js",
 	"scripts": {
-		"test": "bundle exec jekyll build",
-		"build": "bundle exec jekyll build",
-		"build:prod": "cross-env JEKYLL_ENV=production bundle exec jekyll build",
+		"check:ts": "tsc --noEmit",
+		"build:ts": "tsc",
+		"check": "npm run check:ts",
+		"test": "npm run check && bundle exec jekyll build",
+		"build": "npm run build:ts && bundle exec jekyll build",
+		"build:prod": "npm run build:ts && cross-env JEKYLL_ENV=production bundle exec jekyll build",
 		"dev": "cross-env JEKYLL_ENV=development bundle exec jekyll serve --host 127.0.0.1 --livereload --drafts",
 		"dev-mini": "cross-env RUBYOPT=\"-W:no-deprecated\" JEKYLL_ENV=production bundle exec jekyll serve --host 127.0.0.1 --force_polling --livereload --drafts",
 		"dev-live": "cross-env RUBYOPT=\"-W:no-deprecated\" JEKYLL_ENV=production bundle exec jekyll serve --host 127.0.0.1 --force_polling --livereload"
@@ -26,6 +29,7 @@
 	},
 	"devDependencies": {
 		"cross-env": "^10.1.0",
-		"playwright": "1.60.0"
+		"playwright": "1.60.0",
+		"typescript": "^6.0.3"
 	}
 }

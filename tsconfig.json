@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "ES2019",
+		"module": "ES2020",
+		"strict": true,
+		"noEmitOnError": true,
+		"removeComments": true,
+		"outDir": "assets/jcem/js",
+		"rootDir": "assets/jcem/ts",
+		"lib": ["DOM", "ES2019"]
+	},
+	"include": ["assets/jcem/ts/**/*.ts"]
+}

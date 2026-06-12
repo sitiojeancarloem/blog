@@ -466,6 +466,57 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	color: var(--tc);
 }
 
+.main_jcem_wrapper .footnotes,
+.main_jcem_wrapper .jcem-references {
+	grid-column: 1 / -1;
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--bc);
+	color: var(--tc);
+	font-size: 0.85rem;
+}
+
+.main_jcem_wrapper .footnotes ol,
+.main_jcem_wrapper .jcem-references ol {
+	margin-left: 1.25rem;
+	padding-left: 0;
+}
+
+.main_jcem_wrapper .footnotes li,
+.main_jcem_wrapper .jcem-references li {
+	margin-bottom: 0.6rem;
+	padding-left: 0.25rem;
+	line-height: 1.45;
+}
+
+.main_jcem_wrapper .footnote,
+.main_jcem_wrapper a[role='doc-noteref'] {
+	padding: 0 0.18em;
+	border: 1px solid var(--bc);
+	border-radius: 0.2rem;
+	background: var(--fbg);
+	color: var(--link);
+	font-size: 0.72em;
+	font-weight: 700;
+	line-height: 1;
+	vertical-align: super;
+}
+
+.main_jcem_wrapper .reversefootnote,
+.main_jcem_wrapper a[role='doc-backlink'] {
+	margin-left: 0.35rem;
+	color: var(--jcem-panel-accent-hot);
+}
+
+.main_jcem_wrapper .jcem-references h2 {
+	margin-top: 0;
+}
+
+.main_jcem_wrapper .jcem-references__author {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
 @keyframes jcem-glitch-shift {
 	0%,
 	86%,
