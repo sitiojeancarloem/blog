@@ -351,8 +351,11 @@ Se exibível integralmente:
 Requisitos:
 
 - somente um menu aberto quando aplicável
-- layer externo
-- fechamento por clique externo e pelo clique em um dos itens
+- layer externo cobrindo toda a janela
+- conteúdo da página abaixo do menu visualmente ofuscado
+- menu e seu conteúdo permanecem sem obstrução
+- fechamento por clique no layer externo
+- fechamento pelo clique em um dos itens quando aplicável
 - blur do conteúdo da página via backdrop-filter
   JavaScript:
   Em geral é recurso opcional para:
@@ -381,6 +384,37 @@ O blog não deve exibir sidebar/aside.
 
 Aplicar por configuração ou extensão do tema,
 sem alterar core.
+
+[SCROLL_TOP]
+
+Implementar botão de retorno ao topo.
+
+Requisitos:
+
+- canto inferior direito
+- exibido somente quando a página estiver rolada
+- oculto quando estiver no topo
+- não obstruir conteúdo
+- compatível com desktop e mobile
+- tamanho adequado para toque e clique
+
+Comportamento:
+
+- retorno suave ao topo
+- animação fluida
+- transição visual discreta
+
+Implementação:
+
+Prioridade:
+
+- CSS/Sass
+
+Quando insuficiente:
+
+- TypeScript
+
+JavaScript não deve ser requisito estrutural da página.
 
 ---
 
@@ -539,7 +573,86 @@ Indicar explicitamente se ainda há mais estapas ou pendencias a serem feitas, e
 
 ---
 
-[PUBLICAÇÃO_E_AGENDAMENTO]
+[URLS]
+
+Posts:
+
+URL padrão:
+
+/p/titulo
+
+Requisitos:
+
+- URLs curtas
+- sem segmento indicando blog
+- sem redundância de caminho
+- compatível com mecanismos de busca
+
+O prefixo:
+
+p
+
+é reservado para posts.
+
+Taxonomias:
+
+Quando suportado pelo Jekyll/tema:
+
+Utilizar:
+
+/{root}/{nome}
+
+Onde:
+
+root = primeira letra do tipo
+
+Exemplos:
+
+categoria:
+
+/c/categorianome
+
+tag:
+
+/t/tagname
+
+Demais tipos:
+
+Seguir o mesmo padrão:
+
+/{primeira_letra_do_tipo}/{nome}
+
+Exceções:
+
+- rotas já existentes
+- rotas reservadas
+- post (`p`)
+
+Objetivo:
+
+- URLs menores
+- melhor indexação
+- separação semântica por tipo
+- evitar exposição da estrutura interna do blog
+
+Paginação:
+
+Quando suportado pelo Jekyll/tema:
+
+Priorizar URLs curtas.
+
+Evitar:
+
+- segmentos contendo "blog"
+- estruturas longas
+- caminhos desnecessários
+
+A implementação deve priorizar:
+
+- compatibilidade com busca
+- estabilidade de URL
+- previsibilidade
+- baixa complexidade
 
 [SCHEDULED]
 
