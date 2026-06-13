@@ -272,40 +272,6 @@ Preservar:
 
 Não remover HTML se apenas CSS resolver.
 
----
-
-[COMPONENTES]
-
-Fonte visual:
-
-`./old-root/` : página estática.
-
-Migrar:
-
-- estilo dark
-- painel futurista
-- glitch pontual
-- timeline
-- estilo/estrutura do link de portfólio e do link de artigo
-
-Regras:
-
-- reutilização
-- centralização
-- ausência de duplicação
-
-Painel:
-
-Usar:
-
-- blockquote estilizado
-  e
-- componente HTML reutilizável
-
-Não aplicar em artigos completos.
-
----
-
 [MENU]
 
 Prioridade:
@@ -415,35 +381,6 @@ Quando insuficiente:
 - TypeScript
 
 JavaScript não deve ser requisito estrutural da página.
-
----
-
-[PÁGINA_SOBRE]
-
-Criar:
-
-/sobre
-
-Migrar:
-
-Conteúdo de `./old-root/`.
-
-Remover:
-
-- header antigo
-- menu antigo
-- footer antigo
-
-O conteúdo migrado, disposição, estrutura e estilo visual
-(exceto footer e cabeçalho) devem ser preservados exatamente como na origem.
-
-Usar:
-
-componentes novos inclusos no tema.
-
-Proibido:
-
-Duplicar CSS/JS.
 
 ---
 
@@ -910,6 +847,122 @@ Prioridade:
 2. preservar intenção autoral
 3. corrigir problemas reais
 4. melhorar clareza
+
+---
+
+[CONTINUE_IA]
+
+No root do repositório deve existir:
+
+continue.ia
+
+Se não existir:
+
+Criar automaticamente.
+
+Este arquivo deve ser lido antes de qualquer operação.
+
+Finalidade:
+
+Manter estado operacional entre execuções, chats ou solicitações diferentes.
+
+O arquivo funciona como:
+
+- checklist técnico
+- memória operacional do projeto
+- controle de pendências
+- rastreamento de etapas
+
+Requisitos:
+
+Formato:
+
+- texto simples
+- legível por humanos
+- otimizado para interpretação por IA
+- baixa redundância
+- alta densidade informacional
+
+Registrar:
+
+Registrar:
+
+- tarefas recebidas ainda relevantes
+- tarefas em andamento
+- tarefas pendentes
+- etapas iniciadas
+- etapas aguardando continuidade
+- processos que exigem múltiplos commits
+- validações necessárias
+- problemas de ambiente encontrados
+- tentativas realizadas
+- soluções aplicadas
+
+Tarefas concluídas:
+
+Manter somente quando:
+
+- fazem parte de uma tarefa maior ainda em andamento
+- são necessárias para continuidade do processo
+- possuem impacto em decisões futuras
+
+Remover quando:
+
+- a demanda principal for concluída
+- não houver dependência futura
+- o registro não auxiliar continuidade
+
+Objetivo:
+
+Evitar crescimento indefinido do arquivo.
+
+Problemas de ambiente:
+
+Registrar:
+
+- problema identificado
+- causa provável ou confirmada
+- tentativas executadas
+- resultado
+- próximo passo recomendado
+
+Objetivo:
+
+Evitar repetição de comandos conhecidos como falhos.
+
+Problemas registrados não representam bloqueio:
+
+A IA deve tentar resolver automaticamente quando possível.
+
+Caso não seja possível:
+
+- registrar impedimento
+- evitar repetir tentativas sem alteração de estratégia
+
+Organização:
+
+Agrupar informações por contexto.
+
+Cada demanda deve possuir categoria própria.
+
+Categorias devem ser criadas, ajustadas ou mescladas conforme necessário para reduzir duplicidade e melhorar rastreabilidade.
+
+Quando novos pedidos forem recebidos:
+
+- identificar contexto
+- associar ao grupo existente quando compatível
+- criar novo grupo quando necessário
+- reorganizar categorias quando a estrutura atual deixar de ser eficiente
+
+Atualização:
+
+Após cada alteração relevante:
+
+Atualizar continue.ia.
+
+Antes de iniciar nova alteração:
+
+Consultar continue.ia.
 
 ---
 
