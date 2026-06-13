@@ -503,7 +503,7 @@ Adicionar:
 COMMIT_SUGERIDO:
 
 Texto PT-BR.
-Curto.
+Curto (maximo 256 chars).
 Descritivo.
 
 Indicar explicitamente se ainda há mais estapas ou pendencias a serem feitas, e quais.
