@@ -553,7 +553,7 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	flex: 0 0 auto;
 	gap: 0.125rem;
 	margin-left: 0.5rem;
-	padding: 0.125rem;
+	padding: 0.1rem;
 	border: 1px solid var(--bc);
 	border-radius: 999px;
 	background: var(--fbg);
@@ -564,14 +564,16 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.875rem;
-	height: 1.875rem;
+	width: 1.625rem;
+	height: 1.625rem;
 	border-radius: 999px;
 	color: var(--mtc);
 	cursor: pointer;
+	font-size: 0.82rem;
 	transition:
 		background-color 0.2s ease,
-		color 0.2s ease;
+		color 0.2s ease,
+		box-shadow 0.2s ease;
 }
 
 .jcem-theme-toggle__option:hover,
@@ -588,7 +590,8 @@ body
 	~ .main_jcem_wrapper
 	.jcem-theme-toggle__option--dark {
 	background: var(--pri);
-	color: var(--bg);
+	// FIX-BUG: evita gradiente invalido em color no tema escuro.
+	color: var(--fbg);
 }
 
 @media (max-width: 600px) {
@@ -597,7 +600,57 @@ body
 	}
 
 	.jcem-theme-toggle__option {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.55rem;
+		height: 1.55rem;
+	}
+}
+
+.jcem-scroll-top {
+	position: fixed;
+	right: max(1rem, env(safe-area-inset-right));
+	bottom: max(1rem, env(safe-area-inset-bottom));
+	z-index: 9000;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 1px solid var(--bc);
+	border-radius: 999px;
+	background: var(--fbg);
+	box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.22);
+	color: var(--link);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(0.5rem);
+	transition:
+		opacity 0.2s ease,
+		transform 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.jcem-scroll-top::after {
+	display: none !important;
+}
+
+.jcem-scroll-top.is-visible {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.jcem-scroll-top:hover,
+.jcem-scroll-top:focus-visible {
+	border-color: var(--jcem-panel-accent-hot);
+	color: var(--link-h);
+}
+
+@media (max-width: 600px) {
+	.jcem-scroll-top {
+		right: max(0.75rem, env(safe-area-inset-right));
+		bottom: max(0.75rem, env(safe-area-inset-bottom));
+		width: 2.625rem;
+		height: 2.625rem;
 	}
 }

@@ -135,12 +135,25 @@ const validatePage = async (page, url, theme, viewportName) => {
 		};
 
 		const siteTitle = document.querySelector('.site-title')?.getBoundingClientRect();
+		const scrollTop = document.querySelector('.jcem-scroll-top');
+		const scrollTopRect = scrollTop?.getBoundingClientRect();
 
 		return {
 			overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
 			sidebars: visible('aside, .sidebar, .sidebar__right').length,
 			siteTitleWidth: siteTitle ? siteTitle.width : 0,
 			siteTitleHeight: siteTitle ? siteTitle.height : 0,
+			scrollHeight: document.documentElement.scrollHeight,
+			clientHeight: document.documentElement.clientHeight,
+			scrollTopButton: scrollTop
+				? {
+						width: scrollTopRect.width,
+						height: scrollTopRect.height,
+						visible: scrollTop.classList.contains('is-visible'),
+						ariaHidden: scrollTop.getAttribute('aria-hidden'),
+						tabIndex: scrollTop.getAttribute('tabindex'),
+					}
+				: null,
 			styles: [
 				readStyle('.main_jcem_wrapper'),
 				readStyle('.masthead'),
@@ -163,15 +176,62 @@ const validatePage = async (page, url, theme, viewportName) => {
 		fail(`Site title visivel em ${url} ${theme} ${viewportName}`);
 	}
 
+	if (!result.scrollTopButton) {
+		fail(`Botao de retorno ao topo ausente em ${url} ${theme} ${viewportName}`);
+	}
+
+	if (result.scrollTopButton.width < 42 || result.scrollTopButton.height < 42) {
+		fail(`Botao de retorno ao topo pequeno em ${url} ${theme} ${viewportName}`);
+	}
+
+	if (result.scrollTopButton.visible || result.scrollTopButton.ariaHidden !== 'true' || result.scrollTopButton.tabIndex !== '-1') {
+		fail(`Botao de retorno ao topo visivel no topo em ${url} ${theme} ${viewportName}`);
+	}
+
 	for (const style of result.styles) {
 		if (style.width <= 1 || style.height <= 1) {
 			fail(`Componente sem dimensao em ${url}: ${style.selector}`);
+		}
+
+		if (style.selector === '.jcem-theme-toggle' && (style.width > 64 || style.height > 34)) {
+			fail(`Switch de tema fora do tamanho discreto em ${url} ${theme} ${viewportName}`);
 		}
 
 		const ratio = contrastRatio(style.color, style.backgroundColor);
 		if (ratio < 3) {
 			fail(`Contraste baixo em ${url} ${theme} ${viewportName}: ${style.selector} (${ratio.toFixed(2)})`);
 		}
+	}
+
+	if (result.scrollHeight > result.clientHeight + 240) {
+		await page.evaluate(() => window.scrollTo(0, Math.min(520, document.documentElement.scrollHeight)));
+		await page.waitForTimeout(250);
+
+		const scrolledState = await page.evaluate(() => {
+			const scrollTop = document.querySelector('.jcem-scroll-top');
+			const rect = scrollTop?.getBoundingClientRect();
+
+			return scrollTop && rect
+				? {
+						visible: scrollTop.classList.contains('is-visible'),
+						ariaHidden: scrollTop.getAttribute('aria-hidden'),
+						tabIndex: scrollTop.getAttribute('tabindex'),
+						right: Math.round(window.innerWidth - rect.right),
+						bottom: Math.round(window.innerHeight - rect.bottom),
+					}
+				: null;
+		});
+
+		if (!scrolledState?.visible || scrolledState.ariaHidden !== 'false' || scrolledState.tabIndex !== '0') {
+			fail(`Botao de retorno ao topo oculto apos rolagem em ${url} ${theme} ${viewportName}`);
+		}
+
+		if (scrolledState.right < 0 || scrolledState.bottom < 0) {
+			fail(`Botao de retorno ao topo fora da janela em ${url} ${theme} ${viewportName}`);
+		}
+
+		await page.locator('.jcem-scroll-top').click();
+		await page.waitForFunction(() => window.scrollY <= 2, null, { timeout: 1500 });
 	}
 
 	await page.screenshot({

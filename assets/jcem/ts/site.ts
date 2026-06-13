@@ -90,6 +90,40 @@ const bindJcemNav = (): void => {
 	});
 };
 
+const bindJcemScrollTop = (): void => {
+	const button = select<HTMLAnchorElement>('.jcem-scroll-top');
+
+	if (!button) {
+		return;
+	}
+
+	let ticking = false;
+
+	const syncVisibility = (): void => {
+		ticking = false;
+		const isVisible = window.scrollY > 240;
+
+		button.classList.toggle('is-visible', isVisible);
+		button.setAttribute('aria-hidden', String(!isVisible));
+		button.tabIndex = isVisible ? 0 : -1;
+	};
+
+	const requestSync = (): void => {
+		if (!ticking) {
+			ticking = true;
+			window.requestAnimationFrame(syncVisibility);
+		}
+	};
+
+	button.addEventListener('click', (event) => {
+		event.preventDefault();
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+
+	window.addEventListener('scroll', requestSync, { passive: true });
+	syncVisibility();
+};
+
 const hideNoScript = (): void => {
 	const noScript = select<HTMLElement>('body > noscript');
 
@@ -103,6 +137,7 @@ const hideNoScript = (): void => {
 document.addEventListener('DOMContentLoaded', () => {
 	bindJcemTheme();
 	bindJcemNav();
+	bindJcemScrollTop();
 	hideNoScript();
 });
 

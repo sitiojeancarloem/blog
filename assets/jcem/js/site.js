@@ -59,6 +59,32 @@ const bindJcemNav = () => {
         });
     });
 };
+const bindJcemScrollTop = () => {
+    const button = select('.jcem-scroll-top');
+    if (!button) {
+        return;
+    }
+    let ticking = false;
+    const syncVisibility = () => {
+        ticking = false;
+        const isVisible = window.scrollY > 240;
+        button.classList.toggle('is-visible', isVisible);
+        button.setAttribute('aria-hidden', String(!isVisible));
+        button.tabIndex = isVisible ? 0 : -1;
+    };
+    const requestSync = () => {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(syncVisibility);
+        }
+    };
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    window.addEventListener('scroll', requestSync, { passive: true });
+    syncVisibility();
+};
 const hideNoScript = () => {
     const noScript = select('body > noscript');
     if (noScript) {
@@ -68,6 +94,7 @@ const hideNoScript = () => {
 document.addEventListener('DOMContentLoaded', () => {
     bindJcemTheme();
     bindJcemNav();
+    bindJcemScrollTop();
     hideNoScript();
 });
 export {};
