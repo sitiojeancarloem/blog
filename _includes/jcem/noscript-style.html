@@ -1,0 +1,114 @@
+<style>
+	:root {
+		--jcem-noscript-blue: #c08282;
+		--jcem-noscript-amber: #cc4c1e;
+		--jcem-noscript-bg: #ebebeb;
+		--jcem-noscript-text: #222;
+		--jcem-noscript-radius: 1rem;
+	}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		overflow: hidden;
+		background: var(--jcem-noscript-bg);
+	}
+
+	body > .main_jcem_wrapper,
+	body > .loader-bar {
+		/* PROTECAO: sem JavaScript, somente o painel noscript deve aparecer. */
+		display: none !important;
+	}
+
+	body > noscript {
+		position: fixed;
+		inset: 0;
+		z-index: 2147483647;
+		display: flex;
+		width: 100vw;
+		min-height: 100vh;
+		padding: 1rem;
+		overflow: auto;
+		background: var(--jcem-noscript-bg);
+	}
+
+	body > noscript,
+	body > noscript * {
+		box-sizing: border-box;
+		font-family: 'Noto Sans', 'Segoe UI', Tahoma, sans-serif;
+		color: var(--jcem-noscript-text);
+	}
+
+	.jcem-noscript {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		min-height: calc(100vh - 2rem);
+	}
+
+	.jcem-noscript__panel {
+		/* FIX-BUG: centraliza o painel sem depender de largura fixa. */
+		width: min(100%, 28rem);
+		margin: auto;
+		padding: 1.5rem;
+		border: 0.1rem solid var(--jcem-noscript-blue);
+		border-radius: var(--jcem-noscript-radius);
+		background: #fff;
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+		text-align: left;
+	}
+
+	.jcem-noscript h1 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: -1rem -1rem 1rem;
+		padding: 0.6em 1em;
+		border-radius: var(--jcem-noscript-radius) var(--jcem-noscript-radius) 0 0;
+		background: #845050;
+		color: #fff;
+		font-size: clamp(1.1rem, 5vw, 1.5rem);
+		font-weight: 700;
+	}
+
+	.jcem-noscript h1 span {
+		color: inherit;
+		font-size: 1.5rem;
+	}
+
+	.jcem-noscript p {
+		margin: 0.2rem 0;
+		line-height: 1.4;
+	}
+
+	.jcem-noscript__lang {
+		margin-top: 1rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		font-size: 0.9rem;
+	}
+
+	.jcem-noscript__lang:first-of-type {
+		border-top: 0;
+	}
+
+	.jcem-noscript__lang h2 {
+		margin: 0 0 0.2rem;
+		color: var(--jcem-noscript-blue);
+		font-size: 0.9rem;
+	}
+
+	.jcem-noscript strong {
+		color: var(--jcem-noscript-amber);
+		font-size: 1.05rem;
+		font-style: italic;
+	}
+
+	.jcem-noscript p span {
+		font-size: 1.3rem;
+		vertical-align: text-bottom;
+	}
+</style>

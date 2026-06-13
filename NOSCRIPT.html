@@ -1,3 +1,7 @@
+---
+search: false
+sitemap: false
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,154 +12,14 @@
 		/>
 		<meta name="robots" content="noindex" />
 		<title>NOSCRIPT: JavaScript is necessary...</title>
-
-		<style>
-			:root {
-				--blue: #c08282;
-				--amber: #cc4c1e;
-				--bg: #ebebeb;
-				--text: #222;
-				--radius: 1rem;
-			}
-
-			* {
-				box-sizing: border-box;
-				font-family: 'Noto Sans', 'Segoe UI', Tahoma, sans-serif;
-				color: var(--text);
-			}
-
-			html,
-			body {
-				margin: 0;
-				padding: 0;
-				background: var(--bg);
-			}
-
-			body {
-				min-height: 100vh;
-				align-items: center;
-				justify-content: center;
-				padding: 1rem;
-			}
-
-			noscript {
-				display: flex;
-				width: 100%;
-				min-height: calc(100vh - 2rem);
-				align-items: center;
-				justify-content: center;
-			}
-
-			.noscript main {
-				background: #fff;
-				border-radius: var(--radius);
-				box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-				width: min(100%, 28rem);
-				padding: 1.5rem;
-				border: 0.1rem solid var(--blue);
-			}
-
-			.noscript h1 {
-				font-size: clamp(1.1rem, 5vw, 1.5rem);
-				font-weight: 700;
-				color: #fff;
-				margin: -1rem -1rem 1rem;
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: #845050;
-				padding: 0.6em 1em;
-				border-radius: var(--radius) var(--radius) 0 0;
-			}
-
-			.noscript h1 span {
-				font-size: 1.5rem;
-			}
-
-			.noscript p {
-				margin: 0.2rem 0;
-				line-height: 1.4;
-			}
-
-			.noscript .lang {
-				border-top: 1px solid rgba(0, 0, 0, 0.1);
-				margin-top: 1rem;
-				padding-top: 0.5rem;
-				font-size: 0.9rem;
-			}
-
-			.noscript .lang:first-of-type {
-				border-top: 0;
-			}
-
-			.noscript .lang h2 {
-				color: var(--blue);
-				font-size: 0.9rem;
-				margin: 0 0 0.2rem;
-			}
-
-			.noscript strong {
-				color: var(--amber);
-				font-size: 1.05rem;
-				font-style: italic;
-			}
-
-			.noscript p span {
-				font-size: 1.3rem;
-				vertical-align: text-bottom;
-			}
-		</style>
+		<noscript>
+			{% include jcem/noscript-style.html %}
+		</noscript>
 	</head>
 
 	<body>
 		<noscript>
-			<div class="noscript">
-				<main>
-					<h1><span>⚠️</span>Problem / Problema / 问题</h1>
-
-					<div class="lang">
-						<h2>🇺🇸 English</h2>
-						<p>
-							<span>⚠️</span>
-							<strong>JavaScript is disabled.</strong><br />
-							JavaScript is required to manage your agreement with the
-							Terms of Use, Privacy Notice and consent preferences.
-						</p>
-					</div>
-
-					<div class="lang">
-						<h2>🇧🇷 Português</h2>
-						<p>
-							<span>⚠️</span>
-							<strong>O JavaScript está desativado.</strong><br />
-							O JavaScript é necessário para gerenciar sua adesão aos
-							Termos de Uso, Aviso de Privacidade e preferências de
-							consentimento.
-						</p>
-					</div>
-
-					<div class="lang">
-						<h2>🇪🇸 Español</h2>
-						<p>
-							<span>⚠️</span>
-							<strong>JavaScript está deshabilitado.</strong><br />
-							JavaScript es necesario para gestionar su aceptación de
-							los Términos de Uso, Aviso de Privacidad y preferencias
-							de consentimiento.
-						</p>
-					</div>
-
-					<div class="lang">
-						<h2>🇨🇳 中文（普通话）</h2>
-						<p>
-							<span>⚠️</span>
-							<strong>JavaScript 已被禁用。</strong><br />
-							需要启用 JavaScript
-							以管理您对使用条款、隐私声明和同意偏好的确认。
-						</p>
-					</div>
-				</main>
-			</div>
+			{% include jcem/noscript-content.html %}
 		</noscript>
 	</body>
 </html>

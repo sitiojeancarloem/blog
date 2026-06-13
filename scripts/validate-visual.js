@@ -243,6 +243,53 @@ const validatePage = async (page, url, theme, viewportName) => {
 	});
 };
 
+const validateNoScriptPage = async (page, url, viewportName) => {
+	await page.goto(url, { waitUntil: 'networkidle' });
+	await page.waitForTimeout(150);
+
+	const result = await page.evaluate(() => {
+		const panel = document.querySelector('.jcem-noscript__panel');
+		const wrapper = document.querySelector('.main_jcem_wrapper');
+		const panelRect = panel?.getBoundingClientRect();
+		const wrapperStyle = wrapper ? window.getComputedStyle(wrapper) : null;
+
+		return {
+			hasPanel: Boolean(panelRect),
+			panelWidth: panelRect?.width || 0,
+			panelHeight: panelRect?.height || 0,
+			panelCenterOffset: panelRect
+				? Math.abs(panelRect.left + panelRect.width / 2 - window.innerWidth / 2)
+				: Number.POSITIVE_INFINITY,
+			wrapperDisplay: wrapperStyle?.display || '',
+			bodyText: document.body.innerText || '',
+		};
+	});
+
+	if (!result.hasPanel || result.panelWidth <= 1 || result.panelHeight <= 1) {
+		fail(`Painel noscript ausente em ${url} ${viewportName}`);
+	}
+
+	if (result.wrapperDisplay !== 'none') {
+		fail(`Conteudo do blog visivel sem JavaScript em ${url} ${viewportName}`);
+	}
+
+	if (result.panelCenterOffset > 3) {
+		fail(`Painel noscript descentralizado em ${url} ${viewportName}: ${result.panelCenterOffset}px`);
+	}
+
+	if (!result.bodyText.includes('JavaScript is disabled.') || !result.bodyText.includes('O JavaScript está desativado.')) {
+		fail(`Conteudo noscript incompleto em ${url} ${viewportName}`);
+	}
+
+	await page.screenshot({
+		path: path.join(
+			artifactDir,
+			`${url.replace(/\W+/g, '-') || 'home'}-noscript-${viewportName}.png`,
+		),
+		fullPage: true,
+	});
+};
+
 const server = await startServer();
 const address = server.address();
 const baseUrl = `http://127.0.0.1:${address.port}`;
@@ -262,6 +309,18 @@ try {
 		}
 
 		await context.close();
+
+		const noScriptContext = await browser.newContext({
+			javaScriptEnabled: false,
+			viewport,
+		});
+		const noScriptPage = await noScriptContext.newPage();
+
+		for (const pagePath of pages) {
+			await validateNoScriptPage(noScriptPage, `${baseUrl}${pagePath}`, viewport.name);
+		}
+
+		await noScriptContext.close();
 	}
 } finally {
 	await browser.close();
