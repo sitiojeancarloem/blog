@@ -2,6 +2,7 @@
 	// Cores: modo escuro sempre disponivel.
 	--dark--tblb: #51555d;
 	--dark--bg: radial-gradient(ellipse at center, #333 1%, #111 100%);
+	--dark--bg-solid: #111;
 	--dark--tc: #efefef;
 	--dark--mtc: #bbbbbb;
 	--dark--pri: #00adb5;
@@ -37,6 +38,7 @@
 	// Cores: modo claro sempre disponivel.
 	--clean--tblb: #bdc1c4;
 	--clean--bg: #f0ede5;
+	--clean--bg-solid: #f0ede5;
 	--clean--cbg: #fafafa;
 	--clean--cbgd: #bcc1c4;
 	--clean--tc: #222;
@@ -95,6 +97,7 @@ body > input.radio.jcem-theme-radio {
 	// Tema ativo: claro.
 	--tblb: var(--clean--tblb);
 	--bg: var(--clean--bg);
+	--bg-solid: var(--clean--bg-solid);
 	--cbg: var(--clean--cbg);
 	--cbgd: var(--clean--cbgd);
 	--tc: var(--clean--tc);
@@ -128,6 +131,7 @@ body > input.radio.jcem-theme-radio {
 	--text-color: var(--clean--text-color);
 
 	background: var(--bg) !important;
+	background-color: var(--bg-solid) !important;
 }
 
 body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
@@ -136,6 +140,7 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	// Tema ativo: escuro.
 	--tblb: var(--dark--tblb);
 	--bg: var(--dark--bg);
+	--bg-solid: var(--dark--bg-solid);
 	--cbg: var(--dark--cbg);
 	--cbgd: var(--dark--cbgd);
 	--tc: var(--dark--tc);
@@ -169,6 +174,7 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	--text-color: var(--dark--text-color);
 
 	background: var(--bg) !important;
+	background-color: var(--bg-solid) !important;
 }
 
 .main_jcem_wrapper h1,
@@ -558,18 +564,21 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	border-radius: 999px;
 	background: var(--fbg);
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+	line-height: 1;
 }
 
 .jcem-theme-toggle__option {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.625rem;
-	height: 1.625rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	margin: 0;
 	border-radius: 999px;
 	color: var(--mtc);
 	cursor: pointer;
-	font-size: 0.82rem;
+	font-size: 0.66rem;
+	line-height: 1;
 	transition:
 		background-color 0.2s ease,
 		color 0.2s ease,

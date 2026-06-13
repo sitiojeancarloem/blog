@@ -1,0 +1,4 @@
+Estado operacional:
+- AGENTS.md relido em 2026-06-13; ajustes aplicados em tema/validador visual.
+- Validações concluídas: npm run check, npm run build:prod, npm run validate:visual.
+- Pendências persistentes: nenhuma.

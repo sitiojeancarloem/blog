@@ -74,6 +74,16 @@ const startServer = async () =>
 		server.listen(0, '127.0.0.1', () => resolve(server));
 	});
 
+const seedCookieConsent = async (context) => {
+	await context.addInitScript(() => {
+		// PROTECAO: o banner de consentimento nao deve bloquear controles em validacao visual.
+		localStorage.setItem('silktideCookieBanner_InitialChoice', '1');
+		localStorage.setItem('silktideCookieChoice_obrigat_rios', 'true');
+		localStorage.setItem('silktideCookieChoice_estat_sticos', 'false');
+		localStorage.setItem('silktideCookieChoice_publicit_rios', 'false');
+	});
+};
+
 const contrastRatio = (foreground, background) => {
 	const parse = (value) => {
 		const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
@@ -123,12 +133,29 @@ const validatePage = async (page, url, theme, viewportName) => {
 		const readStyle = (selector) => {
 			const element = document.querySelector(selector);
 			if (!element) return null;
+
+			const effectiveBackgroundColor = (node) => {
+				let current = node;
+
+				while (current) {
+					const backgroundColor = window.getComputedStyle(current).backgroundColor;
+
+					if (backgroundColor && !backgroundColor.endsWith(', 0)') && backgroundColor !== 'transparent') {
+						return backgroundColor;
+					}
+
+					current = current.parentElement;
+				}
+
+				return window.getComputedStyle(document.documentElement).backgroundColor;
+			};
+
 			const style = window.getComputedStyle(element);
 			const rect = element.getBoundingClientRect();
 			return {
 				selector,
 				color: style.color,
-				backgroundColor: style.backgroundColor,
+				backgroundColor: effectiveBackgroundColor(element),
 				width: rect.width,
 				height: rect.height,
 			};
@@ -194,7 +221,7 @@ const validatePage = async (page, url, theme, viewportName) => {
 		}
 
 		if (style.selector === '.jcem-theme-toggle' && (style.width > 64 || style.height > 34)) {
-			fail(`Switch de tema fora do tamanho discreto em ${url} ${theme} ${viewportName}`);
+			fail(`Switch de tema fora do tamanho discreto em ${url} ${theme} ${viewportName}: ${style.width.toFixed(1)}x${style.height.toFixed(1)}px`);
 		}
 
 		const ratio = contrastRatio(style.color, style.backgroundColor);
@@ -300,6 +327,7 @@ try {
 
 	for (const viewport of viewports) {
 		const context = await browser.newContext({ viewport });
+		await seedCookieConsent(context);
 		const page = await context.newPage();
 
 		for (const pagePath of pages) {
