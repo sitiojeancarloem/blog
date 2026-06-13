@@ -111,6 +111,98 @@ const contrastRatio = (foreground, background) => {
 	return (lighter + 0.05) / (darker + 0.05);
 };
 
+const validateMobileMenu = async (page, url, theme, viewportName) => {
+	if (viewportName !== 'mobile') {
+		return;
+	}
+
+	await page.locator('.jcem-nav-toggle').click();
+	await page.waitForFunction(() => {
+		const menu = document.querySelector('.greedy-nav .visible-links');
+		return menu && window.getComputedStyle(menu).opacity === '1';
+	});
+
+	const result = await page.evaluate(() => {
+		const menu = document.querySelector('.greedy-nav .visible-links');
+		const backdrop = document.querySelector('.jcem-nav-backdrop');
+		const navState = document.querySelector('#jcem-nav-state');
+		const menuRect = menu?.getBoundingClientRect();
+		const backdropRect = backdrop?.getBoundingClientRect();
+		const menuStyle = menu ? window.getComputedStyle(menu) : null;
+		const backdropStyle = backdrop ? window.getComputedStyle(backdrop) : null;
+
+		return {
+			checked: Boolean(navState?.checked),
+			menu: menuRect && menuStyle
+				? {
+						width: menuRect.width,
+						height: menuRect.height,
+						opacity: menuStyle.opacity,
+						filter: menuStyle.filter,
+						backdropFilter: menuStyle.backdropFilter,
+						zIndex: Number.parseInt(menuStyle.zIndex, 10) || 0,
+					}
+				: null,
+			backdrop: backdropRect && backdropStyle
+				? {
+						width: backdropRect.width,
+						height: backdropRect.height,
+						display: backdropStyle.display,
+						backdropFilter: backdropStyle.backdropFilter,
+						zIndex: Number.parseInt(backdropStyle.zIndex, 10) || 0,
+					}
+				: null,
+			viewport: {
+				width: window.innerWidth,
+				height: window.innerHeight,
+			},
+		};
+	});
+
+	if (!result.checked) {
+		fail(`Menu mobile nao abriu em ${url} ${theme}`);
+	}
+
+	if (!result.menu || result.menu.width <= 1 || result.menu.height <= 1 || result.menu.opacity !== '1') {
+		fail(`Menu mobile invisivel em ${url} ${theme}`);
+	}
+
+	if (result.menu.filter !== 'none' || result.menu.backdropFilter !== 'none') {
+		fail(`Menu mobile desfocado em ${url} ${theme}`);
+	}
+
+	if (!result.backdrop || result.backdrop.display === 'none') {
+		fail(`Backdrop do menu ausente em ${url} ${theme}`);
+	}
+
+	if (result.backdrop.width < result.viewport.width || result.backdrop.height < result.viewport.height) {
+		fail(`Backdrop do menu nao cobre a janela em ${url} ${theme}`);
+	}
+
+	if (!result.backdrop.backdropFilter.includes('blur')) {
+		fail(`Backdrop do menu sem blur em ${url} ${theme}`);
+	}
+
+	if (result.menu.zIndex <= result.backdrop.zIndex) {
+		fail(`Menu mobile abaixo do backdrop em ${url} ${theme}`);
+	}
+
+	await page.screenshot({
+		path: path.join(
+			artifactDir,
+			`${url.replace(/\W+/g, '-') || 'home'}-${theme}-${viewportName}-menu.png`,
+		),
+		fullPage: true,
+	});
+
+	await page.evaluate(() => {
+		const navState = document.querySelector('#jcem-nav-state');
+		if (navState) {
+			navState.checked = false;
+		}
+	});
+};
+
 const validatePage = async (page, url, theme, viewportName) => {
 	await page.goto(url, { waitUntil: 'networkidle' });
 
@@ -268,6 +360,8 @@ const validatePage = async (page, url, theme, viewportName) => {
 		),
 		fullPage: true,
 	});
+
+	await validateMobileMenu(page, url, theme, viewportName);
 };
 
 const validateNoScriptPage = async (page, url, viewportName) => {
