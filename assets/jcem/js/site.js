@@ -68,9 +68,12 @@ const bindJcemScrollTop = () => {
     const syncVisibility = () => {
         ticking = false;
         const isVisible = window.scrollY > 240;
+        const isNearPageEnd = window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 96;
         button.classList.toggle('is-visible', isVisible);
         button.setAttribute('aria-hidden', String(!isVisible));
         button.tabIndex = isVisible ? 0 : -1;
+        document.documentElement.classList.toggle('jcem-at-page-end', isNearPageEnd);
     };
     const requestSync = () => {
         if (!ticking) {

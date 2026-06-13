@@ -2,4 +2,6 @@ Estado operacional:
 - AGENTS.md relido em 2026-06-13; ajustes aplicados em tema/validador visual.
 - Validações concluídas: npm run check, npm run build:prod, npm run validate:visual.
 - Menu/header ajustados em 2026-06-13: links imediatos do header alinhados à direita; menu aberto nítido acima do backdrop; conteúdo externo desfocado via backdrop.
+- Ajustes visuais adicionais em 2026-06-13: ícones Font Awesome reexibidos, menu mobile dimensionado por conteúdo, controles flutuantes afastados da sobpostbar no fim da página.
+- Problema de ambiente: Browser interno falhou com CreateProcessAsUserW failed: 5; validação visual Playwright local executada com sucesso.
 - Pendências persistentes: nenhuma.

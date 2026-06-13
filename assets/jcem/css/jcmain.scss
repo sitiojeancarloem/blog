@@ -73,6 +73,12 @@
 	text-decoration: none;
 }
 
+.main_jcem_wrapper i.fas::before,
+.main_jcem_wrapper i.fab::before,
+.main_jcem_wrapper i.fa::before {
+	display: inline-block;
+}
+
 .masthead {
 	position: relative;
 	z-index: 10020;
@@ -380,9 +386,12 @@ footer ul.social-icons li i {
 		position: fixed;
 		top: 4.25rem;
 		right: 1rem;
-		left: 1rem;
+		left: auto;
 		z-index: 10000;
 		display: grid !important;
+		justify-items: end;
+		width: max-content;
+		max-width: calc(100vw - 2rem);
 		max-height: 0;
 		overflow: hidden;
 		padding: 0;
@@ -416,8 +425,10 @@ footer ul.social-icons li i {
 	.main_jcem_wrapper .greedy-nav .hidden-links a {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
 		min-height: 2.75rem;
 		padding: 0.6rem 0.9rem;
+		white-space: nowrap;
 	}
 
 	.jcem-nav-state:checked + .greedy-nav .visible-links,
@@ -432,11 +443,11 @@ footer ul.social-icons li i {
 	.jcem-nav-state:checked ~ .jcem-nav-backdrop {
 		position: fixed;
 		inset: 0;
-		z-index: 9990;
+		z-index: 9999;
 		display: block;
 		width: 100vw;
 		height: 100vh;
-		background: rgba(0, 0, 0, 0.22);
+		background: rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(0.25rem);
 		cursor: pointer;
 	}
@@ -685,3 +696,13 @@ footer ul.social-icons li i {
 }
 
 @import '../consent-manager/silktide';
+
+@media (max-width: 600px) {
+	:root.jcem-at-page-end .jcem-scroll-top {
+		bottom: calc(4.25rem + env(safe-area-inset-bottom));
+	}
+
+	:root.jcem-at-page-end #silktide-cookie-icon {
+		bottom: calc(4.25rem + env(safe-area-inset-bottom));
+	}
+}

@@ -130,6 +130,7 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 		const backdropRect = backdrop?.getBoundingClientRect();
 		const menuStyle = menu ? window.getComputedStyle(menu) : null;
 		const backdropStyle = backdrop ? window.getComputedStyle(backdrop) : null;
+		const backdropTarget = document.elementFromPoint(8, Math.floor(window.innerHeight / 2));
 
 		return {
 			checked: Boolean(navState?.checked),
@@ -137,6 +138,7 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 				? {
 						width: menuRect.width,
 						height: menuRect.height,
+						right: Math.round(window.innerWidth - menuRect.right),
 						opacity: menuStyle.opacity,
 						filter: menuStyle.filter,
 						backdropFilter: menuStyle.backdropFilter,
@@ -152,6 +154,7 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 						zIndex: Number.parseInt(backdropStyle.zIndex, 10) || 0,
 					}
 				: null,
+			backdropHit: backdropTarget === backdrop || Boolean(backdrop?.contains(backdropTarget)),
 			viewport: {
 				width: window.innerWidth,
 				height: window.innerHeight,
@@ -171,6 +174,14 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 		fail(`Menu mobile desfocado em ${url} ${theme}`);
 	}
 
+	if (result.menu.width >= result.viewport.width - 32) {
+		fail(`Menu mobile com largura total em ${url} ${theme}`);
+	}
+
+	if (result.menu.right > 24) {
+		fail(`Menu mobile desalinhado da direita em ${url} ${theme}`);
+	}
+
 	if (!result.backdrop || result.backdrop.display === 'none') {
 		fail(`Backdrop do menu ausente em ${url} ${theme}`);
 	}
@@ -181,6 +192,10 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 
 	if (!result.backdrop.backdropFilter.includes('blur')) {
 		fail(`Backdrop do menu sem blur em ${url} ${theme}`);
+	}
+
+	if (!result.backdropHit) {
+		fail(`Backdrop do menu nao cobre o conteudo externo em ${url} ${theme}`);
 	}
 
 	if (result.menu.zIndex <= result.backdrop.zIndex) {
@@ -256,6 +271,16 @@ const validatePage = async (page, url, theme, viewportName) => {
 		const siteTitle = document.querySelector('.site-title')?.getBoundingClientRect();
 		const scrollTop = document.querySelector('.jcem-scroll-top');
 		const scrollTopRect = scrollTop?.getBoundingClientRect();
+		const iconStyle = (selector) => {
+			const element = document.querySelector(selector);
+			const pseudo = element ? window.getComputedStyle(element, '::before') : null;
+			return pseudo
+				? {
+						display: pseudo.display,
+						content: pseudo.content,
+					}
+				: null;
+		};
 
 		return {
 			overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -273,6 +298,11 @@ const validatePage = async (page, url, theme, viewportName) => {
 						tabIndex: scrollTop.getAttribute('tabindex'),
 					}
 				: null,
+			icons: {
+				themeLight: iconStyle('label[for="jcem-theme-light"] i'),
+				themeDark: iconStyle('label[for="jcem-theme-dark"] i'),
+				scrollTop: iconStyle('.jcem-scroll-top i'),
+			},
 			styles: [
 				readStyle('.main_jcem_wrapper'),
 				readStyle('.masthead'),
@@ -297,6 +327,12 @@ const validatePage = async (page, url, theme, viewportName) => {
 
 	if (!result.scrollTopButton) {
 		fail(`Botao de retorno ao topo ausente em ${url} ${theme} ${viewportName}`);
+	}
+
+	for (const [name, icon] of Object.entries(result.icons)) {
+		if (!icon || icon.display === 'none' || icon.content === 'none' || icon.content === '""') {
+			fail(`Icone Font Awesome ausente em ${url} ${theme} ${viewportName}: ${name}`);
+		}
 	}
 
 	if (result.scrollTopButton.width < 42 || result.scrollTopButton.height < 42) {
@@ -347,6 +383,58 @@ const validatePage = async (page, url, theme, viewportName) => {
 
 		if (scrolledState.right < 0 || scrolledState.bottom < 0) {
 			fail(`Botao de retorno ao topo fora da janela em ${url} ${theme} ${viewportName}`);
+		}
+
+		if (viewportName === 'mobile') {
+			await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+			await page.waitForTimeout(300);
+
+			const bottomState = await page.evaluate(() => {
+				const scrollTop = document.querySelector('.jcem-scroll-top');
+				const silktide = document.querySelector('#silktide-cookie-icon');
+				const footerBars = Array.from(document.querySelectorAll('.sobpostbar'));
+				const footerBar = footerBars.at(-1);
+				const rectFor = (element) => {
+					const rect = element?.getBoundingClientRect();
+					return rect
+						? {
+								top: rect.top,
+								right: rect.right,
+								bottom: rect.bottom,
+								left: rect.left,
+								width: rect.width,
+								height: rect.height,
+							}
+						: null;
+				};
+				const overlaps = (a, b) =>
+					Boolean(a && b) &&
+					a.left < b.right &&
+					a.right > b.left &&
+					a.top < b.bottom &&
+					a.bottom > b.top;
+
+				return {
+					atPageEnd: document.documentElement.classList.contains('jcem-at-page-end'),
+					scrollTop: rectFor(scrollTop),
+					silktide: rectFor(silktide),
+					footerBar: rectFor(footerBar),
+					scrollTopOverlap: overlaps(rectFor(scrollTop), rectFor(footerBar)),
+					silktideOverlap: overlaps(rectFor(silktide), rectFor(footerBar)),
+				};
+			});
+
+			if (!bottomState.atPageEnd) {
+				fail(`Estado de fim da pagina ausente em ${url} ${theme} ${viewportName}`);
+			}
+
+			if (bottomState.scrollTopOverlap) {
+				fail(`Botao de retorno ao topo sobreposto a sobpostbar em ${url} ${theme}`);
+			}
+
+			if (bottomState.silktideOverlap) {
+				fail(`Icone Silktide sobreposto a sobpostbar em ${url} ${theme}`);
+			}
 		}
 
 		await page.locator('.jcem-scroll-top').click();
