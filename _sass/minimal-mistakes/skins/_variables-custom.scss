@@ -34,9 +34,9 @@
 	--dark--jcem-article-fade: linear-gradient(
 		to bottom,
 		rgba(0, 0, 0, 0) 0%,
-		rgba(0, 0, 0, 0) 42%,
-		#000 72%,
-		rgba(0, 0, 0, 0) 100%
+		rgba(0, 0, 0, 0) 34%,
+		rgba(0, 0, 0, 0.78) 76%,
+		#000 100%
 	);
 	--dark--jcem-quote-bg: #2b303b;
 	--dark--jcem-alert-bg: #3c222a;
@@ -81,7 +81,9 @@
 	--clean--jcem-article-bg: #efefef;
 	--clean--jcem-article-fade: linear-gradient(
 		to bottom,
-		rgba(239, 239, 239, 0.94) 0%,
+		rgba(239, 239, 239, 0) 0%,
+		rgba(239, 239, 239, 0) 34%,
+		rgba(239, 239, 239, 0.86) 76%,
 		#efefef 100%
 	);
 	--clean--jcem-quote-bg: #f4f8fa;
@@ -506,12 +508,12 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 
 .main_jcem_wrapper .jcem-featured-style--wide .page__inner-wrap::before {
 	position: absolute;
-	top: clamp(-4.5rem, -8vh, -2.75rem);
+	top: clamp(-5.25rem, -10vh, -3.25rem);
 	right: 0;
 	left: 0;
 	z-index: 0;
 	display: block;
-	height: clamp(4rem, 8vh, 5rem);
+	height: clamp(6rem, 12vh, 7rem);
 	background: var(--jcem-article-fade);
 	content: '';
 	pointer-events: none;

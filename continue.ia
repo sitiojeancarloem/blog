@@ -11,4 +11,5 @@ Estado operacional:
 - Footnotes em 2026-06-13: marcadores inline ajustados sem borda/fundo/ícone externo; tooltip populado via TypeScript a partir das notas renderizadas; validações npm e Playwright local concluídas.
 - Devaneios em 2026-06-13: Referências e Bibliografia separadas em blocos recolhíveis, notas abrem Referências automaticamente, colunas Markdown responsivas adicionadas e destaque wide reposicionado; build e validação visual concluídos.
 - UI Devaneios em 2026-06-14: componentes de colunas/colapsáveis receberam aliases exportáveis, linhas amarelas e ícones sociais ajustados por tema, footnotes alinhados, logo extrapola a barra sem ampliar altura, e artigo wide recebeu fundo/fade conforme modo; build e validação visual concluídos.
+- UI Devaneios em 2026-06-14: logo ajustado com slot fixo para extrapolar ~10% abaixo da masthead sem tocar o topo nem ampliar a barra; fade/crop wide invertido para transparente sobre a imagem e sólido no início do artigo; build e validação visual concluídos.
 - Pendências persistentes: nenhuma.
