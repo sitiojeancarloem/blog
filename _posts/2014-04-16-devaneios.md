@@ -1,14 +1,14 @@
 ---
-title: "Devaneios"
-author: "jeancarlo"
-date: "2014-04-16T00:55:57-03:00"
-last_modified_at: "2020-10-08T00:40:55-03:00"
-description: "O que é real? Seria tudo uma ilusão, um delírio da mente? Existe uma verdade absoluta ou é relativo? Qual é a verdade? É possível encontrá-la?"
-source: "https://web.archive.org/web/20230209191918/https://blog.jeancarloem.com/devaneios/"
+title: 'Devaneios'
+author: 'jeancarlo'
+date: '2014-04-16T00:55:57-03:00'
+last_modified_at: '2020-10-08T00:40:55-03:00'
+description: 'O que é real? Seria tudo uma ilusão, um delírio da mente? Existe uma verdade absoluta ou é relativo? Qual é a verdade? É possível encontrá-la?'
+source: 'https://web.archive.org/web/20230209191918/https://blog.jeancarloem.com/devaneios/'
 featured_image_style: wide
 header:
-  image: "/assets/images/posts/devaneios/devaneios-grande.png"
-  image_description: "Devaneios"
+  image: '/assets/images/posts/devaneios/devaneios-grande.png'
+  image_description: 'Devaneios'
 categories:
   - ciência
   - Destaque
@@ -28,7 +28,7 @@ tags:
   - renascentismo
   - universionalismo
 toc: true
-toc_label: "Sumário"
+toc_label: 'Sumário'
 ---
 
 > Penso, logo Existo
@@ -59,10 +59,10 @@ Os humanos da recém-inaugurada [idade moderna](https://pt.wikipedia.org/wiki/Id
 
 O dicionário define “convicção” como “certeza” e associa o substantivo “crença”[^16] à convicção como um sinônimo ao defini-la como “convicção íntima”[^17][^18][^19]. Exemplificando, aquele que é convicto, crê; da mesma forma, o que crê, é convicto. Se o indivíduo crê, ou seja é convicto, ele tem uma crença[^20], uma convicção. Convicção é algo que se tem, embora conceitualmente intangível. Neste artigo “convicção” será melhor analisada, mas por ora, conforme definição do dicionário, pode-se concluir convicção como:
 
-> -   Certeza;
-> -   Crença;
-> -   Opinião[^21];
-> -   “Ideia na qual se acredita e portanto se tem como certa.”
+> - Certeza;
+> - Crença;
+> - Opinião[^21];
+> - “Ideia na qual se acredita e portanto se tem como certa.”
 
 Em termos práticos, convicção é o resultado natural do pensamento humano[^22][^23]. Mas humanos pensam? De fato todos pensam, talvez não da forma como deveriam, da forma correta, se é que existe uma forma correta. Mas pensam! Baseado no conhecimento adquirido até o presente, formam-se [convicções](https://pt.wiktionary.org/wiki/convicção) sobre o que é real e o que não é, sobre o que é verdade e o que é falso. Independentemente do grau e profundidade do conhecimento adquirido, é sobre ele[^22][^23][^24][^25], que se baseiam todos os princípios, crenças e convicções.
 
@@ -94,14 +94,9 @@ A relatividade é um conceito amplo, antigo[^26] e cientificamente verificável[
 
 Existem muitas alegorias que tentam ilustrar a relatividade. Uma delas, simplória, mas o suficiente para o caso, considera a existência de dois observadores. Um deles encontra-se na lua _(B)_, enquanto o outro na terra _(A)_. Do ponto de vista do observador _“B”_, a terra gira em torno da lua, e do ponto de vista do observador _“A”_, é a lua que gira em torno da terra. Ambos tiram sua conclusão em evidências verificáveis. Qualquer um pode olhar ao céu e observar a evidência diante de seus olhos, e diante destas evidências ambos estão corretos. Neste caso o conhecimento é relativo à perspectiva do observador e ao método utilizado. Entretanto o conhecimento obtido através da perspectiva do observador limita a compreensão do todo.
 
-![Relatividade entre lua e terra.](/assets/images/posts/devaneios/RELATIVIDADE-LUA_TERRA.jpg)
+![Lua e tarra, observadores.](/assets/images/posts/devaneios/vistas-lua-terra-ccbysa-jcem.png)
 {: .jcem-image-full }
 
-{% capture jcem_relativity_columns %}
-![Lua vista da terra.](/assets/images/posts/devaneios/LuaVistadaTerra_cc0.jpg)
-<!-- column -->
-![Terra vista da lua.](/assets/images/posts/devaneios/terraVistadaLua_cc0.jpg)
-{% endcapture %}
 {% include jcem/components/columns.html content=jcem_relativity_columns columns=2 %}
 
 Este exemplo, bem como o “das fachadas de restaurantes”, demonstram a relatividade do conhecimento humano indicando também a fragilidade humana na percepção do todo, o que prejudica notoriamente suas convicções. Por isso talvez, nenhum dos pontos, relativismo ou absolutismo, está correto, mas possivelmente um “_convergencialismo_“.
@@ -122,7 +117,7 @@ Devido à verificabilidade do “conhecimento relativo”, existe uma enorme con
 
 Da mesma forma que a percepção humana não muda ou desvirtua o “conhecimento absoluto”, o mesmo, não invalidará necessariamente o “conhecimento relativo” obtido da perspectiva humana, já que há possibilidade de que a perspectiva humana e o método utilizado traduzam um conhecimento relativo que reflita com exatidão pelo menos uma fração do “conhecimento absoluto”.
 
-Entretanto é impossível ao homem saber, para além do questionamento e independentemente do método ou da perspectiva, se determinado conhecimento é absoluto, uma vez que o conhecimento é ilimitado e a capacidade cerebral humana é limitada[^33] – limite este ainda desconhecido[^33]. “Colocar” o conhecimento infinito em um recipiente (cérebro) finito[^34] é irracional, e traduz a impossibilidade humana de compreender a totalidade do conhecimento[^35]. Além disso, uma percepção não relativista exigiria do homem extrapolar sua própria existência a fim de perceber “o todo” de forma impessoal. 
+Entretanto é impossível ao homem saber, para além do questionamento e independentemente do método ou da perspectiva, se determinado conhecimento é absoluto, uma vez que o conhecimento é ilimitado e a capacidade cerebral humana é limitada[^33] – limite este ainda desconhecido[^33]. “Colocar” o conhecimento infinito em um recipiente (cérebro) finito[^34] é irracional, e traduz a impossibilidade humana de compreender a totalidade do conhecimento[^35]. Além disso, uma percepção não relativista exigiria do homem extrapolar sua própria existência a fim de perceber “o todo” de forma impessoal.
 
 ![ilustração do Conhecimento.](/assets/images/posts/devaneios/CONHECIMENTO.svg)
 
@@ -138,10 +133,10 @@ Portanto qualquer convicção formada a partir de conhecimento parcial humano e 
 
 Muitas vezes conhecimento e verdade podem ser confundidos, entretanto conhecimento não é necessariamente verdade. Para compreender melhor, o dicionário lança luz a este conceito ao definir verdade da seguinte forma:
 
-> -   Conformidade com o real; **exatidão, realidade**: _a verdade do ocorrido_;
-> -   Coisa verdadeira ou certa: _A verdade foi escamoteada por todos._
-> -   Princípio certo: _A maioria das doutrinas políticas apresenta erros e verdades._
-> -   **Representação fiel de alguma coisa da natureza**: Há verdade neste quadro.
+> - Conformidade com o real; **exatidão, realidade**: _a verdade do ocorrido_;
+> - Coisa verdadeira ou certa: _A verdade foi escamoteada por todos._
+> - Princípio certo: _A maioria das doutrinas políticas apresenta erros e verdades._
+> - **Representação fiel de alguma coisa da natureza**: Há verdade neste quadro.
 >
 > — Dicionário Aurélio[^37]
 
@@ -193,7 +188,7 @@ Neste intervalo, inúmeras teorias mirabolantes formam-se no que não passa de m
 >
 > — [Parmênides](https://pt.wikipedia.org/wiki/Parmênides)
 
-Ao se referir à catástrofe de [Vajont](https://pt.wikipedia.org/wiki/Barragem_de_Vajont), o professor da University of East Anglia, David Petley, declarou a respeito da capacidade humana: “Vajont demonstra a estupidez do homem em seu fracasso em entender os sistemas naturais”[^41]. Não há dúvida que as convicções humanas, mesmo aquelas que são tachadas factuais pela dita “ciência dominante”, são na verdade racionalizações individuais e controversas de um conhecimento puramente relativo e especulativo. Como na brincadeira [“telefone sem fio”](https://pt.wikipedia.org/wiki/Telefone%20sem%20fio%20(brincadeira)), o “ruído” e infinitas variáveis incidentes no inesgotável “conhecimento absoluto” até que seja, em parcela desprezível absorvida pela finita mente humana – se é que é absorvido – é demasiado forte e longo, destruindo a efêmera chance de que o conhecimento humano, bem como suas convicções sejam de fato o espelho da realidade.
+Ao se referir à catástrofe de [Vajont](https://pt.wikipedia.org/wiki/Barragem_de_Vajont), o professor da University of East Anglia, David Petley, declarou a respeito da capacidade humana: “Vajont demonstra a estupidez do homem em seu fracasso em entender os sistemas naturais”[^41]. Não há dúvida que as convicções humanas, mesmo aquelas que são tachadas factuais pela dita “ciência dominante”, são na verdade racionalizações individuais e controversas de um conhecimento puramente relativo e especulativo. Como na brincadeira [“telefone sem fio”](<https://pt.wikipedia.org/wiki/Telefone%20sem%20fio%20(brincadeira)>), o “ruído” e infinitas variáveis incidentes no inesgotável “conhecimento absoluto” até que seja, em parcela desprezível absorvida pela finita mente humana – se é que é absorvido – é demasiado forte e longo, destruindo a efêmera chance de que o conhecimento humano, bem como suas convicções sejam de fato o espelho da realidade.
 
 Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pensamento dominante” que arbitrariamente e preconceituosamente discrimina, descarta, persegue e limita qualquer outro que se oponha[^42][^43][^44], sem, contudo, deixar de ser, como muitos outros antes e muitos outros que virão, simples **devaneios**, ilusões de mentes limitadas que somente demonstram o conturbado mundo onde nada mudou, e onde a única certeza científica a que se pode chegar ainda é: **“Penso, logo existo”,** as palavras de Carlos Cony encerram poeticamente a triste realidade humana:
 
@@ -215,7 +210,7 @@ Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pe
 
 [^6]: SILVA, Rodrigo. Evidências: Galileu Galilei, o Cientista de DEUS. _(página em [português)](https://pt.wikipedia.org/wiki/Lingua%20Portuguesa)_. Página visitada em 11/04/2014.
 
-[^7]: SILVA, Rodrigo. “EVIDÊNCIAS: A Idade das Trevas.” Parte 1 e Parte 2  (em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa). Vídeos visitados em 15/04/2014.
+[^7]: SILVA, Rodrigo. “EVIDÊNCIAS: A Idade das Trevas.” Parte 1 e Parte 2 (em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa). Vídeos visitados em 15/04/2014.
 
 [^8]: Wikipedia. [Idade Moderna](https://en.wikipedia.org/wiki/Early_modern_period) _(página em [inglês)](https://pt.wikipedia.org/wiki/Lingua%20Inglesa)_. Página visitada em 15/03/2014.
 
@@ -257,7 +252,7 @@ Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pe
 
 [^27]: ROBERTS, Tom; SCHLEIF, Siegmar. (Outubro de 2007). [“Qual é a base experimental da Relatividade Especial?”](https://www.edu-observatory.org/physics-faq/Relativity/SR/experiments.html) . _Usenet Física FAQ_ . Retirado 2008/09/17 .
 
-[^28]: O Globo.  [Descoberta de par de estrelas reforça teoria da Relatividade de Einstein](https://g1.globo.com/ciencia-e-saude/noticia/2013/04/descoberta-de-par-de-estrelas-reforca-teoria-da-relatividade-de-einstein.html) _(página em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa)_. Notícia de 26/04/2013. Página visitada em 08/02/2014.
+[^28]: O Globo. [Descoberta de par de estrelas reforça teoria da Relatividade de Einstein](https://g1.globo.com/ciencia-e-saude/noticia/2013/04/descoberta-de-par-de-estrelas-reforca-teoria-da-relatividade-de-einstein.html) _(página em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa)_. Notícia de 26/04/2013. Página visitada em 08/02/2014.
 
 [^29]: [Superinteressante](https://pt.wikipedia.org/wiki/Super%20interessante). [A Prova que Faltava](https://super.abril.com.br/tecnologia/curvatura-espaco-tempo-sol-prova-faltava-439102.shtml) _(página em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa)_. Página visitada em 08/02/2014.
 
@@ -271,7 +266,7 @@ Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pe
 
 [^34]: Raciocínio Cristão. O arquiteto da vida: Quanta informação o corpo humano possui? _(página em [português)](https://pt.wikipedia.org/wiki/Lingua%20Portuguesa)_. Página visitada em 19/12/2014.
 
-[^35]: [History Channel](https://blog.jeancarloem.com/History%20(TV%20channel)). [Humanos estão ficando mais “burros”, indica polêmico estudo](https://noticias.seuhistory.com/humanos-estao-ficando-mais-burros-indica-polemico-estudo) (em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa). Página visitada em 11/02/2014.
+[^35]: [History Channel](<https://blog.jeancarloem.com/History%20(TV%20channel)>). [Humanos estão ficando mais “burros”, indica polêmico estudo](https://noticias.seuhistory.com/humanos-estao-ficando-mais-burros-indica-polemico-estudo) (em [português)](https://pt.wikipedia.org/wiki/Lingua%20portuguesa). Página visitada em 11/02/2014.
 
 [^36]: MEDAWAR, Peter Brian. [Conselhos a um jovem cientista](#CJC).
 
@@ -294,23 +289,23 @@ Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pe
 ## Bibliografia
 
 - LINDBERG, David C.. (2003). “When Science & Christianity Meet”. Chicago: Chicago University Press;
-{: #ref_Lindberg_2013 }
+  {: #ref_Lindberg_2013 }
 - DAVIES, Norman. Europe: A History. Oxford: Oxford University Press, 1996. ISBN 0-19-520912-5;
-{: #ref_Davies_1996 }
+  {: #ref_Davies_1996 }
 - RUSSELL, Jeffrey Burton. Inventing the Flat Earth-Columbus and Modern Historians. Westport, CT: Praeger, 1991. ISBN 0-275-95904-X;
-{: #ref_Russell_1991 }
+  {: #ref_Russell_1991 }
 - DESCARTES, René. Meditações Metafísicas. Tradução de Bento Prado Junior e J. Guinburg (Coleção Pensadores, Ed. Victor Civita, Abril Cultural, São Paulo, 1973);
 - ROCHA, Ethel Menezes. Observações sobre a dúvida cartesiana;
-{: #ref_ethel }
+  {: #ref_ethel }
 - FERREIRA, Aurélio Buarque de Holanda. O Novo Dicionário Aurélio da Língua Portuguesa. 3ª edição. 1ª impressão da Editora Positivo, revista e atualizada do Aurélio Século XXI, O Dicionário da Língua Portuguesa, contendo 435 mil verbetes, locuções e definições; Versão Digital Positivo.
-{: #ref_aurelio_2004 }
+  {: #ref_aurelio_2004 }
 - BORBA, Francisco da Silva. Dicionário UNESP do português contemporâneo. Editora UNESP, 2004. ISBN: 8-57-1395764-4;
-{: #dicioUnesp }
+  {: #dicioUnesp }
 - [Wikipédia;](https://pt.wikipedia.org/wiki/Wikipedia)
-{: #wikipedia }
+  {: #wikipedia }
 - [Wikicionário;](https://pt.wikipedia.org/wiki/Wikicionário)
-{: #wikicionario }
+  {: #wikicionario }
 - GEISLER, Norman. TUREK, Frank. Não tenho fé suficiente para ser ateu. Tradução Emison Justino. 2ª impressão. ISBN: 8-57-367928.
-{: #fe_ateu }
+  {: #fe_ateu }
 - **[MEDAWAR](https://pt.wikipedia.org/wiki/Peter%20Brian%20Medawar)**, Peter Brian. Conselhos a um jovem cientista.
-{: #CJC }
+  {: #CJC }
