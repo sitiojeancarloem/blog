@@ -3,6 +3,7 @@ Estado operacional:
 - Validações concluídas: npm run check, npm run build:prod, npm run validate:visual.
 - Menu/header ajustados em 2026-06-13: links imediatos do header alinhados à direita; menu aberto nítido acima do backdrop; conteúdo externo desfocado via backdrop.
 - Ajustes visuais adicionais em 2026-06-13: ícones Font Awesome reexibidos, menu mobile dimensionado por conteúdo, controles flutuantes afastados da sobpostbar no fim da página.
+- Header mobile em 2026-06-13: controles substitutos do menu alinhados à direita com logo preservado à esquerda; validação visual atualizada.
 - Problema de ambiente: Browser interno falhou com CreateProcessAsUserW failed: 5; validação visual Playwright local executada com sucesso.
 - GitHub Actions em 2026-06-13: npm ci falhava sem package-lock versionado; .gitignore ajustado para permitir package-lock.json e npm ci --dry-run validado.
 - Pendências persistentes: nenhuma.

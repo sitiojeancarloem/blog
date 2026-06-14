@@ -10,6 +10,7 @@ const pages = ['/', '/sobre/'];
 const themes = ['dark', 'light'];
 const viewports = [
 	{ name: 'desktop', width: 1366, height: 768 },
+	{ name: 'reduced', width: 900, height: 700 },
 	{ name: 'mobile', width: 390, height: 844 },
 ];
 
@@ -111,8 +112,8 @@ const contrastRatio = (foreground, background) => {
 	return (lighter + 0.05) / (darker + 0.05);
 };
 
-const validateMobileMenu = async (page, url, theme, viewportName) => {
-	if (viewportName !== 'mobile') {
+const validateCompactMenu = async (page, url, theme, viewportName) => {
+	if (viewportName === 'desktop') {
 		return;
 	}
 
@@ -163,23 +164,23 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 	});
 
 	if (!result.checked) {
-		fail(`Menu mobile nao abriu em ${url} ${theme}`);
+		fail(`Menu compacto nao abriu em ${url} ${theme} ${viewportName}`);
 	}
 
 	if (!result.menu || result.menu.width <= 1 || result.menu.height <= 1 || result.menu.opacity !== '1') {
-		fail(`Menu mobile invisivel em ${url} ${theme}`);
+		fail(`Menu compacto invisivel em ${url} ${theme} ${viewportName}`);
 	}
 
 	if (result.menu.filter !== 'none' || result.menu.backdropFilter !== 'none') {
-		fail(`Menu mobile desfocado em ${url} ${theme}`);
+		fail(`Menu compacto desfocado em ${url} ${theme} ${viewportName}`);
 	}
 
 	if (result.menu.width >= result.viewport.width - 32) {
-		fail(`Menu mobile com largura total em ${url} ${theme}`);
+		fail(`Menu compacto com largura total em ${url} ${theme} ${viewportName}`);
 	}
 
 	if (result.menu.right > 24) {
-		fail(`Menu mobile desalinhado da direita em ${url} ${theme}`);
+		fail(`Menu compacto desalinhado da direita em ${url} ${theme} ${viewportName}`);
 	}
 
 	if (!result.backdrop || result.backdrop.display === 'none') {
@@ -199,7 +200,7 @@ const validateMobileMenu = async (page, url, theme, viewportName) => {
 	}
 
 	if (result.menu.zIndex <= result.backdrop.zIndex) {
-		fail(`Menu mobile abaixo do backdrop em ${url} ${theme}`);
+		fail(`Menu compacto abaixo do backdrop em ${url} ${theme} ${viewportName}`);
 	}
 
 	await page.screenshot({
@@ -281,6 +282,18 @@ const validatePage = async (page, url, theme, viewportName) => {
 					}
 				: null;
 		};
+		const rectInfo = (selector) => {
+			const element = document.querySelector(selector);
+			const rect = element?.getBoundingClientRect();
+
+			return rect
+				? {
+						left: Math.round(rect.left),
+						right: Math.round(rect.right),
+						width: Math.round(rect.width),
+					}
+				: null;
+		};
 
 		return {
 			overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -302,6 +315,12 @@ const validatePage = async (page, url, theme, viewportName) => {
 				themeLight: iconStyle('label[for="jcem-theme-light"] i'),
 				themeDark: iconStyle('label[for="jcem-theme-dark"] i'),
 				scrollTop: iconStyle('.jcem-scroll-top i'),
+			},
+			headerControls: {
+				viewportWidth: window.innerWidth,
+				logo: rectInfo('.site-logo'),
+				theme: rectInfo('.jcem-theme-toggle'),
+				navToggle: rectInfo('.jcem-nav-toggle'),
 			},
 			styles: [
 				readStyle('.main_jcem_wrapper'),
@@ -341,6 +360,26 @@ const validatePage = async (page, url, theme, viewportName) => {
 
 	if (result.scrollTopButton.visible || result.scrollTopButton.ariaHidden !== 'true' || result.scrollTopButton.tabIndex !== '-1') {
 		fail(`Botao de retorno ao topo visivel no topo em ${url} ${theme} ${viewportName}`);
+	}
+
+	if (viewportName !== 'desktop') {
+		const header = result.headerControls;
+
+		if (!header.logo || !header.theme || !header.navToggle) {
+			fail(`Controles do header ausentes em ${url} ${theme} ${viewportName}`);
+		}
+
+		if (header.logo.left > 24) {
+			fail(`Logo do header desalinhado da esquerda em ${url} ${theme} ${viewportName}`);
+		}
+
+		if (header.theme.left <= header.logo.right) {
+			fail(`Controles do header sobrepostos ou alinhados a esquerda em ${url} ${theme} ${viewportName}`);
+		}
+
+		if (header.viewportWidth - header.navToggle.right > 24) {
+			fail(`Controles do header desalinhados da direita em ${url} ${theme} ${viewportName}`);
+		}
 	}
 
 	for (const style of result.styles) {
@@ -449,7 +488,7 @@ const validatePage = async (page, url, theme, viewportName) => {
 		fullPage: true,
 	});
 
-	await validateMobileMenu(page, url, theme, viewportName);
+	await validateCompactMenu(page, url, theme, viewportName);
 };
 
 const validateNoScriptPage = async (page, url, viewportName) => {

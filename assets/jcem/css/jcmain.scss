@@ -367,13 +367,21 @@ footer ul.social-icons li i {
 		z-index: 10001;
 	}
 
+	.main_jcem_wrapper .greedy-nav .jcem-theme-toggle {
+		margin-left: auto;
+	}
+
+	.main_jcem_wrapper .greedy-nav .search__toggle,
+	.main_jcem_wrapper .greedy-nav .jcem-nav-toggle {
+		margin-left: 0.25rem;
+	}
+
 	.jcem-nav-toggle {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		width: 2.25rem;
 		height: 2.25rem;
-		margin-left: 0.25rem;
 		border: 1px solid var(--bc);
 		border-radius: 0.25rem;
 		background: var(--fbg);
