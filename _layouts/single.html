@@ -1,0 +1,133 @@
+---
+layout: default
+---
+{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
+{% assign jcem_featured_style = page.featured_image_style | default: page.featured_image.style | default: page.header.image_style | default: page.header.featured_style | default: "" | downcase %}
+{% if jcem_featured_style == "inline" %}
+  {% assign jcem_featured_style = "content" %}
+{% elsif jcem_featured_style == "full" or jcem_featured_style == "full-width" or jcem_featured_style == "bleed" %}
+  {% assign jcem_featured_style = "wide" %}
+{% endif %}
+{% assign jcem_featured_image_path = "" %}
+{% if page.featured_image.path %}
+  {% assign jcem_featured_image_path = page.featured_image.path %}
+{% elsif page.featured_image.url %}
+  {% assign jcem_featured_image_path = page.featured_image.url %}
+{% elsif page.featured_image.src %}
+  {% assign jcem_featured_image_path = page.featured_image.src %}
+{% elsif page.featured_image.image %}
+  {% assign jcem_featured_image_path = page.featured_image.image %}
+{% elsif page.featured_image %}
+  {% assign jcem_featured_image_path = page.featured_image %}
+{% elsif page.header.image %}
+  {% assign jcem_featured_image_path = page.header.image %}
+{% elsif page.header.overlay_image %}
+  {% assign jcem_featured_image_path = page.header.overlay_image %}
+{% endif %}
+{% assign jcem_custom_featured = false %}
+{% if jcem_featured_image_path != "" %}
+  {% if jcem_featured_style == "wide" or jcem_featured_style == "content" %}
+    {% assign jcem_custom_featured = true %}
+  {% endif %}
+{% endif %}
+{% assign jcem_content_featured = false %}
+{% if jcem_custom_featured and jcem_featured_style == "content" %}
+  {% assign jcem_content_featured = true %}
+{% endif %}
+{% assign jcem_overlay_header = false %}
+{% if page.header.overlay_color or page.header.overlay_image %}
+  {% assign jcem_overlay_header = true %}
+{% endif %}
+{% if jcem_custom_featured %}
+  {% assign jcem_overlay_header = false %}
+{% endif %}
+
+{% if jcem_custom_featured and jcem_featured_style == "wide" %}
+  {% include jcem/post-featured-image.html style="wide" %}
+{% elsif page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html locale=locale %}
+{% elsif page.header.video.id and page.header.video.provider %}
+  {% include page__hero_video.html %}
+{% endif %}
+
+{% assign breadcrumbs_enabled = site.breadcrumbs %}
+{% if page.breadcrumbs != null %}
+  {% assign breadcrumbs_enabled = page.breadcrumbs %}
+{% endif %}
+{% if page.url != "/" and breadcrumbs_enabled %}
+  {% unless paginator %}
+    {% include breadcrumbs.html locale=locale %}
+  {% endunless %}
+{% endif %}
+
+<div id="main" role="main">
+  {% include sidebar.html locale=locale %}
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | replace: '|', '&#124;' | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+    {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+
+    <div class="page__inner-wrap">
+      {% unless jcem_overlay_header %}
+        <header class="jcem-post-header">
+          {% if jcem_content_featured %}
+            {% include jcem/post-featured-image.html style="content" %}
+          {% else %}
+            {% include jcem/post-date-flag.html %}
+          {% endif %}
+          {% if page.title -%}
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="{{ page.url | absolute_url }}" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+          </h1>
+          {%- endif %}
+          {% include jcem/post-read-time.html locale=locale %}
+        </header>
+      {% endunless %}
+
+      <section class="page__content e-content" itemprop="text">
+        {% if page.toc %}
+          <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[locale].toc_label | default: "On this page" }}</h4></header>
+              {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
+            </nav>
+          </aside>
+        {% endif %}
+        {{ content }}
+        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+      </section>
+
+      <footer class="page__meta">
+        {% if site.data.ui-text[locale].meta_label %}
+          <h4 class="page__meta-title">{{ site.data.ui-text[locale].meta_label }}</h4>
+        {% endif %}
+        {% include page__taxonomy.html locale=locale %}
+      </footer>
+
+      {% if page.share %}{% include social-share.html locale=locale %}{% endif %}
+
+      {% include post_pagination.html locale=locale %}
+    </div>
+
+    {% if site.comments.provider and page.comments %}
+      {% if jekyll.environment == 'production' %}
+        {% include comments.html locale=locale %}
+      {% else %}
+        <p>
+          Comments are configured with provider: <strong>{{ site.comments.provider }}</strong>,
+          but are disabled in non-production environments.
+        </p>
+      {% endif %}
+    {% endif %}
+  </article>
+
+  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
+  {% if page.id and page.related and site.related_posts.size > 0 %}
+    {% include page__related.html locale=locale posts=site.related_posts %}
+  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
+  {% elsif page.id and page.related %}
+    {% include page__related.html locale=locale posts=site.posts %}
+  {% endif %}
+</div>
