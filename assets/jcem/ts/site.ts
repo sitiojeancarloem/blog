@@ -131,6 +131,47 @@ const bindJcemScrollTop = (): void => {
 	syncVisibility();
 };
 
+const footnoteSummaryMaxLength = 260;
+
+const summarizeFootnote = (text: string): string => {
+	const normalized = text.replace(/\s+/g, ' ').trim();
+
+	return normalized.length > footnoteSummaryMaxLength
+		? `${normalized.slice(0, footnoteSummaryMaxLength - 3).trim()}...`
+		: normalized;
+};
+
+const bindJcemFootnotes = (): void => {
+	document
+		.querySelectorAll<HTMLAnchorElement>(
+			"sup[id^='fnref'] a.footnote[href^='#fn:'], sup[id^='fnref'] a[role='doc-noteref'][href^='#fn:']",
+		)
+		.forEach((link) => {
+			const id = decodeURIComponent(link.hash.slice(1));
+			const note = document.getElementById(id);
+
+			if (!note) {
+				return;
+			}
+
+			const summaryNode = note.cloneNode(true) as HTMLElement;
+
+			summaryNode
+				.querySelectorAll('.reversefootnote, [role="doc-backlink"]')
+				.forEach((backlink) => backlink.remove());
+
+			const summary = summarizeFootnote(summaryNode.textContent || '');
+
+			if (!summary) {
+				return;
+			}
+
+			// FIX-BUG: tooltip usa a nota renderizada sem alterar o footnote kramdown.
+			link.dataset.footnote = summary;
+			link.setAttribute('aria-label', `Nota ${link.textContent || ''}: ${summary}`);
+		});
+};
+
 const hideNoScript = (): void => {
 	const noScript = select<HTMLElement>('body > noscript');
 
@@ -145,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	bindJcemTheme();
 	bindJcemNav();
 	bindJcemScrollTop();
+	bindJcemFootnotes();
 	hideNoScript();
 });
 

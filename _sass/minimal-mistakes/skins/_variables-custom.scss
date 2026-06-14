@@ -495,17 +495,71 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	line-height: 1.45;
 }
 
-.main_jcem_wrapper .footnote,
-.main_jcem_wrapper a[role='doc-noteref'] {
-	padding: 0 0.18em;
-	border: 1px solid var(--bc);
-	border-radius: 0.2rem;
-	background: var(--fbg);
+.main_jcem_wrapper sup[id^='fnref'] {
+	position: relative;
+	margin: 0 0.02em;
+	line-height: 0;
+}
+
+.main_jcem_wrapper sup[id^='fnref'] .footnote,
+.main_jcem_wrapper sup[id^='fnref'] a[role='doc-noteref'] {
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	padding: 0 0.04em;
+	border: 0;
+	background: transparent;
 	color: var(--link);
-	font-size: 0.72em;
-	font-weight: 700;
+	font-size: 0.68em;
+	font-weight: 800;
 	line-height: 1;
+	text-decoration: none;
 	vertical-align: super;
+}
+
+.main_jcem_wrapper sup[id^='fnref'] .footnote::after,
+.main_jcem_wrapper sup[id^='fnref'] a[role='doc-noteref']::after {
+	display: none !important;
+}
+
+.main_jcem_wrapper sup[id^='fnref'] .footnote[data-footnote]::before,
+.main_jcem_wrapper sup[id^='fnref'] a[role='doc-noteref'][data-footnote]::before {
+	position: absolute;
+	bottom: calc(100% + 0.55rem);
+	left: 50%;
+	z-index: 20;
+	display: block;
+	width: max-content;
+	max-width: min(24rem, calc(100vw - 2rem));
+	padding: 0.45rem 0.55rem;
+	border: 1px solid var(--bc);
+	border-radius: 0.25rem;
+	background: var(--fbg);
+	color: var(--tc);
+	font-family: inherit;
+	font-size: 0.78rem;
+	font-weight: 400;
+	line-height: 1.35;
+	text-align: left;
+	text-decoration: none;
+	text-transform: none;
+	white-space: normal;
+	box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.24);
+	content: attr(data-footnote);
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, 0.2rem);
+	transition:
+		opacity 0.12s ease 0.35s,
+		transform 0.12s ease 0.35s;
+}
+
+.main_jcem_wrapper sup[id^='fnref'] .footnote[data-footnote]:hover::before,
+.main_jcem_wrapper sup[id^='fnref'] .footnote[data-footnote]:focus-visible::before,
+.main_jcem_wrapper sup[id^='fnref'] a[role='doc-noteref'][data-footnote]:hover::before,
+.main_jcem_wrapper sup[id^='fnref'] a[role='doc-noteref'][data-footnote]:focus-visible::before {
+	opacity: 1;
+	transform: translate(-50%, 0);
 }
 
 .main_jcem_wrapper .reversefootnote,

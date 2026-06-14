@@ -88,6 +88,34 @@ const bindJcemScrollTop = () => {
     window.addEventListener('scroll', requestSync, { passive: true });
     syncVisibility();
 };
+const footnoteSummaryMaxLength = 260;
+const summarizeFootnote = (text) => {
+    const normalized = text.replace(/\s+/g, ' ').trim();
+    return normalized.length > footnoteSummaryMaxLength
+        ? `${normalized.slice(0, footnoteSummaryMaxLength - 3).trim()}...`
+        : normalized;
+};
+const bindJcemFootnotes = () => {
+    document
+        .querySelectorAll("sup[id^='fnref'] a.footnote[href^='#fn:'], sup[id^='fnref'] a[role='doc-noteref'][href^='#fn:']")
+        .forEach((link) => {
+        const id = decodeURIComponent(link.hash.slice(1));
+        const note = document.getElementById(id);
+        if (!note) {
+            return;
+        }
+        const summaryNode = note.cloneNode(true);
+        summaryNode
+            .querySelectorAll('.reversefootnote, [role="doc-backlink"]')
+            .forEach((backlink) => backlink.remove());
+        const summary = summarizeFootnote(summaryNode.textContent || '');
+        if (!summary) {
+            return;
+        }
+        link.dataset.footnote = summary;
+        link.setAttribute('aria-label', `Nota ${link.textContent || ''}: ${summary}`);
+    });
+};
 const hideNoScript = () => {
     const noScript = select('body > noscript');
     if (noScript) {
@@ -98,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bindJcemTheme();
     bindJcemNav();
     bindJcemScrollTop();
+    bindJcemFootnotes();
     hideNoScript();
 });
 export {};
