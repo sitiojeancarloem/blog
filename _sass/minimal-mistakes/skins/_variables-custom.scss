@@ -26,6 +26,18 @@
 	--dark--jcem-panel-line: rgba(43, 146, 219, 0.32);
 	--dark--jcem-panel-accent: #2b92db;
 	--dark--jcem-panel-accent-hot: #f4d400;
+	--dark--jcem-rule-color: #f4d400;
+	--dark--jcem-rule-shadow: rgba(244, 212, 0, 0.22);
+	--dark--jcem-social-color: rgba(234, 234, 234, 0.62);
+	--dark--jcem-social-color-hover: #f4d400;
+	--dark--jcem-article-bg: transparent;
+	--dark--jcem-article-fade: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(0, 0, 0, 0) 42%,
+		#000 72%,
+		rgba(0, 0, 0, 0) 100%
+	);
 	--dark--jcem-quote-bg: #2b303b;
 	--dark--jcem-alert-bg: #3c222a;
 	--dark--jcem-alert-border: #ce5763;
@@ -62,6 +74,16 @@
 	--clean--jcem-panel-line: rgba(47, 125, 149, 0.26);
 	--clean--jcem-panel-accent: #2f7d95;
 	--clean--jcem-panel-accent-hot: #b28700;
+	--clean--jcem-rule-color: #b08b00;
+	--clean--jcem-rule-shadow: rgba(176, 139, 0, 0.22);
+	--clean--jcem-social-color: #928d80;
+	--clean--jcem-social-color-hover: #6f6a5f;
+	--clean--jcem-article-bg: #efefef;
+	--clean--jcem-article-fade: linear-gradient(
+		to bottom,
+		rgba(239, 239, 239, 0.94) 0%,
+		#efefef 100%
+	);
 	--clean--jcem-quote-bg: #f4f8fa;
 	--clean--jcem-alert-bg: #fff3f3;
 	--clean--jcem-alert-border: #9f3a3a;
@@ -121,6 +143,12 @@ body > input.radio.jcem-theme-radio {
 	--jcem-panel-line: var(--clean--jcem-panel-line);
 	--jcem-panel-accent: var(--clean--jcem-panel-accent);
 	--jcem-panel-accent-hot: var(--clean--jcem-panel-accent-hot);
+	--jcem-rule-color: var(--clean--jcem-rule-color);
+	--jcem-rule-shadow: var(--clean--jcem-rule-shadow);
+	--jcem-social-color: var(--clean--jcem-social-color);
+	--jcem-social-color-hover: var(--clean--jcem-social-color-hover);
+	--jcem-article-bg: var(--clean--jcem-article-bg);
+	--jcem-article-fade: var(--clean--jcem-article-fade);
 	--jcem-quote-bg: var(--clean--jcem-quote-bg);
 	--jcem-alert-bg: var(--clean--jcem-alert-bg);
 	--jcem-alert-border: var(--clean--jcem-alert-border);
@@ -164,6 +192,12 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	--jcem-panel-line: var(--dark--jcem-panel-line);
 	--jcem-panel-accent: var(--dark--jcem-panel-accent);
 	--jcem-panel-accent-hot: var(--dark--jcem-panel-accent-hot);
+	--jcem-rule-color: var(--dark--jcem-rule-color);
+	--jcem-rule-shadow: var(--dark--jcem-rule-shadow);
+	--jcem-social-color: var(--dark--jcem-social-color);
+	--jcem-social-color-hover: var(--dark--jcem-social-color-hover);
+	--jcem-article-bg: var(--dark--jcem-article-bg);
+	--jcem-article-fade: var(--dark--jcem-article-fade);
 	--jcem-quote-bg: var(--dark--jcem-quote-bg);
 	--jcem-alert-bg: var(--dark--jcem-alert-bg);
 	--jcem-alert-border: var(--dark--jcem-alert-border);
@@ -455,7 +489,42 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 }
 
 .main_jcem_wrapper .page__title {
-	border-bottom-color: var(--jcem-panel-accent);
+	border-bottom-color: var(--jcem-rule-color);
+	box-shadow: 0 0.08rem 0 var(--jcem-rule-shadow);
+}
+
+.main_jcem_wrapper hr,
+.main_jcem_wrapper .page__content h2 {
+	border-color: var(--jcem-rule-color);
+	box-shadow: 0 0.08rem 0 var(--jcem-rule-shadow);
+}
+
+.main_jcem_wrapper .jcem-featured-style--wide .page__inner-wrap {
+	position: relative;
+	background: var(--jcem-article-bg);
+}
+
+.main_jcem_wrapper .jcem-featured-style--wide .page__inner-wrap::before {
+	position: absolute;
+	top: clamp(-4.5rem, -8vh, -2.75rem);
+	right: 0;
+	left: 0;
+	z-index: 0;
+	display: block;
+	height: clamp(4rem, 8vh, 5rem);
+	background: var(--jcem-article-fade);
+	content: '';
+	pointer-events: none;
+}
+
+.main_jcem_wrapper .jcem-featured-style--wide .page__inner-wrap > * {
+	position: relative;
+	z-index: 1;
+}
+
+.main_jcem_wrapper .jcem-featured-style--wide .page__content {
+	float: none;
+	width: 100%;
 }
 
 .main_jcem_wrapper .jcem-featured-style--wide .jcem-post-header {
@@ -500,15 +569,20 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 
 .main_jcem_wrapper sup[id^='fnref'] {
 	position: relative;
-	margin: 0 0.02em;
-	line-height: 0;
+	top: -0.5em;
+	display: inline-flex;
+	align-items: baseline;
+	margin: 0 0.03em;
+	font-size: 75%;
+	line-height: 1;
+	vertical-align: baseline;
 }
 
 .main_jcem_wrapper sup[id^='fnref']::before,
 .main_jcem_wrapper sup[id^='fnref']::after {
 	display: inline;
 	font-family: inherit;
-	font-size: 0.68em;
+	font-size: 0.9em;
 	font-weight: 800;
 	line-height: 1;
 	color: var(--link);
@@ -531,11 +605,11 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	border: 0;
 	background: transparent;
 	color: var(--link);
-	font-size: 0.68em;
+	font-size: 0.9em;
 	font-weight: 800;
 	line-height: 1;
 	text-decoration: none;
-	vertical-align: super;
+	vertical-align: baseline;
 }
 
 .main_jcem_wrapper sup[id^='fnref'] .footnote::after,
@@ -589,12 +663,32 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	color: var(--jcem-panel-accent-hot);
 }
 
+.main_jcem_wrapper .page__footer-follow .social-icons i,
+.main_jcem_wrapper .page__footer-follow .social-icons .svg-inline--fa,
+.main_jcem_wrapper .author__urls.social-icons i,
+.main_jcem_wrapper .author__urls.social-icons .svg-inline--fa {
+	color: var(--jcem-social-color) !important;
+}
+
+.main_jcem_wrapper .page__footer-follow .social-icons a:hover i,
+.main_jcem_wrapper .page__footer-follow .social-icons a:focus-visible i,
+.main_jcem_wrapper .page__footer-follow .social-icons a:hover .svg-inline--fa,
+.main_jcem_wrapper .page__footer-follow .social-icons a:focus-visible .svg-inline--fa,
+.main_jcem_wrapper .author__urls.social-icons a:hover i,
+.main_jcem_wrapper .author__urls.social-icons a:focus-visible i,
+.main_jcem_wrapper .author__urls.social-icons a:hover .svg-inline--fa,
+.main_jcem_wrapper .author__urls.social-icons a:focus-visible .svg-inline--fa {
+	color: var(--jcem-social-color-hover) !important;
+}
+
+.main_jcem_wrapper .c-collapsible,
 .main_jcem_wrapper .jcem-collapsible {
 	grid-column: 1 / -1;
 	margin-top: 2rem;
 	border-top: 1px solid var(--bc);
 }
 
+.main_jcem_wrapper .c-collapsible > summary,
 .main_jcem_wrapper .jcem-collapsible > summary {
 	display: flex;
 	align-items: center;
@@ -608,10 +702,12 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	list-style: none;
 }
 
+.main_jcem_wrapper .c-collapsible > summary::-webkit-details-marker,
 .main_jcem_wrapper .jcem-collapsible > summary::-webkit-details-marker {
 	display: none;
 }
 
+.main_jcem_wrapper .c-collapsible > summary::before,
 .main_jcem_wrapper .jcem-collapsible > summary::before {
 	display: inline-block;
 	font-family: var(--_fa-family, 'Font Awesome 7 Free');
@@ -622,10 +718,13 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	transition: transform 0.15s ease;
 }
 
+.main_jcem_wrapper .c-collapsible[open] > summary::before,
 .main_jcem_wrapper .jcem-collapsible[open] > summary::before {
 	transform: rotate(90deg);
 }
 
+.main_jcem_wrapper .c-collapsible h2,
+.main_jcem_wrapper .c-collapsible .footnotes,
 .main_jcem_wrapper .jcem-collapsible h2,
 .main_jcem_wrapper .jcem-collapsible .footnotes {
 	margin-top: 0;
@@ -633,33 +732,41 @@ body > input.radio#jcem-theme-dark:checked ~ .main_jcem_wrapper {
 	border-top: 0;
 }
 
+.main_jcem_wrapper .c-collapsible h2,
 .main_jcem_wrapper .jcem-collapsible h2 {
 	display: none;
 }
 
+.main_jcem_wrapper .c-collapsible .footnotes,
 .main_jcem_wrapper .jcem-collapsible .footnotes {
 	margin-bottom: 1.2rem;
 }
 
+.main_jcem_wrapper .c-markdown-columns,
 .main_jcem_wrapper .jcem-markdown-columns {
 	column-gap: clamp(1.5rem, 4vw, 3rem);
 	column-width: 22rem;
 	column-count: var(--jcem-columns, 2);
 }
 
+.main_jcem_wrapper .c-markdown-columns--2,
 .main_jcem_wrapper .jcem-markdown-columns--2 {
 	--jcem-columns: 2;
 }
 
+.main_jcem_wrapper .c-markdown-columns--3,
 .main_jcem_wrapper .jcem-markdown-columns--3 {
 	--jcem-columns: 3;
 }
 
+.main_jcem_wrapper .c-markdown-columns > *,
+.main_jcem_wrapper .c-markdown-columns__item,
 .main_jcem_wrapper .jcem-markdown-columns > *,
 .main_jcem_wrapper .jcem-markdown-columns__item {
 	break-inside: avoid;
 }
 
+.main_jcem_wrapper .c-markdown-columns__item img,
 .main_jcem_wrapper .jcem-markdown-columns__item img,
 .main_jcem_wrapper .jcem-image-full img,
 .main_jcem_wrapper img.jcem-image-full {

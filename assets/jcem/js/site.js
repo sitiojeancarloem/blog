@@ -102,7 +102,7 @@ const createJcemDetails = (id, label, modifier) => {
     const details = document.createElement('details');
     const summary = document.createElement('summary');
     details.id = id;
-    details.className = `jcem-collapsible jcem-collapsible--${modifier}`;
+    details.className = `c-collapsible c-collapsible--${modifier} jcem-collapsible jcem-collapsible--${modifier}`;
     summary.textContent = label;
     details.append(summary);
     return details;
@@ -164,10 +164,11 @@ const openJcemCollapsibleForHash = (hash) => {
     if (!target) {
         return;
     }
-    const details = target.closest('details.jcem-collapsible');
+    const details = target.closest('details.c-collapsible, details.jcem-collapsible');
     if (target instanceof HTMLDetailsElement &&
-        target.classList.contains('jcem-collapsible')) {
-        target.open = true;
+        (target.classList.contains('c-collapsible') ||
+            target.classList.contains('jcem-collapsible'))) {
+        return;
     }
     if (details) {
         details.open = true;

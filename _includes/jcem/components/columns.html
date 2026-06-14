@@ -1,9 +1,10 @@
 {% assign columns = include.columns | default: 2 %}
 {% assign separator = include.separator | default: "<!-- column -->" %}
 {% assign parts = include.content | split: separator %}
-<div class="jcem-markdown-columns jcem-markdown-columns--{{ columns }}">
+{% assign extra_class = include.class | default: "" %}
+<div class="c-markdown-columns c-markdown-columns--{{ columns }} jcem-markdown-columns jcem-markdown-columns--{{ columns }} {{ extra_class | strip }}">
   {% for part in parts %}
-    <div class="jcem-markdown-columns__item">
+    <div class="c-markdown-columns__item jcem-markdown-columns__item">
       {{ part | markdownify }}
     </div>
   {% endfor %}

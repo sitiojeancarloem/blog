@@ -1,9 +1,9 @@
 .masthead__inner-wrap .site-logo img {
-	max-height: 3.5rem !important;
-	height: 3.5rem;
+	max-height: 4.5rem !important;
+	height: 4.5rem;
 	width: auto;
-	margin: -1rem 0;
-	margin-top: -1.5rem;
+	margin: -1.45rem 0;
+	margin-top: -1.95rem;
 	margin-left: 0.5rem;
 }
 
@@ -36,6 +36,7 @@
 
 .greedy-nav .site-logo {
 	flex: 0 0 auto;
+	overflow: visible;
 }
 
 .greedy-nav .visible-links {
@@ -88,6 +89,7 @@
 
 .masthead__inner-wrap {
 	background: transparent;
+	overflow: visible;
 }
 
 .jcem-nav-state {
@@ -208,6 +210,7 @@ footer {
 				}
 
 				i {
+					color: var(--jcem-social-color);
 					font-size: 2rem;
 					opacity: 0.5;
 				}
@@ -215,7 +218,7 @@ footer {
 				&:hover {
 					&,
 					i {
-						color: var(--primary-color);
+						color: var(--jcem-social-color-hover);
 					}
 				}
 			}
