@@ -1,0 +1,10 @@
+{% assign columns = include.columns | default: 2 %}
+{% assign separator = include.separator | default: "<!-- column -->" %}
+{% assign parts = include.content | split: separator %}
+<div class="jcem-markdown-columns jcem-markdown-columns--{{ columns }}">
+  {% for part in parts %}
+    <div class="jcem-markdown-columns__item">
+      {{ part | markdownify }}
+    </div>
+  {% endfor %}
+</div>

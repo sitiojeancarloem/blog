@@ -242,8 +242,10 @@ aside {
 .main_jcem_wrapper {
 	--jcem-date-flag-bg: #405160; // uso: flag de publicação.
 	--jcem-date-flag-fold: #303d49; // uso: dobra da flag de publicação.
+	--jcem-date-flag-back: #c6633c; // uso: camada posterior da flag.
 	--jcem-date-flag-updated-bg: #8a3f35; // uso: flag de post atualizado.
 	--jcem-date-flag-updated-fold: #6f312a; // uso: dobra de post atualizado.
+	--jcem-date-flag-updated-back: #c6633c; // uso: camada posterior atualizada.
 	--jcem-date-flag-border: #171a1d; // uso: contorno da flag.
 }
 
@@ -258,30 +260,43 @@ aside {
 .jcem-date-flag {
 	position: relative;
 	z-index: 2;
-	width: 3.2em;
+	width: 2.75em;
 	color: #fff;
-	font-size: 0.82rem;
+	font-size: 0.78rem;
 	line-height: 1;
 	text-transform: uppercase;
 }
 
+.jcem-date-flag::before,
 .jcem-date-flag::after,
 .jcem-date-flag time::after {
 	position: absolute;
-	left: 50%;
 	display: block;
-	width: 0;
-	height: 0;
 	font-family: inherit;
 	content: '';
+}
+
+.jcem-date-flag::before {
+	top: 0.18em;
+	bottom: 0.34em;
+	left: -0.44em;
+	width: 0.7em;
+	background: var(--jcem-date-flag-back);
+}
+
+.jcem-date-flag::after,
+.jcem-date-flag time::after {
+	left: 50%;
+	width: 0;
+	height: 0;
 	transform: translateX(-50%);
 }
 
 .jcem-date-flag::after {
-	bottom: -0.92em;
-	border-top: 0.92em solid var(--jcem-date-flag-border);
-	border-right: 1.6em solid transparent;
-	border-left: 1.6em solid transparent;
+	bottom: -0.78em;
+	border-top: 0.78em solid var(--jcem-date-flag-border);
+	border-right: 1.38em solid transparent;
+	border-left: 1.38em solid transparent;
 }
 
 .jcem-date-flag time {
@@ -291,8 +306,8 @@ aside {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-height: 4.55em;
-	padding: 0.35em 0.2em 0.55em;
+	min-height: 4.35em;
+	padding: 0.32em 0.18em 0.48em;
 	border: 0.12em solid var(--jcem-date-flag-border);
 	background: var(--jcem-date-flag-bg);
 	color: inherit;
@@ -303,10 +318,10 @@ aside {
 }
 
 .jcem-date-flag time::after {
-	bottom: -0.72em;
-	border-top: 0.72em solid var(--jcem-date-flag-fold);
-	border-right: 1.36em solid transparent;
-	border-left: 1.36em solid transparent;
+	bottom: -0.58em;
+	border-top: 0.58em solid var(--jcem-date-flag-fold);
+	border-right: 1.14em solid transparent;
+	border-left: 1.14em solid transparent;
 }
 
 .jcem-date-flag__year,
@@ -331,6 +346,10 @@ aside {
 }
 
 .jcem-date-flag--updated {
+	&::before {
+		background: var(--jcem-date-flag-updated-back);
+	}
+
 	&::after {
 		border-top-color: var(--jcem-date-flag-border);
 	}

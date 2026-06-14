@@ -36,10 +36,12 @@ toc_label: "Sumário"
 > — [Descartes](https://pt.wikipedia.org/wiki/Descartes)
 
 O [renascentismo](https://pt.wikipedia.org/wiki/Renascentismo) e [iluminismo](https://pt.wikipedia.org/wiki/Iluminismo) foram entre muitos outros, os principais agentes a proporcionar que a “filosofia” da _“era das luzes”_ e _“era das trevas”_ perdurasse por anos a fio. Muito embora hoje, distantes dos fatos, existam alguns que preguem uma Idade Média sem um mergulho profundo à obscuridade e ignorância[^1], abster-se dos fatos, porém, propondo que não houve qualquer tipo de declínio ou limitação imposta pelo agente dominante da época através de métodos como crendice, tortura, encarceramento e condenação[^2] – que em alguns casos era condenação à morte[^3] – para coagir, erradicar e limitar pensamentos que o contradissessem, como no [caso de Galileu Galilei](https://en.wikipedia.org/wiki/Galileo_affair), é um extremo que não reflete a realidade[^4][^5][^6] e é tão prejudicial e fictício[^7] como qualquer mito. Mas é neste tempo conturbado[^8] advindo da [Idade Média](https://pt.wikipedia.org/wiki/Idade_Média), preconceituosamente[^1] (até certo ponto) pintado pelos intelectuais da época como “tempo de ignorância e superstição”[^9] _onde os dogmas e crendices se sobrepunham ao racionalismo e experiência pessoal[^1], e cultivava um crescente declínio cultural_[^10] – não é à toa a denominação desse período por alguns intelectuais de [“idade das trevas”](https://pt.wikipedia.org/wiki/Idade_das_Trevas) e a existência de inúmeras crenças populares, muitas das quais, ainda acreditadas hoje[^11] – perdido entre tantas teorias, questionando-se sobre tudo, é que o renomado filósofo [Descartes](https://pt.wikipedia.org/wiki/Descartes) expressa o pensamento supra.
+{: .jcem-markdown-columns .jcem-markdown-columns--2 }
 
 ## A Realidade
 
 O que é real? O que é verdade? Às vezes parece que todas as alternativas demonstram verdade, e noutras não há alternativa. Como distinguir então? E se tudo em que se acredita é irreal? E se o que é presenciado, sentido e até mesmo cientificamente provado for apenas uma mera ilusão? E se nada é o que parece, e como numa ficção futurista, todos estivessem desde sempre, presos à [Matrix?](https://pt.wikipedia.org/wiki/Matrix)
+{: .jcem-markdown-columns .jcem-markdown-columns--2 }
 
 > Ora, quem pode assegurar que (…) não haja nenhuma terra, nenhum céu, nenhum corpo extenso, nenhuma figura, nenhuma grandeza, nenhum lugar e que, não obstante, eu tenha o sentimento de todas essas coisas … E, mesmo, (…) que eu me engane todas as vezes em que faço a adição de dois mais três, ou em que enumero os lados de um quadrado, ou faço outra coisa que se possa imaginar ainda mais fácil?
 >
@@ -92,7 +94,15 @@ A relatividade é um conceito amplo, antigo[^26] e cientificamente verificável[
 
 Existem muitas alegorias que tentam ilustrar a relatividade. Uma delas, simplória, mas o suficiente para o caso, considera a existência de dois observadores. Um deles encontra-se na lua _(B)_, enquanto o outro na terra _(A)_. Do ponto de vista do observador _“B”_, a terra gira em torno da lua, e do ponto de vista do observador _“A”_, é a lua que gira em torno da terra. Ambos tiram sua conclusão em evidências verificáveis. Qualquer um pode olhar ao céu e observar a evidência diante de seus olhos, e diante destas evidências ambos estão corretos. Neste caso o conhecimento é relativo à perspectiva do observador e ao método utilizado. Entretanto o conhecimento obtido através da perspectiva do observador limita a compreensão do todo.
 
-<table class="justo noborder" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding: 0;" colspan="2"><img src="/assets/images/posts/devaneios/RELATIVIDADE-LUA_TERRA.jpg" alt=""></td></tr><tr><td style="width: 50%; overflow: hidden; padding: 0px;"><img src="/assets/images/posts/devaneios/LuaVistadaTerra_cc0.jpg" alt=""></td><td style="width: 50%; overflow: hidden; padding: 0px;"><img src="/assets/images/posts/devaneios/terraVistadaLua_cc0.jpg" alt=""></td></tr></tbody></table>
+![Relatividade entre lua e terra.](/assets/images/posts/devaneios/RELATIVIDADE-LUA_TERRA.jpg)
+{: .jcem-image-full }
+
+{% capture jcem_relativity_columns %}
+![Lua vista da terra.](/assets/images/posts/devaneios/LuaVistadaTerra_cc0.jpg)
+<!-- column -->
+![Terra vista da lua.](/assets/images/posts/devaneios/terraVistadaLua_cc0.jpg)
+{% endcapture %}
+{% include jcem/components/columns.html content=jcem_relativity_columns columns=2 %}
 
 Este exemplo, bem como o “das fachadas de restaurantes”, demonstram a relatividade do conhecimento humano indicando também a fragilidade humana na percepção do todo, o que prejudica notoriamente suas convicções. Por isso talvez, nenhum dos pontos, relativismo ou absolutismo, está correto, mas possivelmente um “_convergencialismo_“.
 
@@ -283,14 +293,24 @@ Afinal, mesmo após séculos, o mundo continua o mesmo. O monopólio de um “pe
 
 ## Bibliografia
 
-- <span id="ref_Lindberg_2013"></span>LINDBERG, David C.. (2003). “When Science & Christianity Meet”. Chicago: Chicago University Press;
-- <span id="ref_Davies_1996"></span>DAVIES, Norman. Europe: A History. Oxford: Oxford University Press, 1996. ISBN 0-19-520912-5;
-- <span id="ref_Russell_1991"></span>RUSSELL, Jeffey Burton. Inventing the Flat Earth-Columbus and Modern Historians. Westport, CT: Praeger, 1991. ISBN 0-275-95904-X;
+- LINDBERG, David C.. (2003). “When Science & Christianity Meet”. Chicago: Chicago University Press;
+{: #ref_Lindberg_2013 }
+- DAVIES, Norman. Europe: A History. Oxford: Oxford University Press, 1996. ISBN 0-19-520912-5;
+{: #ref_Davies_1996 }
+- RUSSELL, Jeffrey Burton. Inventing the Flat Earth-Columbus and Modern Historians. Westport, CT: Praeger, 1991. ISBN 0-275-95904-X;
+{: #ref_Russell_1991 }
 - DESCARTES, René. Meditações Metafísicas. Tradução de Bento Prado Junior e J. Guinburg (Coleção Pensadores, Ed. Victor Civita, Abril Cultural, São Paulo, 1973);
-- <span id="ref_ethel"></span>ROCHA, Ethel Menezes. Observações sobre a dúvida cartesiana;
-- <span id="ref_aurelio_2004"></span>FERREIRA, Aurélio Buarque de Holanda. O Novo Dicionário Aurélio da Língua Portuguesa. 3ª Edição. 1ª. impressão da Editora Positivo, revista e atualizada do Aurélio Século XXI, O Dicionário da Língua Portuguesa, contendo 435 mil verbetes, locuções e definições; Versão Digital Positivo.
-- <span id="dicioUnesp"></span>BORBA, Francisco da Silva. Dicionário UNESP do português contemporâneo. Editora UNESP, 2004. ISBN: 8-57-1395764-4;
-- <span id="wikipedia"></span>[Wikipédia;](https://pt.wikipedia.org/wiki/Wikipedia)
-- <span id="wikicionario"></span>[Wikicionário;](https://pt.wikipedia.org/wiki/Wikicionário)
-- <span id="fe_ateu"></span>GEISLER, Norman. TUREK, Frank . Não tenho fé suficiente para ser ateu. Tradução Emison Justino. 2º Impressão. ISBN: 8-57-367928.
-- <span id="CJC"></span>**[MEDAWAR](https://pt.wikipedia.org/wiki/Peter%20Brian%20Medawar)**, Peter Brian. Conselhos a um jovem cientista.
+- ROCHA, Ethel Menezes. Observações sobre a dúvida cartesiana;
+{: #ref_ethel }
+- FERREIRA, Aurélio Buarque de Holanda. O Novo Dicionário Aurélio da Língua Portuguesa. 3ª edição. 1ª impressão da Editora Positivo, revista e atualizada do Aurélio Século XXI, O Dicionário da Língua Portuguesa, contendo 435 mil verbetes, locuções e definições; Versão Digital Positivo.
+{: #ref_aurelio_2004 }
+- BORBA, Francisco da Silva. Dicionário UNESP do português contemporâneo. Editora UNESP, 2004. ISBN: 8-57-1395764-4;
+{: #dicioUnesp }
+- [Wikipédia;](https://pt.wikipedia.org/wiki/Wikipedia)
+{: #wikipedia }
+- [Wikicionário;](https://pt.wikipedia.org/wiki/Wikicionário)
+{: #wikicionario }
+- GEISLER, Norman. TUREK, Frank. Não tenho fé suficiente para ser ateu. Tradução Emison Justino. 2ª impressão. ISBN: 8-57-367928.
+{: #fe_ateu }
+- **[MEDAWAR](https://pt.wikipedia.org/wiki/Peter%20Brian%20Medawar)**, Peter Brian. Conselhos a um jovem cientista.
+{: #CJC }

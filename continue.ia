@@ -9,4 +9,5 @@ Estado operacional:
 - Posts em 2026-06-13: imagem destacada configurável por post e data por flag responsiva implementadas em layout/include/Sass; Browser interno ainda falha com CreateProcessAsUserW failed: 5.
 - Post Devaneios em 2026-06-13: _posts/2014-04-16-devaneios.md criado de _drafts/devaneios/original.html com imagens locais, destaque wide, data preservada, 44 footnotes kramdown e validação Playwright local.
 - Footnotes em 2026-06-13: marcadores inline ajustados sem borda/fundo/ícone externo; tooltip populado via TypeScript a partir das notas renderizadas; validações npm e Playwright local concluídas.
+- Devaneios em 2026-06-13: Referências e Bibliografia separadas em blocos recolhíveis, notas abrem Referências automaticamente, colunas Markdown responsivas adicionadas e destaque wide reposicionado; build e validação visual concluídos.
 - Pendências persistentes: nenhuma.

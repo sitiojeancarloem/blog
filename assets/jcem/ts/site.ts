@@ -131,6 +131,173 @@ const bindJcemScrollTop = (): void => {
 	syncVisibility();
 };
 
+const normalizeJcemText = (text: string): string =>
+	text
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.replace(/\s+/g, ' ')
+		.trim()
+		.toLowerCase();
+
+const findJcemSectionHeading = (
+	content: HTMLElement,
+	title: string,
+): HTMLHeadingElement | null => {
+	const normalizedTitle = normalizeJcemText(title);
+
+	return (
+		Array.from(
+			content.querySelectorAll<HTMLHeadingElement>('h2, h3'),
+		).find(
+			(heading) =>
+				normalizeJcemText(heading.textContent || '') === normalizedTitle,
+		) || null
+	);
+};
+
+const createJcemDetails = (
+	id: string,
+	label: string,
+	modifier: string,
+): HTMLDetailsElement => {
+	const details = document.createElement('details');
+	const summary = document.createElement('summary');
+
+	details.id = id;
+	details.className = `jcem-collapsible jcem-collapsible--${modifier}`;
+	summary.textContent = label;
+	details.append(summary);
+
+	return details;
+};
+
+const moveUntilNextHeading = (
+	details: HTMLDetailsElement,
+	start: Element,
+): void => {
+	let node = start.nextSibling;
+
+	details.append(start);
+
+	while (node) {
+		const current = node;
+		const next = current.nextSibling;
+
+		if (
+			current instanceof HTMLHeadingElement &&
+			['H2', 'H3'].includes(current.tagName)
+		) {
+			break;
+		}
+
+		details.append(current);
+		node = next;
+	}
+};
+
+const wrapJcemFootnotes = (content: HTMLElement): void => {
+	const footnotes = content.querySelector<HTMLElement>(':scope > .footnotes');
+
+	if (!footnotes || footnotes.closest('.jcem-collapsible')) {
+		return;
+	}
+
+	const heading =
+		findJcemSectionHeading(content, 'Referências') ||
+		findJcemSectionHeading(content, 'Referencias');
+	const details = createJcemDetails(
+		heading?.id || 'referencias',
+		'Referências',
+		'references',
+	);
+
+	if (heading) {
+		heading.removeAttribute('id');
+		content.insertBefore(details, heading);
+		details.append(heading);
+		details.append(footnotes);
+
+		return;
+	}
+
+	content.insertBefore(details, footnotes);
+	details.append(footnotes);
+};
+
+const wrapJcemBibliography = (content: HTMLElement): void => {
+	const heading = findJcemSectionHeading(content, 'Bibliografia');
+
+	if (!heading || heading.closest('.jcem-collapsible')) {
+		return;
+	}
+
+	const id = heading.id || 'bibliografia';
+	const details = createJcemDetails(id, 'Bibliografia', 'bibliography');
+
+	heading.removeAttribute('id');
+	content.insertBefore(details, heading);
+	moveUntilNextHeading(details, heading);
+};
+
+const openJcemCollapsibleForHash = (hash: string): void => {
+	if (!hash) {
+		return;
+	}
+
+	const id = decodeURIComponent(hash.slice(1));
+	const target = document.getElementById(id);
+
+	if (id.startsWith('fn:')) {
+		(
+			document.getElementById('referências') ||
+			document.getElementById('referencias')
+		)?.setAttribute('open', '');
+	}
+
+	if (!target) {
+		return;
+	}
+
+	const details = target.closest<HTMLDetailsElement>('details.jcem-collapsible');
+
+	if (
+		target instanceof HTMLDetailsElement &&
+		target.classList.contains('jcem-collapsible')
+	) {
+		target.open = true;
+	}
+
+	if (details) {
+		details.open = true;
+	}
+};
+
+const bindJcemCollapsibleSections = (): void => {
+	const content = select<HTMLElement>('.page__content');
+
+	if (!content) {
+		return;
+	}
+
+	wrapJcemFootnotes(content);
+	wrapJcemBibliography(content);
+	openJcemCollapsibleForHash(window.location.hash);
+
+	document.addEventListener('click', (event) => {
+		const link = (event.target as Element | null)?.closest<HTMLAnchorElement>(
+			'a[href^="#"]',
+		);
+
+		if (link) {
+			openJcemCollapsibleForHash(link.hash);
+		}
+	});
+
+	window.addEventListener('hashchange', () => {
+		openJcemCollapsibleForHash(window.location.hash);
+	});
+};
+
 const footnoteSummaryMaxLength = 260;
 
 const summarizeFootnote = (text: string): string => {
@@ -186,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	bindJcemTheme();
 	bindJcemNav();
 	bindJcemScrollTop();
+	bindJcemCollapsibleSections();
 	bindJcemFootnotes();
 	hideNoScript();
 });
